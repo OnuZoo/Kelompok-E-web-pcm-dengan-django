@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ini buat index
 ini seatingan akmal dan danang
 <<<<<<< HEAD
@@ -8,3 +9,5 @@ Ini buatan pram
 pram
 danang
 perubahan coba pull
+=======
+>>>>>>> 6922cc4 (rapikan)
