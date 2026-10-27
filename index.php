@@ -1,2 +1,2 @@
 #ini buat index
-ini seatingan akmal
+ini seatingan akmal dan danang
