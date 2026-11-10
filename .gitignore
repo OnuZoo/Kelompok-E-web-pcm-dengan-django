@@ -2,7 +2,6 @@
 __pycache__/
 *.pyc
 .env
-db.sqlite3
 media/
 staticfiles/
 BACA_DULU_WOY.txt
