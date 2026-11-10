@@ -1,7 +1,5 @@
 .venv/
 __pycache__/
 *.pyc
-.env
-media/
 staticfiles/
 BACA_DULU_WOY.txt
