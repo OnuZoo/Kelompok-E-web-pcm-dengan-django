@@ -7,4 +7,5 @@ app_name = "web"
 urlpatterns = [
     path("", views.beranda, name="beranda"),
     path("agenda/", views.agenda, name="agenda"),
+    path("profil/", views.profil, name="profil"),
 ]
