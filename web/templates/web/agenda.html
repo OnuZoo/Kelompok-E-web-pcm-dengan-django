@@ -1,0 +1,69 @@
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda Kegiatan{% if agenda_mendatang %} - {{ agenda_mendatang.count }} kegiatan mendatang{% endif %}</title>
+  </head>
+  <body>
+    {% if agenda_mendatang or agenda_lalu %}
+
+    <header>
+      <h1>Agenda Kegiatan</h1>
+      <p><em>Pimpinan Cabang Muhammadiyah Baki, Kabupaten Sukoharjo</em></p>
+    </header>
+
+    <main>
+      <section>
+        <h2>Kegiatan Mendatang</h2>
+        {% if agenda_mendatang %}
+        <ol>
+          {% for item in agenda_mendatang %}
+          <li>
+            <h3>{{ item.nama_kegiatan }}</h3>
+            <p>
+              {{ item.waktu_mulai|date:"l, j F Y" }}, pukul
+              {{ item.waktu_mulai|time:"H:i" }} WIB
+            </p>
+            <p>Tempat: {{ item.tempat }}</p>
+            {% if item.keterangan %}
+            <p>{{ item.keterangan|linebreaksbr }}</p>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+        {% else %}
+        <p>Belum ada kegiatan yang dijadwalkan.</p>
+        {% endif %}
+      </section>
+
+      {% if agenda_lalu %}
+      <section>
+        <h2>Kegiatan Sebelumnya</h2>
+        <ol>
+          {% for item in agenda_lalu %}
+          <li>
+            <h3>{{ item.nama_kegiatan }}</h3>
+            <p>
+              {{ item.waktu_mulai|date:"l, j F Y" }}, pukul
+              {{ item.waktu_mulai|time:"H:i" }} WIB
+            </p>
+            <p>Tempat: {{ item.tempat }}</p>
+            {% if item.keterangan %}
+            <p>{{ item.keterangan|linebreaksbr }}</p>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ol>
+      </section>
+      {% endif %}
+    </main>
+
+    {% else %}
+
+    <main>
+      <p>Agenda kegiatan belum diisi. Silakan isi lewat halaman admin.</p>
+    </main>
+
+    {% endif %}
+  </body>
+</html>
