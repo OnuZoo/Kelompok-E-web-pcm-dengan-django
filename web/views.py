@@ -30,3 +30,17 @@ def agenda(request):
         "agenda_list": agenda_list,
     }
     return render(request, "web/agenda.html", konteks)
+
+def get_ranting(request):
+    ranting_list = Ranting.objects.all()
+    konteks = {
+        "ranting_list": ranting_list,
+    }
+    return render(request, "web/ranting.html", konteks)
+
+def get_amal_usaha(request):
+    amal_usaha_list = AmalUsaha.objects.all()
+    konteks = {
+        "amal_usaha_list": amal_usaha_list,
+    }
+    return render(request, "web/amal_usaha.html", konteks)
