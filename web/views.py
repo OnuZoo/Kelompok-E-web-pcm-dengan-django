@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 
 from .models import Agenda, AmalUsaha, Berita, Ranting, ProfilOrganisasi
@@ -38,3 +38,7 @@ def get_amal_usaha(request):
         "amal_usaha_list": amal_usaha_list,
     }
     return render(request, "web/amal_usaha.html", konteks)
+
+def berita_detail(request, slug):
+    berita = get_object_or_404(Berita, slug=slug, status=Berita.Status.TERBIT)
+    return render(request, "web/berita_detail.html", {"berita": berita})

@@ -1,32 +1,60 @@
+{% load static %}
 <!doctype html>
 <html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Berita</title>
   </head>
   <body>
-    <main>
-      <section>
-        <h1>Berita</h1>
-        <p>Informasi dan warta terbaru.</p>
+    <header>
+      <h1>Berita</h1>
+      <p>Kabar dan pengumuman terbaru.</p>
+    </header>
 
-        {% for berita in page_obj %} {% include "web/_kartu_berita.html" %} {% empty %}
-        <p>Belum ada berita yang diterbitkan.</p>
-        {% endfor %} {% if page_obj.has_other_pages %}
-        <nav aria-label="Halaman berita">
-          {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}">&laquo; Sebelumnya</a>
-          {% endif %} {% for num in page_obj.paginator.page_range %} {% if num == page_obj.number %}
-          <strong>{{ num }}</strong>
-          {% else %}
-          <a href="?page={{ num }}">{{ num }}</a>
-          {% endif %} {% endfor %} {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">Selanjutnya &raquo;</a>
-          {% endif %}
-        </nav>
+    <main>
+      {% if berita_list %} {# Berita pertama tampil sebagai berita utama, hanya di halaman 1 #} {% if not page_obj.has_previous %} {% for berita in berita_list|slice:":1" %}
+      <article>
+        {% if berita.gambar_sampul %}
+        <a href="{% url 'berita_detail' berita.slug %}">
+          <img src="{{ berita.gambar_sampul.url }}" alt="{{ berita.judul }}" />
+        </a>
         {% endif %}
-      </section>
+        <time datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"j F Y" }}</time>
+        <h2><a href="{% url 'berita_detail' berita.slug %}">{{ berita.judul }}</a></h2>
+        <p>{{ berita.ringkasan|truncatewords:40 }}</p>
+        <a href="{% url 'berita_detail' berita.slug %}">Baca selengkapnya</a>
+      </article>
+      <hr />
+      {% endfor %} {% endif %} {% for berita in berita_list %} {% if page_obj.has_previous or not forloop.first %}
+      <article>
+        {% if berita.gambar_sampul %}
+        <a href="{% url 'berita_detail' berita.slug %}">
+          <img src="{{ berita.gambar_sampul.url }}" alt="{{ berita.judul }}" loading="lazy" />
+        </a>
+        {% endif %}
+        <time datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"j F Y" }}</time>
+        <h3><a href="{% url 'berita_detail' berita.slug %}">{{ berita.judul }}</a></h3>
+        <p>{{ berita.ringkasan|truncatewords:30 }}</p>
+        <a href="{% url 'berita_detail' berita.slug %}">Baca selengkapnya</a>
+      </article>
+      {% endif %} {% endfor %} {% if is_paginated %}
+      <nav aria-label="Halaman berita">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" rel="prev">Sebelumnya</a>
+        {% endif %}
+        <span>Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" rel="next">Berikutnya</a>
+        {% endif %}
+      </nav>
+      {% endif %} {% else %}
+      <p>Belum ada berita yang terbit. Silakan kembali lagi nanti.</p>
+      {% endif %}
     </main>
+
+    <footer>
+      <p>&copy; {% now "Y" %}</p>
+    </footer>
   </body>
 </html>
