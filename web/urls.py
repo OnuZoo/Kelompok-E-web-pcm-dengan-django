@@ -6,6 +6,8 @@ app_name = "web"
 
 urlpatterns = [
     path("", views.beranda, name="beranda"),
-    #path("agenda/", views.agenda, name="agenda"),
+    path("agenda/", views.agenda, name="agenda"),
     path("profil/", views.profil, name="profil"),
+    path("ranting/", views.get_ranting, name="ranting"),
+    path("amal-usaha/", views.get_amal_usaha, name="amal_usaha"),
 ]
