@@ -1,0 +1,59 @@
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil{% if profil %} - {{ profil.nama_singkat }}{% endif %}</title>
+  </head>
+  <body>
+    {% if profil %}
+
+    <header>
+      <h1>{{ profil.nama }}</h1>
+      {% if profil.tagline %}
+      <p><em>{{ profil.tagline }}</em></p>
+      {% endif %}
+    </header>
+
+    <main>
+      {% if profil.gambar_hero %}
+      <img
+        src="{{ profil.gambar_hero.url }}"
+        alt="{{ profil.nama }}"
+        style="max-width: 100%"
+      />
+      {% endif %} {% if profil.tentang %}
+      <section>
+        <h2>Tentang</h2>
+        <p>{{ profil.tentang|linebreaksbr }}</p>
+      </section>
+      {% endif %} {% if profil.sejarah %}
+      <section>
+        <h2>Sejarah</h2>
+        <p>{{ profil.sejarah|linebreaksbr }}</p>
+      </section>
+      {% endif %} {% if profil.visi %}
+      <section>
+        <h2>Visi</h2>
+        <p>{{ profil.visi|linebreaksbr }}</p>
+      </section>
+      {% endif %} {% if profil.daftar_misi %}
+      <section>
+        <h2>Misi</h2>
+        <ol>
+          {% for misi in profil.daftar_misi %}
+          <li>{{ misi }}</li>
+          {% endfor %}
+        </ol>
+      </section>
+      {% endif %}
+    </main>
+
+    {% else %}
+
+    <main>
+      <p>Profil organisasi belum diisi. Silakan isi lewat halaman admin.</p>
+    </main>
+
+    {% endif %}
+  </body>
+</html>
