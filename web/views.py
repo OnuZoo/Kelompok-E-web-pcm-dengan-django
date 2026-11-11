@@ -58,3 +58,13 @@ def kontak(request):
     else:
         form = PesanForm()
     return render(request, "web/kontak.html", {"form": form})
+
+def get_agenda_kegiatan(request):
+    sekarang = timezone.now()
+    agenda_mendatang = Agenda.objects.filter(waktu_mulai__gte=sekarang).order_by("waktu_mulai")
+    agenda_lalu = Agenda.objects.filter(waktu_mulai__lt=sekarang).order_by("-waktu_mulai")
+    konteks = {
+        "agenda_mendatang": agenda_mendatang,
+        "agenda_lalu": agenda_lalu,
+    }
+    return render(request, "web/agenda_kegiatan.html", konteks)
