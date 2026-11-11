@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 staticfiles/
 BACA_DULU_WOY.txt
+.env
