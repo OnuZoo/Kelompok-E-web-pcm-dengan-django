@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amal Usaha</title>
+</head>
+<body>
+    <h1>Amal Usaha</h1>
+
+    {% regroup amal_usaha_list by bidang as bidang_list %}
+
+    {% for bidang in bidang_list %}
+    <h2>{{ bidang.list.0.get_bidang_display }}</h2>
+
+    <table border="1" cellpadding="8" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Deskripsi</th>
+                <th>Alamat</th>
+                <th>Gambar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in bidang.list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.nama }}</td>
+                <td>{{ item.deskripsi }}</td>
+                <td>{{ item.alamat }}</td>
+                <td>
+                    {% if item.gambar %}
+                    <img src="{{ item.gambar.url }}" alt="{{ item.nama }}" width="100">
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% empty %}
+    <p>Belum ada data amal usaha.</p>
+    {% endfor %}
+</body>
+</html>
