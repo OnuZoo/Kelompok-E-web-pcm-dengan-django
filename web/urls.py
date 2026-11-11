@@ -11,4 +11,5 @@ urlpatterns = [
     path("amal-usaha/", views.get_amal_usaha, name="amal_usaha"),
     path("berita/", views.berita, name="berita"),
     path("berita/<slug:slug>/", views.berita_detail, name="berita_detail"),
+    path("unduhan/", views.unduhan, name="unduhan"),
 ]

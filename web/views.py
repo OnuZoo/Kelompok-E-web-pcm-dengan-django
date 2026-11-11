@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 
-from .models import Agenda, AmalUsaha, Berita, Ranting, ProfilOrganisasi
+from .models import Agenda, AmalUsaha, Berita, Dokumen, Ranting, ProfilOrganisasi
 
 
 def beranda(request):
@@ -42,3 +42,7 @@ def get_amal_usaha(request):
 def berita_detail(request, slug):
     berita = get_object_or_404(Berita, slug=slug, status=Berita.Status.TERBIT)
     return render(request, "web/berita_detail.html", {"berita": berita})
+
+def unduhan(request):
+    daftar_dokumen = Dokumen.objects.all()  # sudah urut terbaru lewat Meta.ordering
+    return render(request, "web/unduhan.html", {"daftar_dokumen": daftar_dokumen})

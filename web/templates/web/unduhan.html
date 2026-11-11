@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unduhan</title>
+  </head>
+  <body>
+    <header>
+      <h1>Unduhan</h1>
+      <p>Daftar dokumen yang dapat diunduh.</p>
+    </header>
+
+    <main>
+      {% if daftar_dokumen %}
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Judul</th>
+            <th>Keterangan</th>
+            <th>Tanggal Unggah</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dokumen in daftar_dokumen %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ dokumen.judul }}</td>
+            <td>{{ dokumen.keterangan|default:"-" }}</td>
+            <td>{{ dokumen.tanggal_unggah|date:"d M Y" }}</td>
+            <td>
+              <a href="{{ dokumen.berkas.url }}" download>Unduh</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>Belum ada dokumen yang tersedia.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>
