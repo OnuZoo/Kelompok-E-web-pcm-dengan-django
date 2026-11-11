@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils import timezone
 
-from .models import Agenda, AmalUsaha, Berita, Ranting
+from .models import Agenda, AmalUsaha, Berita, Ranting, ProfilOrganisasi
 
 
 def beranda(request):
@@ -19,3 +19,7 @@ def berita(request):
         "berita_list": berita_list,
     }
     return render(request, "web/berita.html", konteks)
+
+def profil(request):
+    profil = ProfilOrganisasi.objects.first()
+    return render(request, "web/profil.html", {"profil": profil})
