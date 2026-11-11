@@ -11,5 +11,5 @@ urlpatterns = [
     path("amal-usaha/", views.get_amal_usaha, name="amal_usaha"),
     path("berita/", views.berita, name="berita"),
     path("kontak/", views.kontak, name="kontak"),
-    
+    path("pimpinan/", views.get_pimpinan, name="pimpinan"),
 ]

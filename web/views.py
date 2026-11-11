@@ -27,6 +27,12 @@ def profil(request):
     profil = ProfilOrganisasi.objects.first()
     return render(request, "web/profil.html", {"profil": profil})
 
+def get_pimpinan(request):
+    pimpinan_list = ProfilOrganisasi.objects.first().pimpinan_set.all()
+    konteks = {
+        "pimpinan_list": pimpinan_list,
+    }
+    return render(request, "web/pimpinan.html", konteks)
 
 def get_ranting(request):
     ranting_list = Ranting.objects.all()
