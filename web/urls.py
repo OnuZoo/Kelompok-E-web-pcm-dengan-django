@@ -10,4 +10,6 @@ urlpatterns = [
     path("ranting/", views.get_ranting, name="ranting"),
     path("amal-usaha/", views.get_amal_usaha, name="amal_usaha"),
     path("berita/", views.berita, name="berita"),
+    path("kontak/", views.kontak, name="kontak"),
+    
 ]

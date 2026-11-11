@@ -6,26 +6,22 @@
 <h1>Kontak</h1>
 
 <section>
-  <h2>Sekretariat</h2>
+  <h2>Alamat Sekretariat</h2>
   <p>{{ profil.alamat_sekretariat|default:"Belum tersedia" }}</p>
   <p>Telepon: {{ profil.telepon|default:"Belum tersedia" }}</p>
   <p>Email: {{ profil.email|default:"Belum tersedia" }}</p>
 </section>
 
 <section>
-  <h2>Kirim Pesan</h2>
-  <form method="post" novalidate>
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-    {% for field in form %}
-      <div class="field">
-        {{ field.label_tag }}
-        {{ field }}
-        {% for error in field.errors %}
-          <small class="error">{{ error }}</small>
-        {% endfor %}
-      </div>
+  <h2>Formulir Kontak</h2>
+  {% if messages %}
+    {% for pesan in messages %}
+      <p>{{ pesan }}</p>
     {% endfor %}
+  {% endif %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
     <button type="submit">Kirim</button>
   </form>
 </section>

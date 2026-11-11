@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect,render
 from django.utils import timezone
+from django.contrib import messages
 
+
+from .forms import PesanForm
 from .models import Agenda, AmalUsaha, Berita, Ranting, ProfilOrganisasi
 
 
@@ -38,3 +41,14 @@ def get_amal_usaha(request):
         "amal_usaha_list": amal_usaha_list,
     }
     return render(request, "web/amal_usaha.html", konteks)
+
+def kontak(request):
+    if request.method == "POST":
+        form = PesanForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Pesan Anda berhasil dikirim. Terima kasih!")
+            return redirect("web:kontak")
+    else:
+        form = PesanForm()
+    return render(request, "web/kontak.html", {"form": form})
