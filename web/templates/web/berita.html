@@ -3,43 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Berita - PCM Baki</title>
+    <title>Berita</title>
   </head>
   <body>
-    <hr />
+    <main>
+      <section>
+        <h1>Berita</h1>
+        <p>Informasi dan warta terbaru.</p>
 
-    <div>
-      <!-- KONTEN UTAMA -->
-      <main>
-        <!-- Berita unggulan -->
-        <article>
-          <h2><a href="#">Judul Berita Unggulan</a></h2>
-          <p>Ringkasan singkat berita unggulan ditulis di sini.</p>
-          <a href="#">Baca selengkapnya</a>
-        </article>
-
-        <hr />
-
-        <!-- Daftar berita -->
-        <section>
-          <h2>Semua Berita</h2>
-
-          <article>
-            <h3><a href="#">Judul Berita 1</a></h3>
-            <p>Ringkasan singkat berita pertama.</p>
-          </article>
-
-          <article>
-            <h3><a href="#">Judul Berita 1</a></h3>
-            <p>Ringkasan singkat berita pertama.</p>
-          </article>
-
-          <article>
-            <h3><a href="#">Judul Berita 1</a></h3>
-            <p>Ringkasan singkat berita pertama.</p>
-          </article>
-        </section>
-      </main>
-    </div>
+        {% for berita in page_obj %} {% include "web/_kartu_berita.html" %} {% empty %}
+        <p>Belum ada berita yang diterbitkan.</p>
+        {% endfor %} {% if page_obj.has_other_pages %}
+        <nav aria-label="Halaman berita">
+          {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">&laquo; Sebelumnya</a>
+          {% endif %} {% for num in page_obj.paginator.page_range %} {% if num == page_obj.number %}
+          <strong>{{ num }}</strong>
+          {% else %}
+          <a href="?page={{ num }}">{{ num }}</a>
+          {% endif %} {% endfor %} {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">Selanjutnya &raquo;</a>
+          {% endif %}
+        </nav>
+        {% endif %}
+      </section>
+    </main>
   </body>
 </html>
