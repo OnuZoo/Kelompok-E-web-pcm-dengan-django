@@ -24,12 +24,6 @@ def profil(request):
     profil = ProfilOrganisasi.objects.first()
     return render(request, "web/profil.html", {"profil": profil})
 
-def agenda(request):
-    agenda_list = Agenda.objects.filter(waktu_mulai__gte=timezone.now())
-    konteks = {
-        "agenda_list": agenda_list,
-    }
-    return render(request, "web/agenda.html", konteks)
 
 def get_ranting(request):
     ranting_list = Ranting.objects.all()
