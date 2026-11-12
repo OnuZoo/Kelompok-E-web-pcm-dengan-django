@@ -50,9 +50,25 @@ def get_amal_usaha(request):
     }
     return render(request, "web/amal_usaha.html", konteks)
 
+
 def berita_detail(request, slug):
-    berita = get_object_or_404(Berita, slug=slug, status=Berita.Status.TERBIT)
-    return render(request, "web/berita_detail.html", {"berita": berita})
+    berita = get_object_or_404(
+        Berita.objects.terbit(),
+        slug=slug
+    )
+
+    berita_lain = (
+        Berita.objects.terbit()
+        .exclude(pk=berita.pk)
+        .order_by("-tanggal_terbit")[:3]
+    )
+
+    konteks = {
+        "berita": berita,
+        "berita_lain": berita_lain,
+    }
+    return render(request, "web/berita_detail.html", konteks)
+
 
 def unduhan(request):
     daftar_dokumen = Dokumen.objects.all()  # sudah urut terbaru lewat Meta.ordering
