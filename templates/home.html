@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Beranda{% endblock %}
+
+{% block content %}
+<section class="mb-5">
+  {% if profil.gambar_hero %}
+    <img src="{{ profil.gambar_hero.url }}" alt="{{ profil.nama }}"
+         class="img-fluid rounded w-100 mb-3" style="max-height: 360px; object-fit: cover;">
+  {% endif %}
+  <h1>{{ profil.nama|default:"Website PCM" }}</h1>
+  <p class="lead">{{ profil.tagline }}</p>
+</section>
+
+<section class="row g-3 text-center mb-5">
+  <div class="col-md-4">
+    <div class="card"><div class="card-body">
+      <div class="display-6">{{ jumlah_ranting }}</div>
+      <div>Ranting</div>
+    </div></div>
+  </div>
+  <div class="col-md-4">
+    <div class="card"><div class="card-body">
+      <div class="display-6">{{ jumlah_amal_usaha }}</div>
+      <div>Amal Usaha</div>
+    </div></div>
+  </div>
+  <div class="col-md-4">
+    <div class="card"><div class="card-body">
+      <div class="display-6">{{ profil.jumlah_anggota_ktam|default:"Belum tersedia" }}</div>
+      <div>Anggota ber-KTAM</div>
+    </div></div>
+  </div>
+</section>
+
+<section class="mb-5">
+  <h2 class="h4 mb-3">Berita Terbaru</h2>
+  <div class="row g-3">
+    {% for berita in berita_terbaru %}
+      <div class="col-md-4">
+        <div class="card h-100">
+          {% if berita.gambar_sampul %}
+            <img src="{{ berita.gambar_sampul.url }}" class="card-img-top" alt="{{ berita.judul }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ berita.judul }}</h5>
+            <p class="text-muted small mb-2">{{ berita.tanggal_terbit|date:"j F Y" }}</p>
+            <p class="card-text">{{ berita.ringkasan|truncatewords:25 }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>Belum ada berita.</p>
+    {% endfor %}
+  </div>
+  <a href="{% url 'web:berita' %}" class="d-inline-block mt-3">Lihat semua berita</a>
+</section>
+
+<section>
+  <h2 class="h4 mb-3">Agenda Mendatang</h2>
+  <ul class="list-group">
+    {% for agenda in agenda_mendatang %}
+      <li class="list-group-item">
+        <strong>{{ agenda.nama_kegiatan }}</strong><br>
+        <span class="text-muted small">{{ agenda.waktu_mulai|date:"j F Y, H:i" }} &middot; {{ agenda.tempat }}</span>
+      </li>
+    {% empty %}
+      <li class="list-group-item">Belum ada agenda mendatang.</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
