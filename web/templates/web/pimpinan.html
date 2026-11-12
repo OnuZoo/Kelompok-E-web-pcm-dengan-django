@@ -1,61 +1,58 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pimpinan</title>
-    <style>
-        .daftar-pimpinan {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        .kartu {
-            border: 1px solid #000;
-            padding: 12px;
-            width: 220px;
-            text-align: center;
-        }
-        .kartu img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            border: 1px solid #000;
-        }
-        .kartu .tanpa-foto {
-            width: 100%;
-            height: 260px;
-            border: 1px solid #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .kartu h3 {
-            margin: 10px 0 4px;
-        }
-        .kartu p {
-            margin: 2px 0;
-        }
-    </style>
-</head>
-<body>
-    <h1>Pimpinan</h1>
+{% extends "base.html" %}
 
-    <div class="daftar-pimpinan">
-        {% for p in pimpinan_list %}
-        <div class="kartu">
-            {% if p.foto %}
-            <img src="{{ p.foto.url }}" alt="{{ p.nama }}">
-            {% else %}
-            <div class="tanpa-foto">Tanpa foto</div>
-            {% endif %}
-            <h3>{{ p.nama }}</h3>
-            <p><strong>{{ p.jabatan }}</strong></p>
-            <p>Periode {{ p.periode }}</p>
-        </div>
-        {% empty %}
-        <p>Belum ada data pimpinan.</p>
-        {% endfor %}
+{% block title %}Pimpinan{% endblock %}
+
+{% block content %}
+<style>
+    .daftar-pimpinan {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .kartu {
+        border: 1px solid #000;
+        padding: 12px;
+        width: 220px;
+        text-align: center;
+    }
+    .kartu img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        border: 1px solid #000;
+    }
+    .kartu .tanpa-foto {
+        width: 100%;
+        height: 260px;
+        border: 1px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .kartu h3 {
+        margin: 10px 0 4px;
+    }
+    .kartu p {
+        margin: 2px 0;
+    }
+</style>
+
+<h1>Pimpinan</h1>
+
+<div class="daftar-pimpinan">
+    {% for p in pimpinan_list %}
+    <div class="kartu">
+        {% if p.foto %}
+        <img src="{{ p.foto.url }}" alt="{{ p.nama }}">
+        {% else %}
+        <div class="tanpa-foto">Tanpa foto</div>
+        {% endif %}
+        <h3>{{ p.nama }}</h3>
+        <p><strong>{{ p.jabatan }}</strong></p>
+        <p>Periode {{ p.periode }}</p>
     </div>
-</body>
-</html>
+    {% empty %}
+    <p>Belum ada data pimpinan.</p>
+    {% endfor %}
+</div>
+{% endblock %}

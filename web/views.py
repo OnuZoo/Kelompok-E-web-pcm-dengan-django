@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.shortcuts import redirect, render
 
-from .models import Agenda, AmalUsaha, Berita, Dokumen, Ranting, ProfilOrganisasi
+from .models import Agenda, AmalUsaha, Berita, Dokumen, Ranting, ProfilOrganisasi, Pimpinan
 from django.contrib import messages
 from .forms import PesanForm
 
@@ -60,15 +60,8 @@ def get_agenda_kegiatan(request):
     return render(request, "web/agenda_kegiatan.html", konteks)
 
 def get_pimpinan(request):
-    # Ambil data pimpinan dari model ProfilOrganisasi
-    profil = ProfilOrganisasi.objects.first()
-    pimpinan = profil.pimpinan if profil else None
-
-    konteks = {
-        "pimpinan": pimpinan,
-    }
-    return render(request, "web/pimpinan.html", konteks)
-
+    pimpinan_list = Pimpinan.objects.all()
+    return render(request, "web/pimpinan.html", {"pimpinan_list": pimpinan_list})
 
 def kontak(request):
     if request.method == "POST":
