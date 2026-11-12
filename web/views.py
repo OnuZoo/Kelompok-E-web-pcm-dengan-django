@@ -13,7 +13,7 @@ def beranda(request):
         "jumlah_ranting": Ranting.objects.count(),
         "jumlah_amal_usaha": AmalUsaha.objects.count(),
     }
-    return render(request, "web/beranda.html", konteks)
+    return render(request, "home.html", konteks)
 
 def berita(request):
     berita_list = Berita.objects.terbit()
