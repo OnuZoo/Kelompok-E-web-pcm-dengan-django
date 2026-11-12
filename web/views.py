@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
+from django.shortcuts import redirect, render
 
 from .models import Agenda, AmalUsaha, Berita, Dokumen, Ranting, ProfilOrganisasi
-
+from django.contrib import messages
+from .forms import PesanForm
 
 def beranda(request):
     konteks = {
@@ -66,3 +68,15 @@ def get_pimpinan(request):
         "pimpinan": pimpinan,
     }
     return render(request, "web/pimpinan.html", konteks)
+
+
+def kontak(request):
+    if request.method == "POST":
+        form = PesanForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Pesan Anda berhasil dikirim. Terima kasih!")
+            return redirect("web:kontak")
+    else:
+        form = PesanForm()
+    return render(request, "web/kontak.html", {"form": form})
