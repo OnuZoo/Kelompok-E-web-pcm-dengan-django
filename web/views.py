@@ -66,10 +66,16 @@ def get_pimpinan(request):
 def kontak(request):
     if request.method == "POST":
         form = PesanForm(request.POST)
+
         if form.is_valid():
             form.save()
             messages.success(request, "Pesan Anda berhasil dikirim. Terima kasih!")
-            return redirect("web:kontak")
+            return redirect("web:pesan_sukses")
     else:
         form = PesanForm()
+
     return render(request, "web/kontak.html", {"form": form})
+
+
+def pesan_sukses(request):
+    return render(request, "web/pesan_sukses.html")

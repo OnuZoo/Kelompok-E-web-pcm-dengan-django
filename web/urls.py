@@ -15,4 +15,5 @@ urlpatterns = [
     path("agenda-kegiatan/", views.get_agenda_kegiatan, name="agenda_kegiatan"),
     path("pimpinan/", views.get_pimpinan, name="pimpinan"),
     path("kontak/", views.kontak, name="kontak"),
+    path("pesan-sukses/", views.pesan_sukses, name="pesan_sukses"),
 ]

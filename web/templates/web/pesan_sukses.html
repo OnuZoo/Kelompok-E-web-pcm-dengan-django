@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Pesan Berhasil{% endblock %}
+
+{% block content %}
+<h1>Pesan Berhasil Dikirim!</h1>
+
+<p>Terima kasih telah menghubungi kami.</p>
+<p>Pesan Anda telah berhasil kami terima.</p>
+
+<a href="{% url 'web:kontak' %}">Kembali ke Halaman Kontak</a>
+{% endblock %}
