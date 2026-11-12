@@ -56,3 +56,13 @@ def get_agenda_kegiatan(request):
         "agenda_lalu": agenda_lalu,
     }
     return render(request, "web/agenda_kegiatan.html", konteks)
+
+def get_pimpinan(request):
+    # Ambil data pimpinan dari model ProfilOrganisasi
+    profil = ProfilOrganisasi.objects.first()
+    pimpinan = profil.pimpinan if profil else None
+
+    konteks = {
+        "pimpinan": pimpinan,
+    }
+    return render(request, "web/pimpinan.html", konteks)

@@ -13,4 +13,5 @@ urlpatterns = [
     path("berita/<slug:slug>/", views.berita_detail, name="berita_detail"),
     path("unduhan/", views.unduhan, name="unduhan"),
     path("agenda-kegiatan/", views.get_agenda_kegiatan, name="agenda_kegiatan"),
+    path("pimpinan/", views.get_pimpinan, name="pimpinan"),
 ]
