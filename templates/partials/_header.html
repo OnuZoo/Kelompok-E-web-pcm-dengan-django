@@ -23,7 +23,7 @@
         </li>
 
         <li class="nav-item"><a class="nav-link {% if nama == 'berita' or nama == 'berita_detail' %}active{% endif %}" href="{% url 'web:berita' %}">Berita</a></li>
-        <li class="nav-item"><a class="nav-link {% if nama == 'agenda_kegiatan' %}active{% endif %}" href="{% url 'web:agenda_kegiatan' %}">Agenda</a></li>
+        <li class="nav-item"><a class="nav-link {% if nama == 'agenda' %}active{% endif %}" href="{% url 'web:agenda' %}">Agenda</a></li>
         <li class="nav-item"><a class="nav-link {% if nama == 'unduhan' %}active{% endif %}" href="{% url 'web:unduhan' %}">Unduhan</a></li>
         <li class="nav-item"><a class="nav-link {% if nama == 'kontak' %}active{% endif %}" href="{% url 'web:kontak' %}">Kontak</a></li>
       </ul>
