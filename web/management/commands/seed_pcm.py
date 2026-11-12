@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.db import transaction
+from datetime import datetime
 
 from web.models import (
     ProfilOrganisasi,
@@ -30,70 +31,30 @@ PROFIL = {
     "telepon": "",
     "email": "",
     "jumlah_anggota_ktam": 0,
+    "gambar_hero": "",
 }
 
 PIMPINAN = [
-    # Contoh struktur:
     # {
-    #     "nama": "Nama sesuai sumber resmi",
-    #     "jabatan": "Jabatan",
-    #     "periode": "2022-2027",
+    #     "nama": "Nama Pimpinan",
+    #     "jabatan": "Ketua",
+    #     "periode": "2025-2030",
+    #     "foto": "pimpinan/ketua.jpg",
     #     "urutan": 1,
     # },
+    
+    #diatas adalah contoh ketika ingin memasukkan data
 ]
 
-RANTING = [
-    # {
-    #     "nama": "Nama ranting",
-    #     "ketua": "Nama ketua",
-    #     "alamat": "Alamat ranting",
-    #     "telepon": "",
-    # },
-]
+RANTING = []
 
-AMAL_USAHA = [
-    # bidang harus salah satu dari:
-    # "pendidikan", "kesehatan", "sosial", "ekonomi"
-    #
-    # {
-    #     "nama": "Nama amal usaha",
-    #     "bidang": "pendidikan",
-    #     "deskripsi": "Deskripsi",
-    #     "alamat": "Alamat",
-    # },
-]
+AMAL_USAHA = []
 
-BERITA = [
-    # Gunakan slug yang unik.
-    # Status awal sebaiknya DRAF sampai konten diperiksa.
-    #
-    # {
-    #     "judul": "Judul berita",
-    #     "slug": "judul-berita",
-    #     "ringkasan": "Ringkasan berita",
-    #     "isi": "Isi berita",
-    #     "status": "DRAF",
-    # },
-]
+BERITA = []
 
-AGENDA = [
-    # waktu_mulai harus berupa objek datetime Python.
-    #
-    # {
-    #     "nama_kegiatan": "Nama kegiatan",
-    #     "waktu_mulai": datetime(...),
-    #     "tempat": "Lokasi kegiatan",
-    #     "keterangan": "Keterangan kegiatan",
-    # },
-]
+AGENDA = []
 
-TAUTAN_TERKAIT = [
-    # {
-    #     "nama": "Nama organisasi",
-    #     "url": "https://contoh.org",
-    #     "urutan": 1,
-    # },
-]
+TAUTAN_TERKAIT = []
 
 
 class Command(BaseCommand):
@@ -182,6 +143,8 @@ class Command(BaseCommand):
                     "judul": data["judul"],
                     "ringkasan": data["ringkasan"],
                     "isi": data["isi"],
+                    "gambar_sampul": data.get("gambar_sampul", ""),
+                    "tanggal_terbit": data.get("tanggal_terbit"),
                     "status": data.get("status", "DRAF"),
                 },
             )
