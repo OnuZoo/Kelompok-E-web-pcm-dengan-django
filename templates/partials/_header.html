@@ -1,3 +1,4 @@
+{% with nama=request.resolver_match.url_name %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
   <div class="container">
     <a class="navbar-brand" href="{% url 'web:beranda' %}">
@@ -9,14 +10,24 @@
     </button>
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="{% url 'web:beranda' %}">Beranda</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'web:profil' %}">Profil</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'web:pimpinan' %}">Pimpinan</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'web:ranting' %}">Ranting</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'web:amal_usaha' %}">Amal Usaha</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'web:berita' %}">Berita</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'web:kontak' %}">Kontak</a></li>
+        <li class="nav-item"><a class="nav-link {% if nama == 'beranda' %}active{% endif %}" href="{% url 'web:beranda' %}">Beranda</a></li>
+
+        <li class="nav-item dropdown">
+          <button type="button" class="nav-link dropdown-toggle {% if nama == 'profil' or nama == 'pimpinan' or nama == 'ranting' or nama == 'amal_usaha' %}active{% endif %}" data-bs-toggle="dropdown" aria-expanded="false">Tentang Kami</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item {% if nama == 'profil' %}active{% endif %}" href="{% url 'web:profil' %}">Profil</a></li>
+            <li><a class="dropdown-item {% if nama == 'pimpinan' %}active{% endif %}" href="{% url 'web:pimpinan' %}">Pimpinan</a></li>
+            <li><a class="dropdown-item {% if nama == 'ranting' %}active{% endif %}" href="{% url 'web:ranting' %}">Ranting</a></li>
+            <li><a class="dropdown-item {% if nama == 'amal_usaha' %}active{% endif %}" href="{% url 'web:amal_usaha' %}">Amal Usaha</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a class="nav-link {% if nama == 'berita' or nama == 'berita_detail' %}active{% endif %}" href="{% url 'web:berita' %}">Berita</a></li>
+        <li class="nav-item"><a class="nav-link {% if nama == 'agenda_kegiatan' %}active{% endif %}" href="{% url 'web:agenda_kegiatan' %}">Agenda</a></li>
+        <li class="nav-item"><a class="nav-link {% if nama == 'unduhan' %}active{% endif %}" href="{% url 'web:unduhan' %}">Unduhan</a></li>
+        <li class="nav-item"><a class="nav-link {% if nama == 'kontak' %}active{% endif %}" href="{% url 'web:kontak' %}">Kontak</a></li>
       </ul>
     </div>
   </div>
 </nav>
+{% endwith %}
