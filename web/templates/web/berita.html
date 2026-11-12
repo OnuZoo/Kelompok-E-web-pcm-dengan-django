@@ -13,9 +13,10 @@
     </header>
 
     <main>
-      {% if berita_list %} {# Berita pertama tampil sebagai berita utama, hanya
-      di halaman 1 #} {% if not page_obj.has_previous %} {% for berita in
-      berita_list|slice:":1" %}
+      {% if berita_list %}
+      {# Berita pertama tampil sebagai berita utama, hanya di halaman 1 #}
+      {% if not page_obj.has_previous %}
+      {% for berita in berita_list|slice:":1" %}
       <article>
         {% if berita.gambar_sampul %}
         <a href="{% url 'web:berita_detail' berita.slug %}">
@@ -36,8 +37,10 @@
         >
       </article>
       <hr />
-      {% endfor %} {% endif %} {% for berita in berita_list %} {% if
-      page_obj.has_previous or not forloop.first %}
+      {% endfor %}
+      {% endif %}
+      {% for berita in berita_list %}
+      {% if page_obj.has_previous or not forloop.first %}
       <article>
         {% if berita.gambar_sampul %}
         <a href="{% url 'web:berita_detail' berita.slug %}">
@@ -69,8 +72,7 @@
         >
         {% endif %}
         <span
-          >Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages
-          }}</span
+          >Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages }}</span
         >
         {% if page_obj.has_next %}
         <a href="?page={{ page_obj.next_page_number }}" rel="next"
