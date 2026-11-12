@@ -1,92 +1,75 @@
-{% load static %}
-<!doctype html>
-<html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Berita</title>
-  </head>
-  <body>
-    <header>
-      <h1>Berita</h1>
-      <p>Kabar dan pengumuman terbaru.</p>
-    </header>
+{% extends "base.html" %} {% block title %}Berita · {{ profil.nama_singkat|default:"PCM" }}{% endblock %} {% block content %}
+<div class="mb-4">
+  <h1 class="h2">Berita</h1>
+  <p class="text-muted">Kabar dan pengumuman terbaru.</p>
+</div>
 
-    <main>
-      {% if berita_list %}
-      {# Berita pertama tampil sebagai berita utama, hanya di halaman 1 #}
-      {% if not page_obj.has_previous %}
-      {% for berita in berita_list|slice:":1" %}
-      <article>
-        {% if berita.gambar_sampul %}
-        <a href="{% url 'web:berita_detail' berita.slug %}">
-          <img src="{{ berita.gambar_sampul.url }}" alt="{{ berita.judul }}" />
-        </a>
-        {% endif %}
-        <time datetime="{{ berita.tanggal_terbit|date:'c' }}"
-          >{{ berita.tanggal_terbit|date:"j F Y" }}</time
-        >
-        <h2>
-          <a href="{% url 'web:berita_detail' berita.slug %}"
-            >{{ berita.judul }}</a
-          >
+{% if berita_list %} {# Berita utama: hanya di halaman 1 #} {% if not page_obj.has_previous %} {% with utama=berita_list.0 %}
+<article class="card mb-4 shadow-sm">
+  <div class="row g-0">
+    {% if utama.gambar_sampul %}
+    <div class="col-md-6">
+      <a href="{% url 'web:berita_detail' utama.slug %}">
+        <img src="{{ utama.gambar_sampul.url }}" class="img-fluid rounded-start w-100" alt="{{ utama.judul }}" style="max-height: 320px; object-fit: cover" />
+      </a>
+    </div>
+    {% endif %}
+    <div class="{% if utama.gambar_sampul %}col-md-6{% else %}col-12{% endif %}">
+      <div class="card-body p-4">
+        <time class="text-muted small" datetime="{{ utama.tanggal_terbit|date:'c' }}">{{ utama.tanggal_terbit|date:"j F Y" }}</time>
+        <h2 class="h3 mt-1">
+          <a href="{% url 'web:berita_detail' utama.slug %}" class="text-decoration-none text-dark">{{ utama.judul }}</a>
         </h2>
-        <p>{{ berita.ringkasan|truncatewords:40 }}</p>
-        <a href="{% url 'web:berita_detail' berita.slug %}"
-          >Baca selengkapnya</a
-        >
-      </article>
-      <hr />
-      {% endfor %}
-      {% endif %}
-      {% for berita in berita_list %}
-      {% if page_obj.has_previous or not forloop.first %}
-      <article>
-        {% if berita.gambar_sampul %}
-        <a href="{% url 'web:berita_detail' berita.slug %}">
-          <img
-            src="{{ berita.gambar_sampul.url }}"
-            alt="{{ berita.judul }}"
-            loading="lazy"
-          />
-        </a>
-        {% endif %}
-        <time datetime="{{ berita.tanggal_terbit|date:'c' }}"
-          >{{ berita.tanggal_terbit|date:"j F Y" }}</time
-        >
-        <h3>
-          <a href="{% url 'web:berita_detail' berita.slug %}"
-            >{{ berita.judul }}</a
-          >
-        </h3>
-        <p>{{ berita.ringkasan|truncatewords:30 }}</p>
-        <a href="{% url 'web:berita_detail' berita.slug %}"
-          >Baca selengkapnya</a
-        >
-      </article>
-      {% endif %} {% endfor %} {% if is_paginated %}
-      <nav aria-label="Halaman berita">
-        {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}" rel="prev"
-          >Sebelumnya</a
-        >
-        {% endif %}
-        <span
-          >Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages }}</span
-        >
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}" rel="next"
-          >Berikutnya</a
-        >
-        {% endif %}
-      </nav>
-      {% endif %} {% else %}
-      <p>Belum ada berita yang terbit. Silakan kembali lagi nanti.</p>
-      {% endif %}
-    </main>
+        <p>{{ utama.ringkasan|truncatewords:40 }}</p>
+        <a href="{% url 'web:berita_detail' utama.slug %}" class="btn btn-success">Baca selengkapnya</a>
+      </div>
+    </div>
+  </div>
+</article>
+{% endwith %} {% endif %}
 
-    <footer>
-      <p>&copy; {% now "Y" %}</p>
-    </footer>
-  </body>
-</html>
+<div class="row g-4">
+  {% for berita in berita_list %} {% if page_obj.has_previous or not forloop.first %}
+  <div class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm">
+      {% if berita.gambar_sampul %}
+      <a href="{% url 'web:berita_detail' berita.slug %}">
+        <img src="{{ berita.gambar_sampul.url }}" class="card-img-top" alt="{{ berita.judul }}" loading="lazy" style="height: 180px; object-fit: cover" />
+      </a>
+      {% endif %}
+      <div class="card-body d-flex flex-column">
+        <time class="text-muted small" datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"j F Y" }}</time>
+        <h3 class="h5 card-title mt-1">
+          <a href="{% url 'web:berita_detail' berita.slug %}" class="text-decoration-none text-dark">{{ berita.judul }}</a>
+        </h3>
+        <p class="card-text">{{ berita.ringkasan|truncatewords:25 }}</p>
+        <a href="{% url 'web:berita_detail' berita.slug %}" class="mt-auto">Baca selengkapnya</a>
+      </div>
+    </div>
+  </div>
+  {% endif %} {% endfor %}
+</div>
+
+{% if is_paginated %}
+<nav aria-label="Halaman berita" class="mt-4">
+  <ul class="pagination justify-content-center">
+    {% if page_obj.has_previous %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}" rel="prev">Sebelumnya</a></li>
+    {% else %}
+    <li class="page-item disabled"><span class="page-link">Sebelumnya</span></li>
+    {% endif %}
+
+    <li class="page-item disabled">
+      <span class="page-link">Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages }}</span>
+    </li>
+
+    {% if page_obj.has_next %}
+    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}" rel="next">Berikutnya</a></li>
+    {% else %}
+    <li class="page-item disabled"><span class="page-link">Berikutnya</span></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %} {% else %}
+<div class="alert alert-info">Belum ada berita yang terbit. Silakan kembali lagi nanti.</div>
+{% endif %} {% endblock %}

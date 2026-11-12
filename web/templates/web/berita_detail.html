@@ -1,41 +1,43 @@
-{% load static %}
-<!doctype html>
-<html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ berita.judul }}</title>
-    <meta
-      name="description"
-      content="{{ berita.ringkasan|truncatechars:160 }}"
-    />
-  </head>
-  <body>
-    <header>
-      <p><a href="{% url 'web:berita' %}">&larr; Semua berita</a></p>
-    </header>
+{% extends "base.html" %} {% block title %}{{ berita.judul }} · {{ profil.nama_singkat|default:"PCM" }}{% endblock %} {% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'web:beranda' %}">Beranda</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'web:berita' %}">Berita</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ berita.judul|truncatechars:40 }}</li>
+  </ol>
+</nav>
 
-    <main>
-      <article>
-        <h1>{{ berita.judul }}</h1>
-        <p>
-          <time datetime="{{ berita.tanggal_terbit|date:'c' }}"
-            >{{ berita.tanggal_terbit|date:"l, j F Y" }}</time
-          >
-        </p>
+<div class="row">
+  <div class="col-lg-8">
+    <article>
+      <h1 class="h2">{{ berita.judul }}</h1>
+      <p class="text-muted">
+        <time datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"l, j F Y" }}</time>
+      </p>
 
-        {% if berita.gambar_sampul %}
-        <img src="{{ berita.gambar_sampul.url }}" alt="{{ berita.judul }}" />
-        {% endif %}
+      {% if berita.gambar_sampul %}
+      <img src="{{ berita.gambar_sampul.url }}" class="img-fluid rounded mb-3" alt="{{ berita.judul }}" />
+      {% endif %}
 
-        <p><strong>{{ berita.ringkasan }}</strong></p>
+      <p class="lead fw-semibold">{{ berita.ringkasan }}</p>
+      {{ berita.isi|linebreaks }}
+    </article>
 
-        {{ berita.isi|linebreaks }}
-      </article>
-    </main>
+    <a href="{% url 'web:berita' %}" class="btn btn-outline-success mt-3">&larr; Semua berita</a>
+  </div>
 
-    <footer>
-      <p>&copy; {% now "Y" %}</p>
-    </footer>
-  </body>
-</html>
+  <aside class="col-lg-4 mt-4 mt-lg-0">
+    {% if berita_lain %}
+    <h2 class="h5">Berita lainnya</h2>
+    <div class="list-group">
+      {% for item in berita_lain %}
+      <a href="{% url 'web:berita_detail' item.slug %}" class="list-group-item list-group-item-action">
+        <small class="text-muted">{{ item.tanggal_terbit|date:"j F Y" }}</small><br />
+        {{ item.judul }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </aside>
+</div>
+{% endblock %}
