@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render
 from .models import Agenda, AmalUsaha, Berita, Dokumen, Ranting, ProfilOrganisasi, Pimpinan
 from django.contrib import messages
 from .forms import PesanForm
+from django.core.paginator import Paginator 
 
 def beranda(request):
     konteks = {
@@ -17,10 +18,18 @@ def beranda(request):
 
 def berita(request):
     berita_list = Berita.objects.terbit()
+
+    paginator = Paginator(berita_list, 6)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     konteks = {
-        "berita_list": berita_list,
+        "berita_list": page_obj,
+        "page_obj": page_obj,
+        "is_paginated": page_obj.has_other_pages(),
     }
     return render(request, "web/berita.html", konteks)
+
 
 def profil(request):
     profil = ProfilOrganisasi.objects.first()
