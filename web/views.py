@@ -57,7 +57,7 @@ def get_agenda(request):
         "agenda_mendatang": agenda_mendatang,
         "agenda_lalu": agenda_lalu,
     }
-    return render(request, "web/agenda_kegiatan.html", konteks)
+    return render(request, "web/agenda.html", konteks)
 
 def get_pimpinan(request):
     pimpinan_list = Pimpinan.objects.all()
