@@ -5,18 +5,23 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ berita.judul }}</title>
-    <meta name="description" content="{{ berita.ringkasan|truncatechars:160 }}" />
+    <meta
+      name="description"
+      content="{{ berita.ringkasan|truncatechars:160 }}"
+    />
   </head>
   <body>
     <header>
-      <p><a href="/berita/">&larr; Semua berita</a></p>
+      <p><a href="{% url 'web:berita' %}">&larr; Semua berita</a></p>
     </header>
 
     <main>
       <article>
         <h1>{{ berita.judul }}</h1>
         <p>
-          <time datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"l, j F Y" }}</time>
+          <time datetime="{{ berita.tanggal_terbit|date:'c' }}"
+            >{{ berita.tanggal_terbit|date:"l, j F Y" }}</time
+          >
         </p>
 
         {% if berita.gambar_sampul %}

@@ -13,39 +13,69 @@
     </header>
 
     <main>
-      {% if berita_list %} {# Berita pertama tampil sebagai berita utama, hanya di halaman 1 #} {% if not page_obj.has_previous %} {% for berita in berita_list|slice:":1" %}
+      {% if berita_list %} {# Berita pertama tampil sebagai berita utama, hanya
+      di halaman 1 #} {% if not page_obj.has_previous %} {% for berita in
+      berita_list|slice:":1" %}
       <article>
         {% if berita.gambar_sampul %}
-        <a href="{% url 'berita_detail' berita.slug %}">
+        <a href="{% url 'web:berita_detail' berita.slug %}">
           <img src="{{ berita.gambar_sampul.url }}" alt="{{ berita.judul }}" />
         </a>
         {% endif %}
-        <time datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"j F Y" }}</time>
-        <h2><a href="{% url 'berita_detail' berita.slug %}">{{ berita.judul }}</a></h2>
+        <time datetime="{{ berita.tanggal_terbit|date:'c' }}"
+          >{{ berita.tanggal_terbit|date:"j F Y" }}</time
+        >
+        <h2>
+          <a href="{% url 'web:berita_detail' berita.slug %}"
+            >{{ berita.judul }}</a
+          >
+        </h2>
         <p>{{ berita.ringkasan|truncatewords:40 }}</p>
-        <a href="{% url 'berita_detail' berita.slug %}">Baca selengkapnya</a>
+        <a href="{% url 'web:berita_detail' berita.slug %}"
+          >Baca selengkapnya</a
+        >
       </article>
       <hr />
-      {% endfor %} {% endif %} {% for berita in berita_list %} {% if page_obj.has_previous or not forloop.first %}
+      {% endfor %} {% endif %} {% for berita in berita_list %} {% if
+      page_obj.has_previous or not forloop.first %}
       <article>
         {% if berita.gambar_sampul %}
-        <a href="{% url 'berita_detail' berita.slug %}">
-          <img src="{{ berita.gambar_sampul.url }}" alt="{{ berita.judul }}" loading="lazy" />
+        <a href="{% url 'web:berita_detail' berita.slug %}">
+          <img
+            src="{{ berita.gambar_sampul.url }}"
+            alt="{{ berita.judul }}"
+            loading="lazy"
+          />
         </a>
         {% endif %}
-        <time datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"j F Y" }}</time>
-        <h3><a href="{% url 'berita_detail' berita.slug %}">{{ berita.judul }}</a></h3>
+        <time datetime="{{ berita.tanggal_terbit|date:'c' }}"
+          >{{ berita.tanggal_terbit|date:"j F Y" }}</time
+        >
+        <h3>
+          <a href="{% url 'web:berita_detail' berita.slug %}"
+            >{{ berita.judul }}</a
+          >
+        </h3>
         <p>{{ berita.ringkasan|truncatewords:30 }}</p>
-        <a href="{% url 'berita_detail' berita.slug %}">Baca selengkapnya</a>
+        <a href="{% url 'web:berita_detail' berita.slug %}"
+          >Baca selengkapnya</a
+        >
       </article>
       {% endif %} {% endfor %} {% if is_paginated %}
       <nav aria-label="Halaman berita">
         {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}" rel="prev">Sebelumnya</a>
+        <a href="?page={{ page_obj.previous_page_number }}" rel="prev"
+          >Sebelumnya</a
+        >
         {% endif %}
-        <span>Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages }}</span>
+        <span
+          >Halaman {{ page_obj.number }} dari {{ page_obj.paginator.num_pages
+          }}</span
+        >
         {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}" rel="next">Berikutnya</a>
+        <a href="?page={{ page_obj.next_page_number }}" rel="next"
+          >Berikutnya</a
+        >
         {% endif %}
       </nav>
       {% endif %} {% else %}
