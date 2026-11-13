@@ -1,6 +1,25 @@
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from datetime import datetime
+from datetime import datetime
+from django.utils import timezone
+from pathlib import Path
+from django.core.files import File
+
+SEED_MEDIA = Path(__file__).resolve().parents[2] / "seed_media"
+
+
+def lampirkan(objek, field, nama_file):
+    """Salin gambar seed ke ImageField lewat storage; lewati jika file tidak ada."""
+    sumber = SEED_MEDIA / nama_file
+    if not nama_file or not sumber.exists():
+        return
+    with sumber.open("rb") as f:
+        getattr(objek, field).save(sumber.name, File(f), save=True)
+
+def wib(*args):
+    """datetime dengan zona waktu (Asia/Jakarta dari settings)."""
+    return timezone.make_aware(datetime(*args))
 
 from web.models import (
     ProfilOrganisasi,
@@ -104,7 +123,7 @@ PROFIL = {
     "telepon": "08179476737",
     "email": "",
     "jumlah_anggota_ktam": 29,
-    "gambar_hero": "profil/gambar_hero.jpeg",
+    "gambar_hero": "gambar_hero.jpeg",
 }
 
 PIMPINAN = [
@@ -112,7 +131,7 @@ PIMPINAN = [
         "nama": "H. MUHAMMAD MAHMUDI, S.Pd",
         "jabatan": "Ketua",
         "periode": "2022-2027",
-        "foto": "pimpinan/ketua.jpeg",
+        "foto": "ketua.jpeg",
         "urutan": 1
     },
     
@@ -120,7 +139,7 @@ PIMPINAN = [
         "nama": "MUHAMMAD NURHASAN ALFATHONI, S.S, M.Pd",
         "jabatan": "Wakil Ketua",
         "periode": "2022-2027",
-        "foto": "pimpinan/wakil-ketua1.jpeg",
+        "foto": "wakil-ketua1.jpeg",
         "urutan": 2
     },
     
@@ -128,7 +147,7 @@ PIMPINAN = [
         "nama": "Dr. H. MUCHAMMAD IKSAN, SH",
         "jabatan": "Wakil Ketua",
         "periode": "2022-2027",
-        "foto": "pimpinan/wakil-ketua2.jpeg",
+        "foto": "wakil-ketua2.jpeg",
         "urutan": 3
     },
     
@@ -136,7 +155,7 @@ PIMPINAN = [
         "nama": "Drs. H. SAHONO, M.Pd",
         "jabatan": "Wakil Ketua",
         "periode": "2022-2027",
-        "foto": "pimpinan/wakil-ketua3.jpeg",
+        "foto": "wakil-ketua3.jpeg",
         "urutan": 4
     },
     
@@ -154,10 +173,10 @@ RANTING = [
 AMAL_USAHA = [
     {
         "nama": "Amal Usaha 1",
-        "bidang": "Pendidikan",
+        "bidang": "pendidikan",
         "deskripsi": "Deskripsi Amal Usaha 1",
         "alamat": "Alamat Amal Usaha 1",
-        "gambar": "amal_usaha/amal_usaha_1.jpeg"
+        "gambar": "amal_usaha_1.jpeg"
     }
 ]
 
@@ -168,16 +187,16 @@ BERITA = [
         "slug": "berita-1",
         "ringkasan": "Ringkasan Berita 1",
         "isi": "Isi Berita 1",
-        "gambar_sampul": "berita/berita_1.jpeg",
-        "tanggal_terbit": datetime(2023, 1, 1),
-        "status": "DRAF"
+        "gambar_sampul": "berita_1.jpeg",
+        "tanggal_terbit": wib(2026, 10, 5, 9, 0),
+        "status": "terbit"
     }
 ]
 
 AGENDA = [
     {
         "nama_kegiatan": "Agenda 1",
-        "waktu_mulai": datetime(2023, 1, 1, 10, 0),
+        "waktu_mulai": wib(2026, 12, 1, 10, 0),
         "tempat": "Tempat Agenda 1",
         "keterangan": "Keterangan Agenda 1"
     }
@@ -210,10 +229,13 @@ class Command(BaseCommand):
         # ProfilOrganisasi menggunakan primary key = 1.
         # --------------------------------------------------
         if PROFIL["nama"] and PROFIL["nama_singkat"]:
-            _, created = ProfilOrganisasi.objects.get_or_create(
+            isi = {k: v for k, v in PROFIL.items() if k != "gambar_hero"}
+            profil, created = ProfilOrganisasi.objects.get_or_create(
                 pk=1,
-                defaults=PROFIL,
+                defaults=isi,
             )
+            if created:
+                lampirkan(profil, "gambar_hero", PROFIL["gambar_hero"])
             dibuat["profil"] += int(created)
         else:
             self.stdout.write(
@@ -226,15 +248,14 @@ class Command(BaseCommand):
         # 2. Pimpinan
         # --------------------------------------------------
         for data in PIMPINAN:
-            _, created = Pimpinan.objects.get_or_create(
+            obj, created = Pimpinan.objects.get_or_create(
                 nama=data["nama"],
                 jabatan=data["jabatan"],
                 periode=data.get("periode", "2022-2027"),
-                defaults={
-                    "foto": data.get("foto", ""),
-                    "urutan": data.get("urutan", 0),
-                },
+                defaults={"urutan": data.get("urutan", 0)},
             )
+            if created:
+                lampirkan(obj, "foto", data.get("foto", ""))
             dibuat["pimpinan"] += int(created)
 
         # --------------------------------------------------
@@ -255,32 +276,34 @@ class Command(BaseCommand):
         # 4. Amal Usaha
         # --------------------------------------------------
         for data in AMAL_USAHA:
-            _, created = AmalUsaha.objects.get_or_create(
+            obj, created = AmalUsaha.objects.get_or_create(
                 nama=data["nama"],
                 defaults={
                     "bidang": data["bidang"],
                     "deskripsi": data.get("deskripsi", ""),
                     "alamat": data.get("alamat", ""),
-                    "gambar": data.get("gambar", ""),
                 },
             )
+            if created:
+                lampirkan(obj, "gambar", data.get("gambar", ""))
             dibuat["amal_usaha"] += int(created)
 
         # --------------------------------------------------
         # 5. Berita
         # --------------------------------------------------
         for data in BERITA:
-            _, created = Berita.objects.get_or_create(
+            obj, created = Berita.objects.get_or_create(
                 slug=data["slug"],
                 defaults={
                     "judul": data["judul"],
                     "ringkasan": data["ringkasan"],
                     "isi": data["isi"],
-                    "gambar_sampul": data.get("gambar_sampul", ""),
                     "tanggal_terbit": data.get("tanggal_terbit"),
-                    "status": data.get("status", "DRAF"),
+                    "status": data.get("status", "draf"),
                 },
             )
+            if created:
+                lampirkan(obj, "gambar_sampul", data.get("gambar_sampul", ""))
             dibuat["berita"] += int(created)
 
         # --------------------------------------------------
