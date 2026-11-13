@@ -142,7 +142,7 @@ PIMPINAN = [
         "nama": "H. MUHAMMAD MAHMUDI, S.Pd",
         "jabatan": "Ketua",
         "periode": "2022-2027",
-        "foto": "ketua.jpeg",
+        "foto": "ketua.jpg",
         "urutan": 1
     },
     
@@ -150,7 +150,7 @@ PIMPINAN = [
         "nama": "MUHAMMAD NURHASAN ALFATHONI, S.S, M.Pd",
         "jabatan": "Wakil Ketua",
         "periode": "2022-2027",
-        "foto": "wakil-ketua1.jpeg",
+        "foto": "wakil_ketua1.jpg",
         "urutan": 2
     },
     
@@ -158,7 +158,7 @@ PIMPINAN = [
         "nama": "Dr. H. MUCHAMMAD IKSAN, SH",
         "jabatan": "Wakil Ketua",
         "periode": "2022-2027",
-        "foto": "wakil-ketua2.jpeg",
+        "foto": "wakil_ketua2.jpg",
         "urutan": 3
     },
     
@@ -166,10 +166,65 @@ PIMPINAN = [
         "nama": "Drs. H. SAHONO, M.Pd",
         "jabatan": "Wakil Ketua",
         "periode": "2022-2027",
-        "foto": "wakil-ketua3.jpeg",
+        "foto": "wakil_ketua3.jpg",
         "urutan": 4
     },
     
+    {
+        "nama": "HARI YUDANTO, SE",
+        "jabatan": "Wakil Ketua",
+        "periode": "2022-2027",
+        "foto": "wakil_ketua4.jpg",
+        "urutan": 5
+    },
+    
+    {
+        "nama": "H. SARTONO, S. Ag. M.Si",
+        "jabatan": "Wakil Ketua",
+        "periode": "2022-2027",
+        "foto": "wakil_ketua5.jpg",
+        "urutan": 6
+    },
+    
+    {
+        "nama": "SUMIATUN, S.Pd",
+        "jabatan": "Wakil Ketua",
+        "periode": "2022-2027",
+        "foto": "wakil_ketua6.jpg",
+        "urutan": 7
+    },
+    
+    {
+        "nama": "IBNU HAMBALI, S.Pd., M.Si",
+        "jabatan": "Sekretaris",
+        "periode": "2022-2027",
+        "foto": "sekretaris.jpg",
+        "urutan": 8
+    },
+    
+    {
+        "nama": "MUCHAMMAD RIDUWAN",
+        "jabatan": "Wakil Sekretaris",
+        "periode": "2022-2027",
+        "foto": "wakil_sekretaris.jpg",
+        "urutan": 9
+    },
+    
+    {
+        "nama": "Drs. SARTONO",
+        "jabatan": "Bendahara",
+        "periode": "2022-2027",
+        "foto": "bendahara.jpg",
+        "urutan": 10
+    },
+    
+    {
+        "nama": "FUAD HAMDAN, S.PdI",
+        "jabatan": "Wakil Bendahara",
+        "periode": "2022-2027",
+        "foto": "wakil_bendahara.jpg",
+        "urutan": 11
+    },
 ]
 
 RANTING = [
