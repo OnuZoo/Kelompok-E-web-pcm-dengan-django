@@ -1,10 +1,29 @@
+{% load static %}
+
 {% with nama=request.resolver_match.url_name %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
   <div class="container">
-    <a class="navbar-brand" href="{% url 'web:beranda' %}">
-      <strong>{{ profil.nama_singkat|default:"PCM" }}</strong>
-      {% if profil.tagline %}<small class="d-block fs-6 fw-normal">{{ profil.tagline }}</small>{% endif %}
+    <a class="navbar-brand d-flex align-items-center gap-2"
+       href="{% url 'web:beranda' %}">
+
+      <img
+        src="{% static 'img/logo-muhammadiyah.webp' %}"
+        alt="Logo Muhammadiyah"
+        width="45"
+        height="45"
+        class="object-fit-contain"
+      >
+
+      <span>
+        <strong>{{ profil.nama_singkat|default:"PCM" }}</strong>
+        {% if profil.tagline %}
+          <small class="d-block fs-6 fw-normal">
+            {{ profil.tagline }}
+          </small>
+        {% endif %}
+      </span>
     </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Buka menu">
       <span class="navbar-toggler-icon"></span>
     </button>
