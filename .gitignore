@@ -5,3 +5,4 @@ staticfiles/
 BACA_DULU_WOY.txt
 .env
 db.sqlite3
+media/

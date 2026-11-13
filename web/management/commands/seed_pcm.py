@@ -16,6 +16,7 @@ from web.models import (
 )
 
 SEED_MEDIA = Path(__file__).resolve().parents[2] / "seed_media"
+JAM_AGENDA = (20, 0)
 
 
 def lampirkan(objek, field, nama_file):
@@ -203,13 +204,59 @@ BERITA = [
     }
 ]
 
+JADWAL_PCM = [
+    (2026, 1, 6, "Rapat Pengurus Harian PCM", "Rumah Pengurus Harian", "Sekretaris PCM"),
+    (2026, 1, 13, "Kajian HPT", "PRM Purbayan", "Ketua PRM"),
+    (2026, 1, 20, "Rapat Pengurus Lengkap PCM", "MTs Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 1, 27, "Kajian HPT", "PRM Waru 1", "Ketua PRM"),
+    (2026, 2, 3, "Rapat Pengurus Harian PCM", "Rumah Bp. Muh. Mahmudi", "Sekretaris PCM"),
+    (2026, 2, 10, "Kajian HPT", "PRM Ngrombo", "Ketua PRM"),
+    (2026, 2, 17, "Rapat Pengurus Lengkap PCM", "MI Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 3, 31, "Halal-bi-halal", "Belum tersedia", ""),
+    (2026, 4, 7, "Rapat Pengurus Harian PCM", "Rumah Bp. Muhammad Ikhsan", "Sekretaris PCM"),
+    (2026, 4, 14, "Kajian HPT", "PRM Waru 2", "Ketua PRM"),
+    (2026, 4, 21, "Rapat Pengurus Lengkap PCM", "MTs Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 4, 28, "Kajian HPT", "PRM Gentan", "Ketua PRM"),
+    (2026, 5, 5, "Rapat Pengurus Harian PCM", "Rumah Bp. MN Al Fathoni", "Sekretaris PCM"),
+    (2026, 5, 12, "Kajian HPT", "PRM Waru 3", "Ketua PRM"),
+    (2026, 5, 19, "Rapat Pengurus Lengkap PCM", "MI Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 5, 26, "Kajian HPT", "PRM Gedongan", "Ketua PRM"),
+    (2026, 6, 2, "Rapat Pengurus Harian PCM", "Rumah Bp. Sartono (Duwet)", "Sekretaris PCM"),
+    (2026, 6, 9, "Kajian HPT", "PRM Waru 4", "Ketua PRM"),
+    (2026, 6, 16, "Rapat Pengurus Lengkap PCM", "MTs Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 6, 23, "Kajian HPT", "PRM Mancasan", "Ketua PRM"),
+    (2026, 6, 30, "Rapat PCM-PRM", "MIM Waru Baki", "Sekretaris PCM"),
+    (2026, 7, 7, "Rapat Pengurus Harian PCM", "Rumah Bp. Hari Yudanto", "Sekretaris PCM"),
+    (2026, 7, 14, "Kajian HPT", "PRM Bentakan", "Ketua PRM"),
+    (2026, 7, 21, "Rapat Pengurus Lengkap PCM", "MI Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 7, 28, "Kajian HPT", "PRM Waru 5", "Ketua PRM"),
+    (2026, 8, 4, "Rapat Pengurus Harian PCM", "Rumah Bp. Sahono", "Sekretaris PCM"),
+    (2026, 8, 11, "Kajian HPT", "PRM Menuran", "Ketua PRM"),
+    (2026, 8, 18, "Rapat Pengurus Lengkap PCM", "MTs Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 8, 25, "Kajian HPT", "PRM Siwal", "Ketua PRM"),
+    (2026, 9, 1, "Rapat Pengurus Harian PCM", "Rumah Bp. Ibnu Hambali", "Sekretaris PCM"),
+    (2026, 9, 8, "Kajian HPT", "PRM Kadilangu", "Ketua PRM"),
+    (2026, 9, 15, "Rapat Pengurus Lengkap PCM", "MI Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 9, 29, "Kajian HPT", "PRM Duwet", "Ketua PRM"),
+    (2026, 10, 6, "Rapat Pengurus Harian PCM", "Rumah Bp. Sartono (Purbayan)", "Sekretaris PCM"),
+    (2026, 10, 13, "Kajian HPT", "PRM Bakipandeyan", "Ketua PRM"),
+    (2026, 10, 20, "Rapat Pengurus Lengkap PCM", "MTs Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 10, 27, "Kajian HPT", "PRM Jetis", "Ketua PRM"),
+    (2026, 11, 3, "Rapat Pengurus Harian PCM", "Rumah Bp. Muh. Ridwan", "Sekretaris PCM"),
+    (2026, 11, 10, "Kajian HPT", "PRM Kudu", "Ketua PRM"),
+    (2026, 11, 17, "Rapat Pengurus Lengkap PCM", "MI Muhammadiyah Waru", "Sekretaris PCM"),
+    (2026, 11, 24, "Kajian HPT", "SPPG PCM Baki", "Penanggung jawab SPPG"),
+    (2026, 12, 1, "Rapat Pengurus Harian PCM", "Rumah Bp. Fuad Hamdan", "Sekretaris PCM"),
+]
+
 AGENDA = [
     {
-        "nama_kegiatan": "Agenda 1",
-        "waktu_mulai": wib(2026, 12, 1, 10, 0),
-        "tempat": "Tempat Agenda 1",
-        "keterangan": "Keterangan Agenda 1"
+        "nama_kegiatan": kegiatan,
+        "waktu_mulai": wib(tahun, bulan, tanggal, *JAM_AGENDA),
+        "tempat": tempat,
+        "keterangan": f"Penanggung jawab: {pj}" if pj else "",
     }
+    for tahun, bulan, tanggal, kegiatan, tempat, pj in JADWAL_PCM
 ]
 
 TAUTAN_TERKAIT = [
