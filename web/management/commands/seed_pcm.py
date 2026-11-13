@@ -31,17 +31,6 @@ def wib(*args):
     """datetime dengan zona waktu (Asia/Jakarta dari settings)."""
     return timezone.make_aware(datetime(*args))
 
-from web.models import (
-    ProfilOrganisasi,
-    Pimpinan,
-    Ranting,
-    AmalUsaha,
-    Berita,
-    Agenda,
-    TautanTerkait,
-)
-
-
 # ==========================================================
 # DATA SEED
 # Isi bagian ini menggunakan data PCM yang sudah diverifikasi.
