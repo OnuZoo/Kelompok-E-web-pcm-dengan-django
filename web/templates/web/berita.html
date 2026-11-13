@@ -31,9 +31,7 @@
 <div class="row g-4 justify-content-center">
   {% for berita in berita_list %} {% if page_obj.has_previous or not forloop.first %}
   <div class="col-md-6 col-lg-4">
-    <div class="col-md-6 col-lg-4">
-      {% include "partials/_kartu_berita.html" %}
-    </div>
+    {% include "partials/_kartu_berita.html" %}
   </div>
   {% endif %} {% endfor %}
 </div>

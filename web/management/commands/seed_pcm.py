@@ -1,10 +1,19 @@
-from django.core.management.base import BaseCommand
-from django.db import transaction
 from datetime import datetime
-from datetime import datetime
-from django.utils import timezone
 from pathlib import Path
 from django.core.files import File
+from django.core.management.base import BaseCommand
+from django.db import transaction
+from django.utils import timezone
+
+from web.models import (
+    ProfilOrganisasi,
+    Pimpinan,
+    Ranting,
+    AmalUsaha,
+    Berita,
+    Agenda,
+    TautanTerkait,
+)
 
 SEED_MEDIA = Path(__file__).resolve().parents[2] / "seed_media"
 
@@ -16,6 +25,7 @@ def lampirkan(objek, field, nama_file):
         return
     with sumber.open("rb") as f:
         getattr(objek, field).save(sumber.name, File(f), save=True)
+
 
 def wib(*args):
     """datetime dengan zona waktu (Asia/Jakarta dari settings)."""

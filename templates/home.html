@@ -63,11 +63,7 @@
   <div class="row g-3">
     {% for berita in berita_terbaru %}
       <div class="col-md-4">
-        {% for berita in berita_terbaru %}
-          <div class="col-md-4">
-            {% include "partials/_kartu_berita.html" %}
-          </div>
-        {% endfor %}
+        {% include "partials/_kartu_berita.html" %}
       </div>
     {% empty %}
       <div class="col-12">
