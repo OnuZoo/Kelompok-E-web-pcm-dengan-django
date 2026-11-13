@@ -148,7 +148,7 @@ PIMPINAN = [
     
     {
         "nama": "MUHAMMAD NURHASAN ALFATHONI, S.S, M.Pd",
-        "jabatan": "Wakil Ketua",
+        "jabatan": "Wakil Ketua 1",
         "periode": "2022-2027",
         "foto": "wakil_ketua1.jpg",
         "urutan": 2
@@ -156,7 +156,7 @@ PIMPINAN = [
     
     {
         "nama": "Dr. H. MUCHAMMAD IKSAN, SH",
-        "jabatan": "Wakil Ketua",
+        "jabatan": "Wakil Ketua 2",
         "periode": "2022-2027",
         "foto": "wakil_ketua2.jpg",
         "urutan": 3
@@ -164,7 +164,7 @@ PIMPINAN = [
     
     {
         "nama": "Drs. H. SAHONO, M.Pd",
-        "jabatan": "Wakil Ketua",
+        "jabatan": "Wakil Ketua 3",
         "periode": "2022-2027",
         "foto": "wakil_ketua3.jpg",
         "urutan": 4
@@ -172,7 +172,7 @@ PIMPINAN = [
     
     {
         "nama": "HARI YUDANTO, SE",
-        "jabatan": "Wakil Ketua",
+        "jabatan": "Wakil Ketua 4",
         "periode": "2022-2027",
         "foto": "wakil_ketua4.jpg",
         "urutan": 5
@@ -180,7 +180,7 @@ PIMPINAN = [
     
     {
         "nama": "H. SARTONO, S. Ag. M.Si",
-        "jabatan": "Wakil Ketua",
+        "jabatan": "Wakil Ketua 5",
         "periode": "2022-2027",
         "foto": "wakil_ketua5.jpg",
         "urutan": 6
@@ -188,7 +188,7 @@ PIMPINAN = [
     
     {
         "nama": "SUMIATUN, S.Pd",
-        "jabatan": "Wakil Ketua",
+        "jabatan": "Wakil Ketua 6",
         "periode": "2022-2027",
         "foto": "wakil_ketua6.jpg",
         "urutan": 7
