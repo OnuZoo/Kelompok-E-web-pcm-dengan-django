@@ -184,11 +184,9 @@ AGENDA = [
 ]
 
 TAUTAN_TERKAIT = [
-    {
-        "nama": "Tautan 1",
-        "url": "https://www.example.com",
-        "urutan": 1
-    }
+    {"nama": "PDM Sukoharjo", "url": "https://pdmsukoharjo.or.id/", "urutan": 1},
+    {"nama": "PWM Jawa Tengah", "url": "https://muhammadiyahjateng.or.id/", "urutan": 2},
+    {"nama": "PP Muhammadiyah", "url": "https://muhammadiyah.or.id", "urutan": 3},
 ]
 
 

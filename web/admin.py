@@ -5,7 +5,7 @@ from .models import (
     Pimpinan, ProfilOrganisasi, Ranting, TautanTerkait,
 )
 
-admin.site.site_header = "Admin Website PCM BAKI JAUH DARI RUMAH KTA"
+admin.site.site_header = "Admin Website PCM Baki"
 admin.site.site_title = "Admin Website PCM"
 admin.site.index_title = "Kelola Konten Website"
 
