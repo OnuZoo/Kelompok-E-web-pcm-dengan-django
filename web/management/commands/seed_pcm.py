@@ -20,41 +20,176 @@ from web.models import (
 # ==========================================================
 
 PROFIL = {
-    "nama": "",
-    "nama_singkat": "",
+    "nama": "PIMPINAN CABANG MUHAMMADIYAH KECAMATAN BAKI ",
+    "nama_singkat": "PCM BAKI",
     "tagline": "",
     "tentang": "",
-    "sejarah": "",
+    "sejarah": """
+        I.	Masa Rintisan 1928 – 1940
+        Pendiriaan Amal Usaha Pendidikan oleh Bapak Guru Parto Atmojo dari Kampung Sewu Surakarta bersama Bapak Lurah Waru Bapak Hadi Wardoyo
+
+        II.	Berdirinya Group Muhammadiyah 1940 – 1945
+        Berdiri Group Muhammadiyah Waru, yang menggabung dengan Ranting Muhammadiyah Kartasura.
+        Kegiatan :
+        1.	Rintisan Pendidikan Diniyah
+        2.	Rintisan Kepanduan Hizbul wathon
+
+        III.	Rintisan Ranting Muhammadiyah Waru 1945 – 1950
+        Dirintis oleh bapak Carik Mulyadi dan bapak Lurah Hadi Wardoyo. Amal Usaha : 1. Diniyah Sore
+        2. Kepanduan Hizbul wathon
+
+        IV.	Berdirinya Ranting Muhammadiyah Waru 1950 – 1955
+        Kegiatan dipimpin oleh bapak Carik Mulyadi Amal Usaha : 1. Diniyah
+        2. Kepanduan Hizbul wathon dipimpin oleh bapak M. Iskandar dari Klaten
+
+        V.	Ranting Muhammadiyah waru 1955 – 1960
+        Amal Usaha :
+        1.	Madrasah Diniyah sore
+        2.	Pemuda-pemudi malam hari
+
+        VI.	Berdirinya Cabang Muhammadiyah Waru 1960 – 1965
+        Berdiri Cabang Muhammadiyah Waru Amal Usaha :
+        1.	Madrasash Diniyah Muhammadiyah berkembang menjadi Madrasah Wajib Belajar Muhammadiyah Waru.
+        Dana di dukung dari perusahaan Batik Sukowati Bekonang.
+        2.	Gerakan kepanduan Hizbul Wathon
+        
+        VII.	Perubahan Cabang Muhammadiyah Waru menjadi Cabang Muhamadiyah Baki 1966 – 1970
+        Berdirinya Cabang Muhammadiyah Baki di pimpin oleh :
+        1.	Bapak Carik Mulyadi
+        2.	Bapak Suciman Amal Usaha :
+        1.	Madrasah Ibtidaiyah Muhammadiyah
+        2.	PGA Muhammadiyah
+        3.	Kepanduan Hizbul Wathon
+        4.	Ranting Muhammadiyah
+
+        VIII.	Periode Pimpinan Cabang Muhammadiyah Kecamatan Baki 1970 – 1975 : Bapak Mulyadi
+        1975 – 1980 : Bapak Mulyadi
+        1980 – 1985 : Bapak H. Hadi Suwito 1985 – 1990 : Bapak H. Hadi Suwito 1990 – 1995 : Bapak H. Umar Suwito 1995 – 2000 : Bapak H. Djumali
+        2000 – 2005 : Bapak Drs. H. Amir Hasan
+        2005 – 2010 : Bapak Drs. M. Syaiun, M.M / H. Harsono Amri, BA 2010 – 2015 : Bapak H. Harsono Amri, BA
+        2015 – 2020 : Bapak Drs. H. Ahyar Anas, S.H, M.M 2023- sekarang : H. Muhammad Mahmudi, S.Pd
+
+        IX.	Kantoran Cabang Muhammadiyah Kecamatan Baki
+        1.	Di rintis mulai tahuin 1966
+        2.	Bapak H. Harsono Amri, BA mulai ikut, pada bulan Maret 1970 dengan tugas mencatat
+        3.	Kantoran dilaksanakan :
+        1.	Setiap malam rabu
+        2.	Tempat dari rumah ke rumah
+        3.	Jam 20.00 – 22.00 (Bakda Isya’)
+        4.	Daftar Anggota Kantoran PCM. Baki
+        1.	Bapak Lurah Hadi Wardoyo
+        2.	Bapak Carik Mulyadi
+        3.	Bapak Bayan M. Iskandar
+        4.	Bapak Mursidi Afandi
+        5.	Bapak H. Mardani
+        6.	Bapak H. Djumali
+        7.	Bapak Pringgo Puspito
+        8.	Bapak H. Hadi Suwito
+        9.	Bapak H. Umar Suwito
+        10.	Bapak Badrun Fatnanto
+        11.	Bapak Marhaban Fuadi
+        12.	Bapak Abdullah Daim Sukendro
+        13.	Bapak Drs. H. Al Fajri
+        14.	Bapak H. Jamaludin
+        15.	Bapak Wardani
+        
+        16.	Bapak Drs. H. Amir Hasan
+        17.	Bapak H. Jaenuri
+        18.	Bapak H. Hasyim Asngari, S.Ag
+        19.	Bapak H. Harsono Amri, BA
+        """,
     "visi": "",
     "misi": "",
-    "alamat_sekretariat": "",
-    "telepon": "",
+    "alamat_sekretariat": "Jagan RT 01 RW 07 Waru Baki Sukoharjo",
+    "telepon": "08179476737",
     "email": "",
-    "jumlah_anggota_ktam": 0,
-    "gambar_hero": "",
+    "jumlah_anggota_ktam": 29,
+    "gambar_hero": "profil/gambar_hero.jpeg",
 }
 
 PIMPINAN = [
-    # {
-    #     "nama": "Nama Pimpinan",
-    #     "jabatan": "Ketua",
-    #     "periode": "2025-2030",
-    #     "foto": "pimpinan/ketua.jpg",
-    #     "urutan": 1,
-    # },
+    {
+        "nama": "H. MUHAMMAD MAHMUDI, S.Pd",
+        "jabatan": "Ketua",
+        "periode": "2022-2027",
+        "foto": "pimpinan/ketua.jpeg",
+        "urutan": 1
+    },
     
-    #diatas adalah contoh ketika ingin memasukkan data
+    {
+        "nama": "MUHAMMAD NURHASAN ALFATHONI, S.S, M.Pd",
+        "jabatan": "Wakil Ketua",
+        "periode": "2022-2027",
+        "foto": "pimpinan/wakil-ketua1.jpeg",
+        "urutan": 2
+    },
+    
+    {
+        "nama": "Dr. H. MUCHAMMAD IKSAN, SH",
+        "jabatan": "Wakil Ketua",
+        "periode": "2022-2027",
+        "foto": "pimpinan/wakil-ketua2.jpeg",
+        "urutan": 3
+    },
+    
+    {
+        "nama": "Drs. H. SAHONO, M.Pd",
+        "jabatan": "Wakil Ketua",
+        "periode": "2022-2027",
+        "foto": "pimpinan/wakil-ketua3.jpeg",
+        "urutan": 4
+    },
+    
 ]
 
-RANTING = []
+RANTING = [
+    {
+        "nama": "Ranting 1",
+        "ketua": "Ketua Ranting 1",
+        "alamat": "Alamat Ranting 1",
+        "telepon": "08123456789"
+    }
+]
 
-AMAL_USAHA = []
+AMAL_USAHA = [
+    {
+        "nama": "Amal Usaha 1",
+        "bidang": "Pendidikan",
+        "deskripsi": "Deskripsi Amal Usaha 1",
+        "alamat": "Alamat Amal Usaha 1",
+        "gambar": "amal_usaha/amal_usaha_1.jpeg"
+    }
+]
 
-BERITA = []
+BERITA = [
+    #harus mengisi minimal 6
+    {
+        "judul": "Berita 1",
+        "slug": "berita-1",
+        "ringkasan": "Ringkasan Berita 1",
+        "isi": "Isi Berita 1",
+        "gambar_sampul": "berita/berita_1.jpeg",
+        "tanggal_terbit": datetime(2023, 1, 1),
+        "status": "DRAF"
+    }
+]
 
-AGENDA = []
+AGENDA = [
+    {
+        "nama_kegiatan": "Agenda 1",
+        "waktu_mulai": datetime(2023, 1, 1, 10, 0),
+        "tempat": "Tempat Agenda 1",
+        "keterangan": "Keterangan Agenda 1"
+    }
+]
 
-TAUTAN_TERKAIT = []
+TAUTAN_TERKAIT = [
+    {
+        "nama": "Tautan 1",
+        "url": "https://www.example.com",
+        "urutan": 1
+    }
+]
 
 
 class Command(BaseCommand):
