@@ -1,24 +1,63 @@
+
 <footer class="bg-light border-top py-4 mt-auto">
   <div class="container small">
-    <div class="row">
+    <div class="row gy-3">
+
+      <!-- Informasi Organisasi -->
       <div class="col-md-6">
-        <strong>{{ profil.nama|default:"PCM" }}</strong><br />
-        {{ profil.alamat_sekretariat|default:"Alamat belum tersedia" }}<br />
-        {% if profil.telepon %}Telp: {{ profil.telepon }}<br />{% endif %} {% if profil.email %}Email: {{ profil.email }}{% endif %}
+        <strong>{{ profil.nama|default:"PCM" }}</strong>
+        <br />
+
+        {{ profil.alamat_sekretariat|default:"Alamat belum tersedia" }}
+
+        {% if profil.telepon %}
+          <br />
+          Telp: {{ profil.telepon }}
+        {% endif %}
+
+        {% if profil.email %}
+          <br />
+          Email:
+          <span class="text-break">{{ profil.email }}</span>
+        {% endif %}
       </div>
+
+      <!-- Tautan Persyarikatan -->
       <div class="col-md-6">
         <strong>Tautan Persyarikatan</strong>
+
         <ul class="list-unstyled mb-0">
           {% for tautan in tautan_terkait %}
-          <li><a href="{{ tautan.url }}" target="_blank" rel="noopener">{{ tautan.nama }}</a></li>
+            <li>
+              <a
+                href="{{ tautan.url }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{ tautan.nama }}
+              </a>
+            </li>
           {% empty %}
-          <li>Belum tersedia</li>
+            <li>Belum tersedia</li>
           {% endfor %}
         </ul>
       </div>
+
     </div>
+
     <hr />
-    <p class="mb-1 text-muted">Website ini dibuat untuk tugas kuliah Pemrograman Web berbasis Framework, bukan website resmi {{ profil.nama|default:"PCM" }}.</p>
-    <p class="mb-0 text-muted">Logo Muhammadiyah: K. H. Siradj Dahlan, vektor oleh Hibensis, via Wikimedia Commons, lisensi CC BY-SA 4.0.</p>
+
+    <!-- Disclaimer -->
+    <p class="mb-1 text-muted">
+      Website ini dibuat untuk tugas kuliah Pemrograman Web berbasis Framework,
+      bukan website resmi {{ profil.nama|default:"PCM" }}.
+    </p>
+
+    <!-- Atribusi Logo -->
+    <p class="mb-0 text-muted">
+      Logo Muhammadiyah: K. H. Siradj Dahlan, vektor oleh Hibensis,
+      via Wikimedia Commons, lisensi CC BY-SA 4.0.
+    </p>
+
   </div>
 </footer>
