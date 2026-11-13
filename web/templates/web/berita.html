@@ -31,20 +31,8 @@
 <div class="row g-4 justify-content-center">
   {% for berita in berita_list %} {% if page_obj.has_previous or not forloop.first %}
   <div class="col-md-6 col-lg-4">
-    <div class="card h-100 shadow-sm">
-      {% if berita.gambar_sampul %}
-      <a href="{% url 'web:berita_detail' berita.slug %}">
-        <img src="{{ berita.gambar_sampul.url }}" class="card-img-top" alt="{{ berita.judul }}" loading="lazy" style="height: 180px; object-fit: cover" />
-      </a>
-      {% endif %}
-      <div class="card-body d-flex flex-column">
-        <time class="text-muted small" datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"j F Y" }}</time>
-        <h3 class="h5 card-title mt-1">
-          <a href="{% url 'web:berita_detail' berita.slug %}" class="text-decoration-none text-dark">{{ berita.judul }}</a>
-        </h3>
-        <p class="card-text">{{ berita.ringkasan|truncatewords:25 }}</p>
-        <a href="{% url 'web:berita_detail' berita.slug %}" class="mt-auto">Baca selengkapnya</a>
-      </div>
+    <div class="col-md-6 col-lg-4">
+      {% include "partials/_kartu_berita.html" %}
     </div>
   </div>
   {% endif %} {% endfor %}

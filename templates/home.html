@@ -63,46 +63,12 @@
   <div class="row g-3">
     {% for berita in berita_terbaru %}
       <div class="col-md-4">
-        <div class="card h-100">
-
-          {% if berita.gambar_sampul %}
-            <img
-              src="{{ berita.gambar_sampul.url }}"
-              class="card-img-top"
-              alt="{{ berita.judul }}"
-              style="height: 200px; object-fit: cover;"
-            >
-          {% endif %}
-
-          <div class="card-body">
-            <h5 class="card-title">
-              <a
-                href="{% url 'web:berita_detail' berita.slug %}"
-                class="text-decoration-none text-dark"
-              >
-                {{ berita.judul }}
-              </a>
-            </h5>
-
-            <p class="text-muted small mb-2">
-              {{ berita.tanggal_terbit|date:"j F Y" }}
-            </p>
-
-            <p class="card-text">
-              {{ berita.ringkasan|truncatewords:25 }}
-            </p>
-
-            <a
-              href="{% url 'web:berita_detail' berita.slug %}"
-              class="btn btn-outline-success btn-sm"
-            >
-              Baca selengkapnya
-            </a>
+        {% for berita in berita_terbaru %}
+          <div class="col-md-4">
+            {% include "partials/_kartu_berita.html" %}
           </div>
-
-        </div>
+        {% endfor %}
       </div>
-
     {% empty %}
       <div class="col-12">
         <p class="text-muted">Belum ada berita.</p>
