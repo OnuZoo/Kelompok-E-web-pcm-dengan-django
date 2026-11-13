@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
-
+import re
 
 class ProfilOrganisasi(models.Model):
     nama = models.CharField(max_length=200)
@@ -32,6 +32,30 @@ class ProfilOrganisasi(models.Model):
     def daftar_misi(self):
         return [baris.strip() for baris in self.misi.splitlines() if baris.strip()]
 
+    @property
+    def daftar_sejarah(self):
+        """Pecah teks sejarah jadi periode untuk timeline.
+        Blok dipisah baris kosong; baris pertama = judul;
+        '- ' = butir; akhiran ':' = label; lainnya = paragraf."""
+        hasil = []
+        for blok in re.split(r"\n\s*\n", self.sejarah.replace("\r\n", "\n").strip()):
+            baris = [" ".join(b.split()) for b in blok.split("\n")]
+            baris = [b for b in baris if b]
+            if not baris:
+                continue
+            isi = []
+            for b in baris[1:]:
+                if b.startswith("- "):
+                    if isi and isi[-1]["jenis"] == "daftar":
+                        isi[-1]["butir"].append(b[2:])
+                    else:
+                        isi.append({"jenis": "daftar", "butir": [b[2:]]})
+                elif b.endswith(":"):
+                    isi.append({"jenis": "label", "teks": b})
+                else:
+                    isi.append({"jenis": "p", "teks": b})
+            hasil.append({"judul": baris[0], "isi": isi})
+        return hasil
 
 class Pimpinan(models.Model):
     nama = models.CharField(max_length=150)
