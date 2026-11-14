@@ -41,7 +41,7 @@ def wib(*args):
 PROFIL = {
     "nama": "PIMPINAN CABANG MUHAMMADIYAH KECAMATAN BAKI ",
     "nama_singkat": "PCM BAKI",
-    "tagline": "",
+    "tagline": "Bersama Satukan Bangsa",
     "tentang": "",
     "sejarah": """
 I. Masa Rintisan (1928–1940)
