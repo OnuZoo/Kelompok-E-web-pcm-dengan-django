@@ -28,6 +28,8 @@
     '.berita-kartu',
     '.profil-timeline-item',
     '.kontak-sekretariat',
+    '.unduhan-kartu',
+    '.kontak-sekretariat',
     '.kontak-formulir'
   ].join(',');
 

@@ -177,6 +177,12 @@ class Dokumen(models.Model):
 
     def __str__(self):
         return self.judul
+    
+    @property
+    def ekstensi(self):
+        """Jenis berkas untuk lencana di halaman unduhan, mis. PDF / DOCX."""
+        nama = self.berkas.name or ""
+        return nama.rsplit(".", 1)[-1].upper() if "." in nama else "FILE"
 
 
 class PesanMasuk(models.Model):

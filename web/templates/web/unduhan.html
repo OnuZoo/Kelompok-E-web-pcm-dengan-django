@@ -3,39 +3,44 @@
 {% block title %}Unduhan{% endblock %}
 
 {% block content %}
-<header class="mb-4">
-  <h1 class="h2">Unduhan</h1>
-  <p class="text-muted">Daftar dokumen yang dapat diunduh.</p>
-</header>
+<div class="unduhan-halaman">
+  <h1 class="unduhan-judul">Unduhan</h1>
+  <p class="unduhan-deskripsi">Daftar dokumen yang dapat diunduh.</p>
 
-{% if daftar_dokumen %}
-  <div class="table-responsive">
-    <table class="table table-striped align-middle">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Judul</th>
-          <th>Keterangan</th>
-          <th>Tanggal Unggah</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for dokumen in daftar_dokumen %}
-          <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ dokumen.judul }}</td>
-            <td>{{ dokumen.keterangan|default:"-" }}</td>
-            <td>{{ dokumen.tanggal_unggah|date:"d M Y" }}</td>
-            <td>
-              <a href="{{ dokumen.berkas.url }}" class="btn btn-sm btn-success" download>Unduh</a>
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-{% else %}
-  <div class="alert alert-info">Belum ada dokumen yang tersedia.</div>
-{% endif %}
+  {% if daftar_dokumen %}
+    <ul class="unduhan-daftar">
+      {% for dokumen in daftar_dokumen %}
+        <li class="unduhan-kartu">
+          <div class="unduhan-ikon">
+            <svg class="unduhan-ikon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/>
+              <path d="M14 3v5h5"/>
+              <path d="M9 13h6M9 17h4"/>
+            </svg>
+            <span class="unduhan-ekstensi">{{ dokumen.ekstensi }}</span>
+          </div>
+
+          <div class="unduhan-isi">
+            <h2 class="unduhan-nama">{{ dokumen.judul }}</h2>
+            {% if dokumen.keterangan %}
+              <p class="unduhan-keterangan">{{ dokumen.keterangan }}</p>
+            {% endif %}
+            <p class="unduhan-meta">Diunggah {{ dokumen.tanggal_unggah|date:"j F Y" }}</p>
+          </div>
+
+          <a href="{{ dokumen.berkas.url }}" class="btn unduhan-tombol" download>
+            <svg class="unduhan-tombol-ikon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3v12"/>
+              <path d="m7 11 5 5 5-5"/>
+              <path d="M5 21h14"/>
+            </svg>
+            Unduh
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="unduhan-kosong">Belum ada dokumen yang tersedia.</p>
+  {% endif %}
+</div>
 {% endblock %}
