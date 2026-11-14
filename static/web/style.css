@@ -1292,3 +1292,38 @@ button[type="submit"] {
 }
 
 /* ============ AKHIR RANTING ============ */
+
+/* ============================================
+   ANIMASI (animasi.js)
+   Semua class diawali "animasi-"
+   Class ditambah dan dicabut otomatis oleh animasi.js,
+   jadi template HTML tidak perlu diubah.
+   ============================================ */
+
+/* Keadaan awal: transparan dan agak turun */
+.animasi-siap {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+/* Keadaan akhir: muncul di tempatnya */
+.animasi-tampil {
+  opacity: 1;
+  transform: none;
+}
+
+/* Jeda bertingkat supaya kartu muncul satu per satu */
+.animasi-tunda-1 { transition-delay: .08s; }
+.animasi-tunda-2 { transition-delay: .16s; }
+.animasi-tunda-3 { transition-delay: .24s; }
+.animasi-tunda-4 { transition-delay: .32s; }
+.animasi-tunda-5 { transition-delay: .40s; }
+
+/* Lebar angka dibuat sama supaya tidak bergeser saat berputar */
+.beranda-stat-angka,
+.animasi-angka {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============ AKHIR ANIMASI ============ */
