@@ -3,45 +3,61 @@
 {% block title %}Agenda Kegiatan{% endblock %}
 
 {% block content %}
-<h1 class="h3 mb-4">Agenda Kegiatan</h1>
+<div class="agenda-halaman">
+  <h1 class="agenda-judul">Agenda Kegiatan</h1>
 
-<section class="mb-5">
-  <h2 class="h4 mb-3">Kegiatan Mendatang</h2>
-  <ul class="list-group">
-    {% for agenda in agenda_mendatang %}
-      <li class="list-group-item">
-        <strong>{{ agenda.nama_kegiatan }}</strong><br>
-        <span class="text-muted small">
-          {{ agenda.waktu_mulai|date:"l, j F Y" }}, pukul {{ agenda.waktu_mulai|time:"H:i" }} WIB
-          &middot; {{ agenda.tempat }}
-        </span>
-        {% if agenda.keterangan %}
-          <p class="mb-0 mt-1">{{ agenda.keterangan|linebreaksbr }}</p>
-        {% endif %}
-      </li>
-    {% empty %}
-      <li class="list-group-item">Belum ada kegiatan yang dijadwalkan.</li>
-    {% endfor %}
-  </ul>
-</section>
+  <section class="agenda-seksi">
+    <h2 class="agenda-subjudul">Kegiatan Mendatang</h2>
+    <ul class="agenda-daftar">
+      {% for agenda in agenda_mendatang %}
+        <li class="agenda-item">
+          <div class="agenda-tanggal">
+            <span class="agenda-tanggal-hari">{{ agenda.waktu_mulai|date:"j" }}</span>
+            <span class="agenda-tanggal-bulan">{{ agenda.waktu_mulai|date:"M" }}</span>
+            <span class="agenda-tanggal-tahun">{{ agenda.waktu_mulai|date:"Y" }}</span>
+          </div>
+          <div class="agenda-isi">
+            <h3 class="agenda-nama">{{ agenda.nama_kegiatan }}</h3>
+            <p class="agenda-meta">
+              <span class="agenda-meta-item">{{ agenda.waktu_mulai|date:"l, j F Y" }}, pukul {{ agenda.waktu_mulai|time:"H:i" }} WIB</span>
+              <span class="agenda-meta-item">{{ agenda.tempat }}</span>
+            </p>
+            {% if agenda.keterangan %}
+              <p class="agenda-keterangan">{{ agenda.keterangan|linebreaksbr }}</p>
+            {% endif %}
+          </div>
+        </li>
+      {% empty %}
+        <li class="agenda-kosong">Belum ada kegiatan yang dijadwalkan.</li>
+      {% endfor %}
+    </ul>
+  </section>
 
-{% if agenda_lalu %}
-<section>
-  <h2 class="h4 mb-3">Kegiatan Sebelumnya</h2>
-  <ul class="list-group">
-    {% for agenda in agenda_lalu %}
-      <li class="list-group-item">
-        <strong>{{ agenda.nama_kegiatan }}</strong><br>
-        <span class="text-muted small">
-          {{ agenda.waktu_mulai|date:"l, j F Y" }}, pukul {{ agenda.waktu_mulai|time:"H:i" }} WIB
-          &middot; {{ agenda.tempat }}
-        </span>
-        {% if agenda.keterangan %}
-          <p class="mb-0 mt-1">{{ agenda.keterangan|linebreaksbr }}</p>
-        {% endif %}
-      </li>
-    {% endfor %}
-  </ul>
-</section>
-{% endif %}
+  {% if agenda_lalu %}
+  <section class="agenda-seksi agenda-seksi-lalu">
+    <h2 class="agenda-subjudul">Kegiatan Sebelumnya</h2>
+    <ul class="agenda-daftar">
+      {% for agenda in agenda_lalu %}
+        <li class="agenda-item agenda-item-lalu">
+          <div class="agenda-tanggal">
+            <span class="agenda-tanggal-hari">{{ agenda.waktu_mulai|date:"j" }}</span>
+            <span class="agenda-tanggal-bulan">{{ agenda.waktu_mulai|date:"M" }}</span>
+            <span class="agenda-tanggal-tahun">{{ agenda.waktu_mulai|date:"Y" }}</span>
+          </div>
+          <div class="agenda-isi">
+            <h3 class="agenda-nama">{{ agenda.nama_kegiatan }}</h3>
+            <p class="agenda-meta">
+              <span class="agenda-meta-item">{{ agenda.waktu_mulai|date:"l, j F Y" }}, pukul {{ agenda.waktu_mulai|time:"H:i" }} WIB</span>
+              <span class="agenda-meta-item">{{ agenda.tempat }}</span>
+            </p>
+            {% if agenda.keterangan %}
+              <p class="agenda-keterangan">{{ agenda.keterangan|linebreaksbr }}</p>
+            {% endif %}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</div>
 {% endblock %}

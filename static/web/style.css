@@ -641,3 +641,149 @@ button[type="submit"] { font-family: inherit; }
 }
 
 /* ============ AKHIR PROFIL ============ */
+
+/* ============================================
+   AGENDA (agenda.html)
+   Semua class diawali "agenda-"
+   ============================================ */
+
+.agenda-halaman { padding: 1rem 0 2rem; }
+
+.agenda-judul {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: .5rem;
+  border-bottom: 3px solid var(--pcm-primary);
+  display: inline-block;
+}
+
+.agenda-seksi { margin-bottom: 2.5rem; }
+
+.agenda-subjudul {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  padding-left: .75rem;
+  border-left: 4px solid var(--pcm-accent);
+}
+
+.agenda-daftar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Satu kegiatan: kotak tanggal di kiri, isi di kanan */
+.agenda-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 1.1rem;
+  background: white;
+  border: 1px solid var(--pcm-border);
+  border-radius: var(--pcm-radius);
+  box-shadow: var(--pcm-shadow);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.agenda-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--pcm-shadow-hover);
+}
+
+.agenda-tanggal {
+  flex: 0 0 74px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .55rem .25rem;
+  color: white;
+  background: var(--pcm-primary);
+  border-bottom: 3px solid var(--pcm-accent);
+  border-radius: calc(var(--pcm-radius) - 2px);
+  text-align: center;
+  line-height: 1.15;
+}
+
+.agenda-tanggal-hari {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.agenda-tanggal-bulan {
+  font-size: .85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.agenda-tanggal-tahun {
+  font-size: .75rem;
+  opacity: .85;
+}
+
+.agenda-isi { flex: 1; min-width: 0; }
+
+.agenda-nama {
+  font-size: 1.1rem;
+  margin: 0 0 .4rem;
+}
+
+.agenda-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem 1rem;
+  margin: 0 0 .5rem;
+  color: var(--pcm-muted);
+  font-size: .875rem;
+}
+
+.agenda-meta-item::before {
+  content: "";
+  display: inline-block;
+  width: .45rem;
+  height: .45rem;
+  margin-right: .4rem;
+  background: var(--pcm-primary);
+  border-radius: 50%;
+}
+
+.agenda-keterangan {
+  margin: 0;
+  padding-top: .5rem;
+  border-top: 1px solid var(--pcm-border);
+  font-size: .95rem;
+}
+
+.agenda-kosong {
+  padding: 2rem 1rem;
+  color: var(--pcm-muted);
+  text-align: center;
+  background: var(--pcm-section);
+  border: 1px dashed var(--pcm-border);
+  border-radius: var(--pcm-radius);
+}
+
+/* Kegiatan sebelumnya: tampil lebih redup */
+.agenda-item-lalu { background: var(--pcm-section); }
+
+.agenda-item-lalu .agenda-tanggal {
+  background: var(--pcm-muted);
+  border-bottom-color: var(--pcm-border);
+}
+
+.agenda-item-lalu .agenda-meta-item::before { background: var(--pcm-muted); }
+
+/* Layar HP: kotak tanggal diperkecil */
+@media (max-width: 576px) {
+  .agenda-judul { font-size: 1.6rem; }
+  .agenda-item { gap: .75rem; padding: .85rem; }
+  .agenda-tanggal { flex-basis: 60px; }
+  .agenda-tanggal-hari { font-size: 1.4rem; }
+}
+
+/* ============ AKHIR AGENDA ============ */
