@@ -65,6 +65,7 @@ CARANYA MASANG CSS DI HALAMAN WEB INI
 
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 body {
@@ -1671,13 +1672,17 @@ button[type="submit"] {
   border: 1px solid var(--pcm-border);
   border-radius: var(--pcm-radius);
   box-shadow: var(--pcm-shadow);
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease;
 }
+
 .unduhan-kartu:hover {
   transform: translateY(-3px);
   box-shadow: var(--pcm-shadow-hover);
+}
+
+.unduhan-kartu:not(.animasi-siap) {
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
 /* Kotak ikon hijau, sama gayanya dengan kotak tanggal di agenda */
