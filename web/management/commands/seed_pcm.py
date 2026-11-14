@@ -13,6 +13,7 @@ from web.models import (
     Berita,
     Agenda,
     TautanTerkait,
+    Dokumen,
 )
 
 SEED_MEDIA = Path(__file__).resolve().parents[2] / "seed_media"
@@ -591,6 +592,19 @@ TAUTAN_TERKAIT = [
     {"nama": "PP Muhammadiyah", "url": "https://muhammadiyah.or.id", "urutan": 3},
 ]
 
+DOKUMEN = [
+    {
+        "judul": "Jadwal Kegiatan Kajian PCM Baki",
+        "keterangan": "Jadwal kegiatan kajian rutin Pimpinan Cabang Muhammadiyah Baki.",
+        "berkas": "jadwal_kegiatan_kajian.pdf",
+    },
+    {
+        "judul": "Struktur Pimpinan PCM Baki",
+        "keterangan": "Susunan pimpinan Pimpinan Cabang Muhammadiyah Baki periode 2022-2027.",
+        "berkas": "struktur_pimpinan.pdf",
+    },
+]
+
 
 class Command(BaseCommand):
     help = "Mengisi data awal website PCM secara aman dan idempotent."
@@ -605,6 +619,7 @@ class Command(BaseCommand):
             "berita": 0,
             "agenda": 0,
             "tautan": 0,
+            "dokumen": 0,
         }
 
         # --------------------------------------------------
@@ -715,6 +730,26 @@ class Command(BaseCommand):
                 },
             )
             dibuat["tautan"] += int(created)
+            
+        # --------------------------------------------------
+        # 8. Dokumen (berkas PDF untuk halaman Unduhan)
+        # --------------------------------------------------
+        for data in DOKUMEN:
+            if not (SEED_MEDIA / data["berkas"]).exists():
+                self.stdout.write(
+                    self.style.WARNING(
+                        f"Dokumen '{data['judul']}' dilewati: "
+                        f"{data['berkas']} tidak ada di web/seed_media/."
+                    )
+                )
+                continue
+            obj, created = Dokumen.objects.get_or_create(
+                judul=data["judul"],
+                defaults={"keterangan": data.get("keterangan", "")},
+            )
+            if created or not obj.berkas:
+                lampirkan(obj, "berkas", data["berkas"])
+            dibuat["dokumen"] += int(created)
 
         # --------------------------------------------------
         # Ringkasan hasil
