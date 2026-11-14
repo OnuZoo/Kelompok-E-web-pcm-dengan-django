@@ -266,7 +266,8 @@ button[type="submit"] {
   font-weight: 700;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 3px solid #198754;
+  color: var(--pcm-secondary);
+  border-bottom: 3px solid var(--pcm-accent);
   display: inline-block;
 }
 
@@ -442,7 +443,8 @@ button[type="submit"] {
   position: relative;
   margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
-  font-size: 1.4rem;
+  font-size: 2.0rem;
+  color: var(--pcm-secondary);
   border-bottom: 2px solid var(--pcm-border);
 }
 
@@ -514,7 +516,8 @@ button[type="submit"] {
   font-weight: 700;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 3px solid #198754;
+  color: var(--pcm-secondary);
+  border-bottom: 3px solid var(--pcm-accent);
   display: inline-block;
 }
 
@@ -845,7 +848,8 @@ button[type="submit"] {
   font-weight: 700;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 3px solid var(--pcm-primary);
+  color: var(--pcm-secondary);
+  border-bottom: 3px solid var(--pcm-accent);
   display: inline-block;
 }
 
@@ -857,7 +861,7 @@ button[type="submit"] {
   font-size: 1.35rem;
   margin-bottom: 1rem;
   padding-left: 0.75rem;
-  border-left: 4px solid var(--pcm-accent);
+  border-left: 4px solid var(--pcm-secondary);
 }
 
 .agenda-daftar {
@@ -1305,7 +1309,8 @@ button[type="submit"] {
   font-weight: 700;
   margin-bottom: 1.5rem;
   padding-bottom: .5rem;
-  border-bottom: 3px solid var(--pcm-primary);
+  color: var(--pcm-secondary);
+  border-bottom: 3px solid var(--pcm-accent);
   display: inline-block;
 }
 
