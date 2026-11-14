@@ -240,6 +240,67 @@ PIMPINAN = [
 
 RANTING = [
     {
+        "nama": "Ranting Muhammadiyah Menuran",
+        "ketua": "Muhammad Arief ",
+        "alamat": "Menuran, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    }, 
+        
+    {
+        "nama": "Ranting Muhammadiyah Siwal",
+        "ketua": "Wiyadi, S.Pd",
+        "alamat": "Siwal, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    }, 
+    {
+        "nama": "Ranting Muhammadiyah Kadilangu",
+        "ketua": "Sujiman",
+        "alamat": "Kadilangu, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    }, 
+    {
+        "nama": "Ranting Muhammadiyah Pandeyan",
+        "ketua": "Harmanto",
+        "alamat": "Pandeyan, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    }, 
+    {
+        "nama": "Ranting Muhammadiyah Bentakan",
+        "ketua": "Jiyar",
+        "alamat": "Bentakan, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    },
+    {
+        "nama": "Ranting Muhammadiyah Gedongan",
+        "ketua": "Sigit Riyadi ",
+        "alamat": "Gedongan, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    },
+    {
+        "nama": "Ranting Muhammadiyah Kudu",
+        "ketua": "Sutikno",
+        "alamat": "Kudu, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    },
+    {
+        "nama": "Ranting Muhammadiyah Mancasan",
+        "ketua": "Sukadri",
+        "alamat": "Mancasan, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    },
+    {
+        "nama": "Ranting Muhammadiyah Ngrombo",
+        "ketua": "Sukardi",
+        "alamat": "Ngrombo, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    },
+    {
+        "nama": "Ranting Muhammadiyah Waru 1",
+        "ketua": "Wahyana ",
+        "alamat": "Waru, Baki, Sukoharjo",
+        "telepon": "Belum tersedia"
+    },
+    {
         "nama": "Ranting Muhammadiyah Waru 2",
         "ketua": "H. Husnan Arifin, B.A.",
         "alamat": "Waru, Baki, Sukoharjo, Jawa Tengah 57556",
@@ -269,7 +330,7 @@ RANTING = [
     
     {
         "nama": "Ranting Muhammadiyah Purbayan",
-        "ketua": "Dr. MUCHAMMAD IKSAN",
+        "ketua": "Dr. Muchammad Iksan",
         "alamat": "Purbayan, Baki, Sukoharjo, Jawa Tengah 57556",
         "telepon": "Belum tersedia"
     },
