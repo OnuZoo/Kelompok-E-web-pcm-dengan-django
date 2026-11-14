@@ -240,10 +240,59 @@ PIMPINAN = [
 
 RANTING = [
     {
-        "nama": "Ranting 1",
-        "ketua": "Ketua Ranting 1",
-        "alamat": "Alamat Ranting 1",
-        "telepon": "08123456789"
+        "nama": "Ranting Muhammadiyah Waru 2",
+        "ketua": "H. Husnan Arifin, B.A.",
+        "alamat": "Waru, Baki, Sukoharjo, Jawa Tengah 57556",
+        "telepon": "Belum tersedia"
+    },
+    
+    {
+        "nama": "Ranting Muhammadiyah Waru 3",
+        "ketua": "Supriyanto",
+        "alamat": "Waru, Baki, Sukoharjo, Jawa Tengah 57556",
+        "telepon": "Belum tersedia"
+    },
+    
+    {
+        "nama": "Ranting Muhammadiyah Waru 4",
+        "ketua": "H. Nur Sabiyanto, M.Pd.",
+        "alamat": "Waru, Baki, Sukoharjo, Jawa Tengah 57556",
+        "telepon": "Belum tersedia"
+    },
+    
+    {
+        "nama": "Ranting Muhammadiyah Waru 5",
+        "ketua": "Suryanto",
+        "alamat": "Waru, Baki, Sukoharjo, Jawa Tengah 57556",
+        "telepon": "Belum tersedia"
+    },
+    
+    {
+        "nama": "Ranting Muhammadiyah Purbayan",
+        "ketua": "Dr. MUCHAMMAD IKSAN",
+        "alamat": "Purbayan, Baki, Sukoharjo, Jawa Tengah 57556",
+        "telepon": "Belum tersedia"
+    },
+    
+    {
+        "nama": "Ranting Muhammadiyah Gentan",
+        "ketua": "H. Zaenal Abidin Ahmad, S.E.",
+        "alamat": "Gentan, Baki, Sukoharjo, Jawa Tengah 57556",
+        "telepon": "Belum tersedia"
+    },
+    
+    {
+        "nama": "Ranting Muhammadiyah Jetis",
+        "ketua": "Iwan Junaidi",
+        "alamat": "Jetis, Baki, Sukoharjo, Jawa Tengah 57556",
+        "telepon": "Belum tersedia"
+    },
+    
+    {
+        "nama": "Ranting Muhammadiyah Duwet",
+        "ketua": "Eko Sri Atmaja",
+        "alamat": "Duwet, Baki, Sukoharjo, Jawa Tengah 57556",
+        "telepon": "Belum tersedia"
     }
 ]
 
