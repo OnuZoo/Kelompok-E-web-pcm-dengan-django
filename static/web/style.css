@@ -17,7 +17,7 @@ CARANYA MASANG CSS DI HALAMAN WEB INI
 
 2. TIAP HALAMAN PUNYA AWALAN CLASS SENDIRI
    kontak-, pimpinan-, beranda-, ranting-, amal-usaha-,
-   berita-, agenda-, unduhan-, profil-.
+   berita-, agenda-, unduhan-, profil-, header-.
 
    Contoh: class ranting-tabel, class berita-judul.
 
@@ -1465,3 +1465,164 @@ button[type="submit"] {
 }
 
 /* ============ AKHIR ANIMASI ============ */
+
+/* ============================================
+   HEADER / NAVBAR (partials/_header.html)
+   Semua class diawali "header-"
+   ============================================ */
+
+/* ---------- Warna & font seragam ---------- */
+.header-menu {
+  --bs-navbar-color: rgba(255, 255, 255, .85);
+  --bs-navbar-hover-color: var(--bs-white);
+  --bs-navbar-active-color: var(--bs-white);
+}
+
+/* Merek (logo + nama) */
+.header-logo {
+  transition: transform .3s ease;
+}
+.header-merek:hover .header-logo {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.header-merek-nama {
+  display: block;
+  font-family: "Poppins", "Inter", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--bs-white);
+}
+
+.header-merek-tagline {
+  display: block;
+  font-size: .78rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, .8);
+}
+
+/* Semua menu (termasuk "Tentang Kami") memakai gaya yang sama */
+.navbar .header-link {
+  position: relative;
+  padding: .5rem .85rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: .95rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: .01em;
+  transition:
+    color .2s ease,
+    transform .2s ease;
+}
+
+/* Garis emas yang memanjang dari tengah saat hover / halaman aktif */
+.header-link::before {
+  content: "";
+  position: absolute;
+  right: .85rem;
+  bottom: .2rem;
+  left: .85rem;
+  height: 2px;
+  background: var(--pcm-accent);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .25s ease;
+}
+
+.navbar .header-link:hover,
+.navbar .header-link:focus-visible,
+.header-dropdown-wrap:hover > .header-toggle {
+  color: var(--bs-white);
+  transform: translateY(-2px);
+}
+
+.header-link:hover::before,
+.header-link:focus-visible::before,
+.header-link.active::before,
+.header-dropdown-wrap:hover > .header-toggle::before {
+  transform: scaleX(1);
+}
+
+/* Hilangkan tanda panah di "Tentang Kami" */
+.navbar .header-toggle::after {
+  display: none;
+}
+
+/* ---------- Kotak dropdown ---------- */
+.header-dropdown {
+  --bs-dropdown-min-width: 12rem;
+  --bs-dropdown-padding-y: .4rem;
+  --bs-dropdown-border-width: 0;
+  --bs-dropdown-border-radius: var(--pcm-radius);
+  --bs-dropdown-color: var(--pcm-text);
+  --bs-dropdown-link-color: var(--pcm-text);
+  --bs-dropdown-link-hover-color: var(--pcm-secondary);
+  --bs-dropdown-link-hover-bg: var(--pcm-section);
+  --bs-dropdown-link-active-color: var(--bs-white);
+  --bs-dropdown-link-active-bg: var(--pcm-primary);
+  border-top: 3px solid var(--pcm-accent);
+  box-shadow: var(--pcm-shadow-hover);
+  overflow: hidden;
+}
+
+.header-dropdown-item {
+  padding: .5rem 1.1rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: .95rem;
+  font-weight: 500;
+  transition:
+    padding-left .2s ease,
+    background-color .2s ease,
+    color .2s ease;
+}
+.header-dropdown-item:hover {
+  padding-left: 1.45rem;
+}
+
+@keyframes header-turun {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Dropdown terbuka otomatis saat kursor di atasnya (desktop) ---------- */
+@media (min-width: 992px) {
+  .header-dropdown {
+    top: 100%;
+    left: 0;
+    margin-top: 0;
+  }
+
+  /* Klik tidak diperlukan: hover / fokus keyboard sudah cukup */
+  .header-toggle {
+    pointer-events: none;
+  }
+
+  .header-dropdown-wrap:hover > .header-dropdown,
+  .header-dropdown-wrap:focus-within > .header-dropdown {
+    display: block;
+    animation: header-turun .22s ease;
+  }
+}
+
+/* Hormati pengguna yang mematikan animasi */
+@media (prefers-reduced-motion: reduce) {
+  .header-logo,
+  .navbar .header-link,
+  .header-link::before,
+  .header-dropdown-item {
+    transition: none;
+  }
+  .header-dropdown-wrap:hover > .header-dropdown,
+  .header-dropdown-wrap:focus-within > .header-dropdown {
+    animation: none;
+  }
+  .navbar .header-link:hover,
+  .navbar .header-link:focus-visible,
+  .header-dropdown-wrap:hover > .header-toggle {
+    transform: none;
+  }
+}
+
+/* ============ AKHIR HEADER ============ */
