@@ -1154,3 +1154,141 @@ button[type="submit"] {
 }
 
 /* ===== AKHIR BERITA DETAIL ===== */
+
+/* ============================================
+   RANTING (ranting.html)
+   Semua class diawali "ranting-"
+   ============================================ */
+
+.ranting-halaman { padding: 1rem 0 2rem; }
+
+.ranting-judul {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: .5rem;
+  border-bottom: 3px solid var(--pcm-primary);
+  display: inline-block;
+}
+
+.ranting-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.ranting-kartu {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid var(--pcm-border);
+  border-radius: calc(var(--pcm-radius) * 1.5);
+  box-shadow: var(--pcm-shadow);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.ranting-kartu:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--pcm-shadow-hover);
+}
+
+/* Kotak ikon hijau muda */
+.ranting-ikon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  color: var(--pcm-primary);
+  background: color-mix(in srgb, var(--pcm-primary) 8%, white);
+  border: 1px solid color-mix(in srgb, var(--pcm-primary) 25%, white);
+  border-radius: var(--pcm-radius);
+}
+
+.ranting-ikon-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ranting-baris-atas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+}
+
+.ranting-badge {
+  padding: .1rem .55rem;
+  font-size: .7rem;
+  font-weight: 600;
+  color: var(--pcm-secondary);
+  background: color-mix(in srgb, var(--pcm-primary) 10%, white);
+  border-radius: .35rem;
+}
+
+.ranting-nomor {
+  font-size: .7rem;
+  font-weight: 600;
+  color: var(--pcm-primary);
+}
+
+.ranting-nama {
+  margin: 0 0 .4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.ranting-alamat {
+  margin: 0 0 1rem;
+  color: var(--pcm-muted);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+
+/* Ketua dan telepon di bagian bawah kartu */
+.ranting-info {
+  margin-top: auto;
+  padding-top: .75rem;
+  border-top: 1px solid var(--pcm-border);
+}
+
+.ranting-info-baris {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .2rem 0;
+  font-size: .875rem;
+}
+
+.ranting-info-label {
+  color: var(--pcm-muted);
+}
+
+.ranting-info-isi {
+  font-weight: 600;
+  text-align: right;
+}
+
+.ranting-kosong {
+  grid-column: 1 / -1;
+  padding: 2rem 1rem;
+  color: var(--pcm-muted);
+  text-align: center;
+  background: var(--pcm-section);
+  border: 1px dashed var(--pcm-border);
+  border-radius: var(--pcm-radius);
+}
+
+/* Layar HP: satu kolom */
+@media (max-width: 576px) {
+  .ranting-judul { font-size: 1.6rem; }
+  .ranting-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .ranting-kartu { padding: 1.25rem; }
+}
+
+/* ============ AKHIR RANTING ============ */
