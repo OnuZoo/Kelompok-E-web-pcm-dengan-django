@@ -138,8 +138,10 @@ Daftar anggota kantoran PCM Baki:
 - Bapak H. Hasyim Asngari, S.Ag
 - Bapak H. Harsono Amri, BA
 """,
-    "visi": "",
-    "misi": "",
+    "visi": "Terwujudnya Pimpinan Cabang Muhammadiyah Baki yang kuat, berkemajuan, dan menjadi penggerak masyarakat Islam yang sebenar-benarnya menuju baldatun thayyibatun wa rabbun ghafur.",
+    "misi": """Meningkatkan kualitas dan memperluas amal usaha, terutama bidang pendidikan dan dakwah.
+Memperkuat ranting serta tata kelola dan konsolidasi organisasi.
+Menghidupkan dakwah dan pelayanan sosial yang menyentuh kebutuhan masyarakat Baki.""",
     "alamat_sekretariat": "Jagan RT 01 RW 07 Waru Baki Sukoharjo",
     "telepon": "08179476737",
     "email": "",

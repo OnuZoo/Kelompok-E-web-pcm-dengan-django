@@ -23,6 +23,44 @@
     </section>
   {% endif %}
 
+  <section class="profil-visimisi mb-5">
+    <header class="profil-visimisi-header">
+      <span class="profil-badge">Arah &amp; Landasan Gerak</span>
+      <h2 class="profil-visimisi-judul">Visi &amp; Misi</h2>
+      <p class="profil-visimisi-sub">Arah dan komitmen gerak {{ profil.nama_singkat }}.</p>
+    </header>
+
+    <div class="profil-visi-kartu">
+      <span class="profil-visi-label">Visi</span>
+      {% if profil.visi %}
+        <blockquote class="profil-visi-teks">&ldquo;{{ profil.visi|linebreaksbr }}&rdquo;</blockquote>
+      {% else %}
+        <p class="profil-visi-kosong">Visi belum tersedia.</p>
+      {% endif %}
+    </div>
+
+    <div class="profil-misi-kartu">
+      <div class="profil-misi-header">
+        <h3 class="profil-misi-judul">Misi</h3>
+        {% if profil.daftar_misi %}
+          <p class="profil-misi-sub">{{ profil.daftar_misi|length }} butir misi</p>
+        {% endif %}
+      </div>
+      {% if profil.daftar_misi %}
+        <ol class="profil-misi-daftar">
+          {% for misi in profil.daftar_misi %}
+            <li class="profil-misi-item">
+              <span class="profil-misi-nomor">{{ forloop.counter|stringformat:"02d" }}</span>
+              <p class="profil-misi-teks">{{ misi }}</p>
+            </li>
+          {% endfor %}
+        </ol>
+      {% else %}
+        <p class="profil-kosong">Misi belum tersedia.</p>
+      {% endif %}
+    </div>
+  </section>
+
   {% if profil.daftar_sejarah %}
     <section class="mb-5">
       <h2 class="h4 mb-4">Sejarah</h2>
@@ -44,24 +82,6 @@
           </div>
         {% endfor %}
       </div>
-    </section>
-  {% endif %}
-
-  {% if profil.visi %}
-    <section class="mb-4">
-      <h2 class="h4">Visi</h2>
-      <p class="profil-rata-penuh">{{ profil.visi|linebreaksbr }}</p>
-    </section>
-  {% endif %}
-
-  {% if profil.daftar_misi %}
-    <section class="mb-4">
-      <h2 class="h4">Misi</h2>
-      <ol>
-        {% for misi in profil.daftar_misi %}
-          <li>{{ misi }}</li>
-        {% endfor %}
-      </ol>
     </section>
   {% endif %}
 
