@@ -42,7 +42,17 @@ PROFIL = {
     "nama": "PIMPINAN CABANG MUHAMMADIYAH KECAMATAN BAKI ",
     "nama_singkat": "PCM BAKI",
     "tagline": "Bersama Satukan Bangsa",
-    "tentang": "",
+    "tentang": (
+        "Pimpinan Cabang Muhammadiyah (PCM) Baki merupakan organisasi tingkat "
+        "kecamatan di bawah naungan Pimpinan Daerah Muhammadiyah (PDM) Kabupaten "
+        "Sukoharjo yang berfokus pada gerakan dakwah Islam amar ma'ruf nahi munkar "
+        "dan tajdid. Berkedudukan di Desa Waru, Kecamatan Baki, PCM Baki hadir "
+        "untuk mengoordinasikan berbagai Pimpinan Ranting Muhammadiyah (PRM) di "
+        "tingkat desa serta mengelola Amal Usaha Muhammadiyah (AUM) di bidang "
+        "pendidikan, kesehatan, dan sosial kemasyarakatan. Dengan semangat "
+        "mencerahkan dan memajukan umat, PCM Baki berkomitmen memberikan kontribusi "
+        "nyata bagi kesejahteraan masyarakat di wilayah Kecamatan Baki dan sekitarnya."
+    ),
     "sejarah": """
 I. Masa Rintisan (1928–1940)
 Pendirian amal usaha pendidikan oleh Bapak Guru Parto Atmojo dari Kampung Sewu, Surakarta, bersama Bapak Lurah Waru, Bapak Hadi Wardoyo.
