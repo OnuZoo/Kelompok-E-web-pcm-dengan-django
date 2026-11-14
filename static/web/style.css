@@ -592,3 +592,52 @@ button[type="submit"] { font-family: inherit; }
 }
 
 /* ============ AKHIR AMAL USAHA ============ */
+
+
+/* ============================================
+   PROFIL (profil.html)
+   Semua class diawali "profil-"
+   ============================================ */
+
+/* Teks paragraf rata kiri-kanan */
+.profil-rata-penuh {
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Garis waktu sejarah */
+.profil-timeline {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--pcm-primary);
+}
+
+.profil-timeline-item {
+  position: relative;
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bs-body-bg);
+  border: 1px solid var(--pcm-border);
+  border-radius: var(--pcm-radius);
+  box-shadow: var(--pcm-shadow);
+}
+
+/* Titik penanda di garis waktu */
+.profil-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.5rem - 8.5px);
+  top: 1.2rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--pcm-primary);
+  border: 3px solid var(--bs-body-bg);
+}
+
+/* Daftar panjang dibagi dua kolom di layar lebar */
+@media (min-width: 768px) {
+  .profil-kolom-2 { column-count: 2; }
+}
+
+/* ============ AKHIR PROFIL ============ */
