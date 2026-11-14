@@ -3,42 +3,41 @@
 {% block title %}Amal Usaha{% endblock %}
 
 {% block content %}
-<h1 class="h2 mb-4">Amal Usaha</h1>
+<div class="amal-halaman">
+  <h1 class="amal-judul">Amal Usaha</h1>
 
-{% regroup amal_usaha_list by bidang as bidang_list %}
+  {% regroup amal_usaha_list by bidang as bidang_list %}
 
-{% for bidang in bidang_list %}
-  <h2 class="h4 mt-4">{{ bidang.list.0.get_bidang_display }}</h2>
+  {% for bidang in bidang_list %}
+    <section class="amal-bidang">
+      <div class="amal-bidang-header">
+        <h2 class="amal-bidang-judul">{{ bidang.list.0.get_bidang_display }}</h2>
+        <span class="amal-bidang-jumlah">{{ bidang.list|length }} unit</span>
+      </div>
 
-  <div class="table-responsive">
-    <table class="table table-striped align-middle">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Nama</th>
-          <th>Deskripsi</th>
-          <th>Alamat</th>
-          <th>Gambar</th>
-        </tr>
-      </thead>
-      <tbody>
+      <div class="amal-grid">
         {% for item in bidang.list %}
-          <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ item.nama }}</td>
-            <td>{{ item.deskripsi }}</td>
-            <td>{{ item.alamat }}</td>
-            <td>
-              {% if item.gambar %}
-                <img src="{{ item.gambar.url }}" alt="{{ item.nama }}" width="100" class="img-thumbnail">
-              {% endif %}
-            </td>
-          </tr>
+          <article class="amal-kartu">
+            {% if item.gambar %}
+              <img src="{{ item.gambar.url }}" alt="{{ item.nama }}" class="amal-gambar" loading="lazy">
+            {% else %}
+              <div class="amal-gambar amal-tanpa-gambar">Tanpa gambar</div>
+            {% endif %}
+
+            <div class="amal-isi">
+              <h3 class="amal-nama">{{ item.nama }}</h3>
+              <p class="amal-deskripsi">{{ item.deskripsi }}</p>
+              <p class="amal-alamat">
+                <span class="amal-alamat-label">Alamat</span>
+                {{ item.alamat }}
+              </p>
+            </div>
+          </article>
         {% endfor %}
-      </tbody>
-    </table>
-  </div>
-{% empty %}
-  <div class="alert alert-info">Belum ada data amal usaha.</div>
-{% endfor %}
+      </div>
+    </section>
+  {% empty %}
+    <p class="amal-kosong">Belum ada data amal usaha.</p>
+  {% endfor %}
+</div>
 {% endblock %}
