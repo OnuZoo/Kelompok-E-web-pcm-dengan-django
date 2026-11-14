@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block title %}{{ berita.judul }} · {{ profil.nama_singkat|default:"PCM" }}{% endblock %} {% block content %}
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" class="berita-detail-breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{% url 'web:beranda' %}">Beranda</a></li>
     <li class="breadcrumb-item"><a href="{% url 'web:berita' %}">Berita</a></li>
@@ -9,30 +9,28 @@
 
 <div class="row">
   <div class="col-lg-8">
-    <article>
-      <h1 class="h2">{{ berita.judul }}</h1>
-      <p class="text-muted">
-        <time datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"l, j F Y" }}</time>
-      </p>
+    <article class="berita-detail-artikel">
+      <h1 class="h2 berita-detail-judul">{{ berita.judul }}</h1>
+      <time class="berita-detail-tanggal" datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"l, j F Y" }}</time>
 
       {% if berita.gambar_sampul %}
-      <img src="{{ berita.gambar_sampul.url }}" class="img-fluid rounded mb-3" alt="{{ berita.judul }}" />
+      <img src="{{ berita.gambar_sampul.url }}" class="berita-detail-gambar" alt="{{ berita.judul }}" />
       {% endif %}
 
-      <p class="lead fw-semibold">{{ berita.ringkasan }}</p>
-      {{ berita.isi|linebreaks }}
+      <p class="berita-detail-ringkasan">{{ berita.ringkasan }}</p>
+      <div class="berita-detail-isi">{{ berita.isi|linebreaks }}</div>
     </article>
 
-    <a href="{% url 'web:berita' %}" class="btn btn-outline-success mt-3">&larr; Semua berita</a>
+    <a href="{% url 'web:berita' %}" class="berita-detail-kembali">&larr; Semua berita</a>
   </div>
 
   <aside class="col-lg-4 mt-4 mt-lg-0">
     {% if berita_lain %}
-    <h2 class="h5">Berita lainnya</h2>
-    <div class="list-group">
+    <div class="berita-detail-samping">
+      <h2 class="h5 berita-detail-samping-judul">Berita lainnya</h2>
       {% for item in berita_lain %}
-      <a href="{% url 'web:berita_detail' item.slug %}" class="list-group-item list-group-item-action">
-        <small class="text-muted">{{ item.tanggal_terbit|date:"j F Y" }}</small><br />
+      <a href="{% url 'web:berita_detail' item.slug %}" class="berita-detail-lain">
+        <small class="berita-detail-lain-tanggal">{{ item.tanggal_terbit|date:"j F Y" }}</small>
         {{ item.judul }}
       </a>
       {% endfor %}

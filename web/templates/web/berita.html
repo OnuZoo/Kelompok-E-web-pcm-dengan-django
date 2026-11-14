@@ -1,47 +1,59 @@
 {% extends "base.html" %} {% block title %}Berita · {{ profil.nama_singkat|default:"PCM" }}{% endblock %} {% block content %}
-<div class="mb-4">
-  <h1 class="h2">Berita</h1>
-  <p class="text-muted">Kabar dan pengumuman terbaru.</p>
+<div class="mb-4 berita-header">
+  <h1 class="h2 berita-header-judul">Berita</h1>
+  <p class="berita-header-deskripsi">Kabar dan pengumuman terbaru.</p>
 </div>
 
 {% if berita_list %} {# Berita utama: hanya di halaman 1 #} {% if not page_obj.has_previous %} {% with utama=berita_list.0 %}
-<article class="card mb-4 shadow-sm">
+<article class="card mb-4 shadow-sm berita-utama">
   <div class="row g-0">
     {% if utama.gambar_sampul %}
     <div class="col-md-6">
       <a href="{% url 'web:berita_detail' utama.slug %}">
-        <img src="{{ utama.gambar_sampul.url }}" class="img-fluid rounded-start w-100" alt="{{ utama.judul }}" style="max-height: 320px; object-fit: cover" />
+        <img src="{{ utama.gambar_sampul.url }}" class="berita-utama-gambar" alt="{{ utama.judul }}" />
       </a>
     </div>
     {% endif %}
     <div class="{% if utama.gambar_sampul %}col-md-6{% else %}col-12{% endif %}">
       <div class="card-body p-4">
-        <time class="text-muted small" datetime="{{ utama.tanggal_terbit|date:'c' }}">{{ utama.tanggal_terbit|date:"j F Y" }}</time>
-        <h2 class="h3 mt-1">
-          <a href="{% url 'web:berita_detail' utama.slug %}" class="text-decoration-none text-dark">{{ utama.judul }}</a>
+        <time class="berita-utama-tanggal" datetime="{{ utama.tanggal_terbit|date:'c' }}">{{ utama.tanggal_terbit|date:"j F Y" }}</time>
+        <h2 class="h3 berita-utama-judul">
+          <a href="{% url 'web:berita_detail' utama.slug %}" class="berita-utama-tautan">{{ utama.judul }}</a>
         </h2>
-        <p>{{ utama.ringkasan|truncatewords:40 }}</p>
-        <a href="{% url 'web:berita_detail' utama.slug %}" class="btn btn-success">Baca selengkapnya</a>
+        <p class="berita-utama-ringkasan">{{ utama.ringkasan|truncatewords:40 }}</p>
+        <a href="{% url 'web:berita_detail' utama.slug %}" class="btn berita-tombol">Baca selengkapnya</a>
       </div>
     </div>
   </div>
 </article>
-{% endwith %} {% endif %}
-
+{% endwith %} {% endif %} {# Daftar kartu berita #}
 <div class="row g-4 justify-content-center">
   {% for berita in berita_list %} {% if page_obj.has_previous or not forloop.first %}
   <div class="col-md-6 col-lg-4">
-    {% include "partials/_kartu_berita.html" %}
+    <article class="berita-kartu">
+      {% if berita.gambar_sampul %}
+      <a href="{% url 'web:berita_detail' berita.slug %}">
+        <img src="{{ berita.gambar_sampul.url }}" class="berita-kartu-gambar" alt="{{ berita.judul }}" />
+      </a>
+      {% endif %}
+      <div class="berita-kartu-isi">
+        <time class="berita-kartu-tanggal" datetime="{{ berita.tanggal_terbit|date:'c' }}">{{ berita.tanggal_terbit|date:"j F Y" }}</time>
+        <h3 class="berita-kartu-judul">
+          <a href="{% url 'web:berita_detail' berita.slug %}" class="berita-kartu-tautan">{{ berita.judul }}</a>
+        </h3>
+        <p class="berita-kartu-ringkasan">{{ berita.ringkasan|truncatewords:25 }}</p>
+      </div>
+    </article>
   </div>
   {% endif %} {% endfor %}
 </div>
 
 {% if is_paginated %}
-<nav aria-label="Halaman berita" class="mt-4">
+<nav aria-label="Halaman berita" class="mt-4 berita-paginasi">
   <ul class="pagination justify-content-center">
     {% if page_obj.has_previous %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ page_obj.previous_page_number }}" rel="prev"> Sebelumnya </a>
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}" rel="prev">Sebelumnya</a>
     </li>
     {% else %}
     <li class="page-item disabled">
@@ -49,11 +61,11 @@
     </li>
     {% endif %} {% for num in page_obj.paginator.page_range %}
     <li class="page-item {% if page_obj.number == num %}active{% endif %}">
-      <a class="page-link" href="?page={{ num }}"> {{ num }} </a>
+      <a class="page-link" href="?page={{ num }}">{{ num }}</a>
     </li>
     {% endfor %} {% if page_obj.has_next %}
     <li class="page-item">
-      <a class="page-link" href="?page={{ page_obj.next_page_number }}" rel="next"> Berikutnya </a>
+      <a class="page-link" href="?page={{ page_obj.next_page_number }}" rel="next">Berikutnya</a>
     </li>
     {% else %}
     <li class="page-item disabled">
@@ -63,5 +75,5 @@
   </ul>
 </nav>
 {% endif %} {% else %}
-<div class="alert alert-info">Belum ada berita yang terbit. Silakan kembali lagi nanti.</div>
+<div class="alert berita-kosong">Belum ada berita yang terbit. Silakan kembali lagi nanti.</div>
 {% endif %} {% endblock %}
