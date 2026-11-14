@@ -321,16 +321,213 @@ AMAL_USAHA = [
 ]
 
 BERITA = [
-    #harus mengisi minimal 6
     {
-        "judul": "Berita 1",
-        "slug": "berita-1",
-        "ringkasan": "Ringkasan Berita 1",
-        "isi": "Isi Berita 1",
+        "judul": "Jalan Sehat dan Pengajian Milad Muhammadiyah ke-114 Meriahkan Halaman MIM Waru Baki",
+        "slug": "jalan-sehat-dan-pengajian-milad-muhammadiyah-ke-114",
+        "ringkasan": (
+            "Pimpinan Cabang Muhammadiyah (PCM) Baki menggelar Jalan Sehat dan Pengajian "
+            "dalam rangka Milad Muhammadiyah ke-114 pada Ahad, 8 November 2026, "
+            "bertempat di Halaman MIM Waru Baki dan terbuka untuk umum."
+        ),
+        "isi": (
+            "Pimpinan Cabang Muhammadiyah (PCM) Baki menyelenggarakan Jalan Sehat dan "
+            "Pengajian dalam rangka Milad Muhammadiyah ke-114 dengan tema Tanwir dan "
+            "Milad ke-114 Muhammadiyah, \"Bersama Satukan Bangsa\".\n\n"
+            "Kegiatan dilaksanakan pada Ahad, 28 Jumadilawal 1448 H bertepatan dengan "
+            "8 November 2026 M, mulai pukul 06.30 WIB hingga selesai, di Halaman MIM "
+            "Waru Baki. Acara ini terbuka untuk umum sehingga warga dari berbagai "
+            "kalangan dapat ikut serta.\n\n"
+            "Sebagai mubaligh, panitia menghadirkan H. Agus Tursilo Wisanto, S.H, S.P, M.Pd. "
+            "Selain jalan sehat dan pengajian, peserta mendapatkan sejumlah fasilitas, yaitu "
+            "voucher belanja di stand bazar, bazar pakaian pantas pakai, bazar UMKM, serta "
+            "doorprize menarik.\n\n"
+            "Bagi pelaku usaha yang ingin membuka stand pada Bazar UMKM, pendaftaran dapat "
+            "menghubungi Eko Tri Atmojo (085799127427) atau Novrita (085293578933). "
+            "Informasi umum kegiatan dapat ditanyakan kepada MN Fathoni (085725476111) "
+            "atau Muh Ridwan (081548542155).\n\n"
+            "Kegiatan ini didukung oleh berbagai pihak, antara lain amal usaha, organisasi "
+            "otonom, dan sponsor yang tercantum pada poster kegiatan."
+        ),
         "gambar_sampul": "berita_1.jpeg",
-        "tanggal_terbit": wib(2026, 10, 5, 9, 0),
-        "status": "terbit"
-    }
+        "tanggal_terbit": wib(2026, 10, 20, 9, 0),
+        "status": "terbit",
+    },
+    {
+        "judul": "Bazar Pakaian Pantas Pakai Milad Muhammadiyah ke-114 Diserbu Warga",
+        "slug": "bazar-pakaian-pantas-pakai-milad-muhammadiyah-ke-114",
+        "ringkasan": (
+            "Bazar pakaian pantas pakai menjadi salah satu daya tarik rangkaian Milad "
+            "Muhammadiyah ke-114 di Halaman MIM Waru Baki."
+        ),
+        "isi": (
+            "Salah satu fasilitas yang disiapkan panitia Milad Muhammadiyah ke-114 PCM Baki "
+            "adalah Bazar Pakaian Pantas Pakai. Sejak pagi, meja-meja bazar sudah dipenuhi "
+            "tumpukan pakaian berbagai warna yang dikemas rapi.\n\n"
+            "Para petugas yang mengenakan jilbab kuning dan tanda pengenal melayani warga "
+            "yang datang memilih pakaian. Pakaian layak pakai dengan harga terjangkau ini "
+            "diharapkan dapat membantu kebutuhan masyarakat sekaligus menumbuhkan semangat "
+            "berbagi.\n\n"
+            "Antusiasme warga terlihat sejak awal acara. Bazar ini berlangsung bersamaan "
+            "dengan jalan sehat, pengajian, dan Bazar UMKM di lokasi yang sama."
+        ),
+        "gambar_sampul": "berita_2.jpeg",
+        "tanggal_terbit": wib(2026, 11, 8, 14, 0),
+        "status": "terbit",
+    },
+    {
+        "judul": "Pemeriksaan Kesehatan Gratis Warnai Milad Muhammadiyah ke-114 di Baki",
+        "slug": "pemeriksaan-kesehatan-gratis-milad-muhammadiyah-ke-114",
+        "ringkasan": (
+            "Tenaga kesehatan melayani pemeriksaan dan pembagian obat bagi peserta, "
+            "termasuk anggota Kokam, di sela kegiatan Milad Muhammadiyah ke-114."
+        ),
+        "isi": (
+            "Di sela rangkaian Milad Muhammadiyah ke-114, tenaga kesehatan melayani "
+            "pemeriksaan kesehatan dan pembagian obat bagi peserta kegiatan. Layanan "
+            "ditempatkan di selasar gedung MIM Waru Baki agar nyaman dan mudah dijangkau.\n\n"
+            "Sejumlah anggota Kokam (Komando Kesiapsiagaan) berseragam loreng dan baret merah "
+            "tampak antre memperoleh layanan, sementara para petugas menyiapkan obat dan "
+            "mencatat hasil pemeriksaan.\n\n"
+            "Kehadiran layanan kesehatan ini menunjukkan bahwa Milad tidak hanya diisi "
+            "kegiatan keagamaan dan bazar, tetapi juga kepedulian terhadap kesehatan warga."
+        ),
+        "gambar_sampul": "berita_3.jpeg",
+        "tanggal_terbit": wib(2026, 11, 9, 9, 0),
+        "status": "terbit",
+    },
+    {
+        "judul": "Ratusan Jamaah Khusyuk Ikuti Pengajian Milad Muhammadiyah ke-114",
+        "slug": "ratusan-jamaah-ikuti-pengajian-milad-muhammadiyah-ke-114",
+        "ringkasan": (
+            "Ratusan jamaah memadati area pengajian di Halaman MIM Waru Baki dalam "
+            "rangkaian Milad Muhammadiyah ke-114, Ahad, 8 November 2026."
+        ),
+        "isi": (
+            "Setelah jalan sehat, ratusan jamaah dari berbagai kalangan, mulai dari ibu-ibu, "
+            "remaja, hingga anak-anak, duduk lesehan di bawah tenda di Halaman MIM Waru Baki "
+            "untuk mengikuti pengajian Milad Muhammadiyah ke-114 pada Ahad, 8 November 2026.\n\n"
+            "Mubaligh menyampaikan tausiyah dengan penuh semangat, dan jamaah menyimak dengan "
+            "khusyuk. Suasana kebersamaan terasa kuat, sejalan dengan tema Milad "
+            "\"Bersama Satukan Bangsa\".\n\n"
+            "Pengajian ini menjadi puncak kebersamaan warga Muhammadiyah dan masyarakat "
+            "sekitar dalam memperingati usia ke-114 persyarikatan."
+        ),
+        "gambar_sampul": "berita_4.jpeg",
+        "tanggal_terbit": wib(2026, 11, 8, 16, 0),
+        "status": "terbit",
+    },
+        {
+        "judul": "PCM Baki Gelar Rakercab dan Pelatihan SatuMu untuk Perkuat Digitalisasi Data",
+        "slug": "rakercab-dan-pelatihan-satumu-pcm-baki",
+        "ringkasan": (
+            "PCM Baki menggelar Rapat Kerja Cabang yang dirangkaikan dengan pelatihan SatuMu "
+            "di Tawangmangu, guna menyelaraskan program kerja dan memperkuat pengelolaan "
+            "data anggota berbasis digital."
+        ),
+        "isi": (
+            "Pimpinan Cabang Muhammadiyah (PCM) Baki, Sukoharjo, menyelenggarakan Rapat Kerja "
+            "Cabang (Rakercab) yang dirangkaikan dengan pelatihan SatuMu di Villa Tawangmangu, "
+            "mulai Sabtu, 18 April 2026. Kegiatan berlangsung selama dua hari.\n\n"
+            "Peserta berasal dari pimpinan ranting se-Cabang Baki, dengan setiap ranting "
+            "mengirimkan dua perwakilan. Rakercab ini menjadi momentum untuk memperkuat "
+            "program kerja organisasi sekaligus meningkatkan kapasitas kader, terutama dalam "
+            "pengelolaan data secara digital.\n\n"
+            "Pada sesi pelatihan, materi disampaikan oleh Dimas Sanjaya dari tim SatuMu "
+            "Pimpinan Daerah Muhammadiyah Sukoharjo. Ia menjelaskan bahwa SatuMu adalah sistem "
+            "yang dirancang untuk menunjang tertib administrasi serta mengintegrasikan data "
+            "anggota Muhammadiyah secara digital. Menurutnya, dengan sistem ini data anggota "
+            "dapat dikelola lebih sistematis, akurat, dan terpadu.\n\n"
+            "Ketua PCM Baki, M. Mahmudi, menyampaikan bahwa Rakercab bukan sekadar forum "
+            "evaluasi, tetapi juga wadah merumuskan langkah strategis ke depan, menyelaraskan "
+            "program kerja antarranting, dan memperkuat sinergi dakwah di tingkat cabang. Ia "
+            "juga menekankan pentingnya penerapan SatuMu di setiap ranting sebagai bagian dari "
+            "transformasi organisasi yang lebih modern dan berbasis data.\n\n"
+            "Melalui kegiatan ini, para peserta diharapkan dapat menerapkan hasil Rakercab dan "
+            "pelatihan SatuMu di wilayah masing-masing, sehingga organisasi semakin "
+            "profesional, tertata, dan berkemajuan.\n\n"
+            "Sumber: Suara 'Aisyiyah (suaraaisyiyah.id)."
+        ),
+        "gambar_sampul": "berita_5.jpg",
+        "tanggal_terbit": wib(2026, 4, 19, 10, 0),
+        "status": "terbit",
+    },
+        {
+        "judul": "SPPG PCM Baki Siap Beroperasi, Tinggal Menunggu Sertifikat Laik Hygiene dan Sanitasi",
+        "slug": "sppg-pcm-baki-siap-beroperasi-menunggu-slhs",
+        "ringkasan": (
+            "Dapur SPPG milik PCM Baki di Desa Gedongan sudah siap mendukung Program Makan "
+            "Bergizi Gratis dan hanya tinggal menunggu Sertifikat Laik Hygiene dan Sanitasi "
+            "(SLHS) dari Dinas Kesehatan Kabupaten Sukoharjo."
+        ),
+        "isi": (
+            "Dapur Satuan Pelayanan Pemenuhan Gizi (SPPG) milik Pimpinan Cabang Muhammadiyah "
+            "(PCM) Baki dinyatakan siap beroperasi untuk mendukung Program Makan Bergizi Gratis "
+            "(MBG). Seluruh persiapan, mulai dari infrastruktur, tenaga kerja, hingga armada "
+            "distribusi, telah rampung. Operasional resmi tinggal menunggu Sertifikat Laik "
+            "Hygiene dan Sanitasi (SLHS) dari Dinas Kesehatan Kabupaten Sukoharjo.\n\n"
+            "Koordinator pembangunan SPPG PCM Baki, Sahono, menjelaskan bahwa dapur yang berlokasi "
+            "di Dukuh Turusan, Desa Gedongan, Kecamatan Baki ini dibangun dengan cepat sejak "
+            "proposal diajukan ke Badan Gizi Nasional (BGN) pada pertengahan Juli. Waktu "
+            "pembangunan yang diberikan adalah 45 hari, dan pada akhir Agustus bangunan telah "
+            "selesai 100 persen. Setelah itu, pengurus melanjutkan pengadaan peralatan dapur "
+            "dan dua mobil distribusi.\n\n"
+            "Pada awal September, BGN menunjuk seorang ASN sebagai Kepala SPPG PCM Baki, "
+            "didampingi seorang akuntan dan seorang ahli gizi berstatus PPPK. Dapur ini akan "
+            "dijalankan oleh 47 karyawan yang direkrut sesuai juknis BGN dan terbagi dalam "
+            "beberapa divisi, yaitu persiapan masak, produksi, pengemasan, distribusi, dan "
+            "kebersihan. Meski demikian, SPPG masih menunggu transfer anggaran dari negara dan "
+            "penerbitan SLHS. Sahono menyebut pihaknya sudah memperoleh virtual account dari "
+            "BGN, tetapi belum dapat menjalankan distribusi resmi.\n\n"
+            "SPPG ini akan melayani 3.533 penerima manfaat, yaitu siswa PAUD, RA, BA, dan TK di "
+            "17 lembaga (781 siswa), SD/MI di 11 lembaga (1.894 siswa), SMP/MTs (194 siswa), "
+            "serta SMA/MA (100 siswa). Layanan juga menjangkau kelompok rentan, yakni ibu hamil, "
+            "ibu menyusui, dan balita di Desa Gedongan (228 orang) dan Desa Jetis (336 orang).\n\n"
+            "Sahono menegaskan bahwa pengelola menjalankan amanah ini dengan sungguh-sungguh, "
+            "sebagai tanggung jawab dunia dan akhirat. Para karyawan pun mengikuti pengajian "
+            "setiap pekan keempat agar bekerja dengan hati dan diniatkan sebagai ibadah.\n\n"
+            "Ketua PDM Sukoharjo, H. Djumari, mengapresiasi PCM Baki yang dinilai cepat dan tepat "
+            "dalam membangun SPPG. Ia mengingatkan agar kualitas layanan dan makanan tetap "
+            "dijaga sesuai standar BGN karena program ini menyangkut masa depan generasi bangsa. "
+            "Ia juga menegaskan bahwa SPPG berdiri di atas lahan wakaf Muhammadiyah, sesuai "
+            "ketentuan PP Muhammadiyah.\n\n"
+            "Saat ini Muhammadiyah di Kabupaten Sukoharjo memiliki 9 dapur SPPG, dan baru tiga "
+            "yang beroperasi, yakni di Polokarto, Nguter, dan PCM Baki yang segera menyusul "
+            "setelah administrasi selesai. Acara peresmian dihadiri para kepala sekolah penerima "
+            "manfaat serta unsur pemerintahan kecamatan, yaitu Camat Baki, Danramil, dan "
+            "Kapolsek, sebagai bentuk dukungan lintas sektor.\n\n"
+            "Sumber: iNews Sragen (sragen.inews.id)."
+        ),
+        "gambar_sampul": "berita_6.jpg",
+        "tanggal_terbit": wib(2025, 10, 1, 15, 0),
+        "status": "terbit",
+    },
+        {
+        "judul": "Pengukuhan dan Idiopolitor Pimpinan Cabang Muhammadiyah dan 'Aisyiyah Baki Digelar",
+        "slug": "pengukuhan-dan-idiopolitor-pcm-pca-baki",
+        "ringkasan": (
+            "Pimpinan Cabang Muhammadiyah dan 'Aisyiyah Baki, Sukoharjo, mengikuti kegiatan "
+            "pengukuhan dan Idiopolitor (Ideologi dan Politik Organisasi) pada Sabtu, "
+            "18 April 2026."
+        ),
+        "isi": (
+            "Pimpinan Cabang Muhammadiyah dan 'Aisyiyah Baki, Sukoharjo, menggelar kegiatan "
+            "Pengukuhan dan Idiopolitor pada Sabtu, 18 April 2026.\n\n"
+            "Pengukuhan merupakan tahapan penting dalam pelaksanaan amanah organisasi, karena "
+            "menandai dimulainya tugas dan tanggung jawab para pimpinan dalam menjalankan "
+            "roda persyarikatan. Sementara itu, Idiopolitor atau Ideologi dan Politik "
+            "Organisasi adalah materi pembekalan agar para pimpinan memahami ideologi "
+            "Muhammadiyah serta sikap organisasi dalam kehidupan berbangsa dan bernegara.\n\n"
+            "Dalam sesi foto bersama, para pimpinan tampak kompak mengenakan batik hijau khas "
+            "Muhammadiyah, lengkap dengan peci hitam, berdiri di depan spanduk kegiatan. "
+            "Suasana acara berlangsung khidmat dan penuh kebersamaan.\n\n"
+            "Melalui kegiatan ini, para pimpinan diharapkan semakin memahami arah gerak "
+            "organisasi dan siap menjalankan amanah dengan sebaik-baiknya demi kemajuan "
+            "dakwah Muhammadiyah dan 'Aisyiyah di Cabang Baki."
+        ),
+        "gambar_sampul": "berita_7.jpeg",
+        "tanggal_terbit": wib(2026, 4, 18, 20, 0),
+        "status": "terbit",
+    },
 ]
 
 JADWAL_PCM = [
