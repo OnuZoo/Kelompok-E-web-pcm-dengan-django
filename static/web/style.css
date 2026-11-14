@@ -1,13 +1,14 @@
 /* ============================================
    DESAIN DASAR: warna, font, komponen umum
    Ubah warna cukup di blok :root ini
+   REFRENSI MASIH OTW INI BARU SEMENTENTARA
    ============================================ */
 
   /*
 ==========================================================
-PANDUAN MENYAMBUNGKAN HALAMAN KE CSS (BACA SEBELUM MENGEDIT)
+CARANYA MASANG CSS DI HALAMAN WEB INI   
 
-1. SATU FILE CSS UNTUK SEMUA HALAMAN
+1. SATU FILE CSS UNTUK SEMUA HALAMAN KECUALI HEADER DAN FOOTER KARENA SUDAH ADA DI MASING MASING FILE
    Semua gaya ditulis di file ini. base.html sudah memuat
    file ini di semua halaman, jadi:
    - JANGAN menulis link CSS di template halaman.
