@@ -7,6 +7,7 @@
   .timeline { position: relative; padding-left: 1.5rem; border-left: 3px solid var(--bs-success); }
   .timeline-item { position: relative; background: var(--bs-body-bg); border: 1px solid var(--bs-border-color); border-radius: .5rem; padding: 1rem 1.25rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
   .timeline-item::before { content: ""; position: absolute; left: calc(-1.5rem - 8.5px); top: 1.2rem; width: 14px; height: 14px; border-radius: 50%; background: var(--bs-success); border: 3px solid var(--bs-body-bg); }
+  .rata-penuh { text-align: justify; hyphens: auto; }
   @media (min-width: 768px) { .kolom-2 { column-count: 2; } }
 </style>
 {% if profil %}
@@ -25,7 +26,7 @@
   {% if profil.tentang %}
     <section class="mb-4">
       <h2 class="h4">Tentang</h2>
-      <p>{{ profil.tentang|linebreaksbr }}</p>
+      <p class="rata-penuh">{{ profil.tentang|linebreaksbr }}</p>
     </section>
   {% endif %}
 
