@@ -6,9 +6,9 @@
 {% if profil %}
 
   <header class="mb-4">
-    <h1 class="h2">{{ profil.nama }}</h1>
+    <h1 class="profil-judul-halaman">{{ profil.nama }}</h1>
     {% if profil.tagline %}
-      <p class="lead fst-italic">{{ profil.tagline }}</p>
+      <p class="profil-tagline">{{ profil.tagline }}</p>
     {% endif %}
   </header>
 
@@ -18,20 +18,16 @@
 
   {% if profil.tentang %}
     <section class="mb-4">
-      <h2 class="h4">Tentang</h2>
+      <h2 class="profil-judul-seksi">Tentang</h2>
       <p class="profil-rata-penuh">{{ profil.tentang|linebreaksbr }}</p>
     </section>
   {% endif %}
 
   <section class="profil-visimisi mb-5">
-    <header class="profil-visimisi-header">
-      <span class="profil-badge">Arah &amp; Landasan Gerak</span>
-      <h2 class="profil-visimisi-judul">Visi &amp; Misi</h2>
-      <p class="profil-visimisi-sub">Arah dan komitmen gerak {{ profil.nama_singkat }}.</p>
-    </header>
+    <h2 class="profil-judul-seksi">Visi &amp; Misi</h2>
 
     <div class="profil-visi-kartu">
-      <span class="profil-visi-label">Visi</span>
+      <h3 class="profil-judul-sub">Visi</h3>
       {% if profil.visi %}
         <blockquote class="profil-visi-teks">&ldquo;{{ profil.visi|linebreaksbr }}&rdquo;</blockquote>
       {% else %}
@@ -41,7 +37,7 @@
 
     <div class="profil-misi-kartu">
       <div class="profil-misi-header">
-        <h3 class="profil-misi-judul">Misi</h3>
+        <h3 class="profil-judul-sub">Misi</h3>
         {% if profil.daftar_misi %}
           <p class="profil-misi-sub">{{ profil.daftar_misi|length }} butir misi</p>
         {% endif %}
@@ -63,18 +59,18 @@
 
   {% if profil.daftar_sejarah %}
     <section class="mb-5">
-      <h2 class="h4 mb-4">Sejarah</h2>
+      <h2 class="profil-judul-seksi">Sejarah</h2>
       <div class="profil-timeline">
         {% for periode in profil.daftar_sejarah %}
           <div class="profil-timeline-item">
-            <h3 class="h6 fw-bold text-success mb-2">{{ periode.judul }}</h3>
+            <h3 class="profil-judul-sub">{{ periode.judul }}</h3>
             {% for el in periode.isi %}
               {% if el.jenis == "daftar" %}
                 <ul class="mb-2 {% if el.butir|length > 8 %}profil-kolom-2{% endif %}">
                   {% for b in el.butir %}<li>{{ b }}</li>{% endfor %}
                 </ul>
               {% elif el.jenis == "label" %}
-                <p class="fw-semibold mb-1">{{ el.teks }}</p>
+                <p class="profil-label">{{ el.teks }}</p>
               {% else %}
                 <p class="mb-2">{{ el.teks }}</p>
               {% endif %}
