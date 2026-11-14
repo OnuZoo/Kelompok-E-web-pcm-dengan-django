@@ -3,6 +3,52 @@
    Ubah warna cukup di blok :root ini
    ============================================ */
 
+  /*
+==========================================================
+PANDUAN MENYAMBUNGKAN HALAMAN KE CSS (BACA SEBELUM MENGEDIT)
+
+1. SATU FILE CSS UNTUK SEMUA HALAMAN
+   Semua gaya ditulis di file ini. base.html sudah memuat
+   file ini di semua halaman, jadi:
+   - JANGAN menulis link CSS di template halaman.
+   - JANGAN menulis blok style di template halaman.
+   - JANGAN memakai atribut style pada tag HTML.
+
+2. TIAP HALAMAN PUNYA AWALAN CLASS SENDIRI
+   kontak-, pimpinan-, beranda-, ranting-, amal-usaha-,
+   berita-, agenda-, unduhan-, profil-.
+
+   Contoh: class ranting-tabel, class berita-judul.
+
+3. TULIS DI BAGIAN MILIK HALAMAN SENDIRI
+   Tambahkan di PALING BAWAH file dengan penanda:
+
+   ===== NAMA HALAMAN (nama-file.html) =====
+   ... aturan CSS ...
+   ===== AKHIR NAMA HALAMAN =====
+
+   Jangan mengubah bagian orang lain.
+
+4. PAKAI VARIABEL WARNA, JANGAN KODE HEX
+   var(--pcm-primary)    hijau utama
+   var(--pcm-secondary)  hijau gelap
+   var(--pcm-accent)     emas
+   var(--pcm-section)    latar abu-hijau muda
+   var(--pcm-text)       teks utama
+   var(--pcm-muted)      teks sekunder
+   var(--pcm-border)     garis tepi
+   var(--pcm-radius)     sudut bulat
+
+5. SETELAH MENGEDIT
+   - Simpan dengan Ctrl+S.
+   - Buka halaman dan tekan Ctrl+F5.
+   - Jika tidak berubah, buka:
+     http://127.0.0.1:8000/static/web/style.css
+   - Cari nama class yang dibuat.
+
+==========================================================
+*/
+
 :root {
   --pcm-primary: #006B3F;
   --pcm-secondary: #004D35;
