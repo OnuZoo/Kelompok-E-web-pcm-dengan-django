@@ -1,4 +1,85 @@
 /* ============================================
+   DESAIN DASAR: warna, font, komponen umum
+   Ubah warna cukup di blok :root ini
+   ============================================ */
+
+:root {
+  --pcm-primary: #006B3F;
+  --pcm-secondary: #004D35;
+  --pcm-accent: #D9A441;
+  --pcm-section: #F5F7F5;
+  --pcm-text: #202820;
+  --pcm-muted: #68736B;
+  --pcm-border: #E5EAE6;
+  --pcm-radius: 12px;
+  --pcm-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+  --pcm-shadow-hover: 0 8px 22px rgba(0, 107, 63, .15);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--pcm-text);
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+a { color: var(--pcm-primary); }
+a:hover { color: var(--pcm-secondary); }
+
+/* Samakan hijau Bootstrap dengan hijau Muhammadiyah */
+.bg-success { background-color: var(--pcm-primary) !important; }
+.text-success { color: var(--pcm-primary) !important; }
+
+.btn-success {
+  --bs-btn-bg: var(--pcm-primary);
+  --bs-btn-border-color: var(--pcm-primary);
+  --bs-btn-hover-bg: var(--pcm-secondary);
+  --bs-btn-hover-border-color: var(--pcm-secondary);
+  --bs-btn-active-bg: var(--pcm-secondary);
+  --bs-btn-active-border-color: var(--pcm-secondary);
+  transition: background-color .2s ease, transform .2s ease;
+}
+.btn-success:hover { transform: translateY(-1px); }
+
+/* Kartu */
+.card {
+  border-color: var(--pcm-border);
+  border-radius: var(--pcm-radius);
+  box-shadow: var(--pcm-shadow);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--pcm-shadow-hover);
+}
+.card-img-top {
+  object-fit: cover;
+  height: 180px;
+  border-radius: var(--pcm-radius) var(--pcm-radius) 0 0;
+}
+
+/* Tombol bawaan browser (mis. tombol Kirim) ikut gaya hijau */
+button[type="submit"] { font-family: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+/* ============ AKHIR DESAIN DASAR ============ */
+
+
+
+
+
+/* ============================================
    KONTAK (kontak.html): milik [nama Anda]
    Semua class diawali "kontak-"
    ============================================ */
@@ -189,3 +270,142 @@
 }
 
 /* ============ AKHIR PIMPINAN ============ */
+
+
+/* ============================================
+   BERANDA (home.html)
+   Semua class diawali "beranda-"
+   ============================================ */
+
+/* Hero */
+.beranda-hero {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: var(--pcm-radius);
+  color: #fff;
+  background: linear-gradient(135deg, var(--pcm-primary), var(--pcm-secondary));
+}
+
+.beranda-hero-gambar {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Lapisan hijau gelap agar tulisan terbaca di atas foto */
+.beranda-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(0, 77, 53, .92) 0%,
+    rgba(0, 77, 53, .50) 55%,
+    rgba(0, 77, 53, .15) 100%);
+}
+
+.beranda-hero-isi {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding: 2rem;
+}
+
+.beranda-hero-judul {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.beranda-hero-tagline {
+  color: rgba(255, 255, 255, .9);
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+  padding-left: .75rem;
+  border-left: 3px solid var(--pcm-accent);
+}
+
+.beranda-hero-aksi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+
+/* Kartu statistik */
+.beranda-statistik .card {
+  border-top: 4px solid var(--pcm-accent);
+}
+
+.beranda-stat-angka {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--pcm-primary);
+}
+
+.beranda-stat-label {
+  margin-top: .25rem;
+  color: var(--pcm-muted);
+  font-size: .95rem;
+}
+
+/* Judul tiap seksi */
+.beranda-judul-seksi {
+  position: relative;
+  margin-bottom: 1.25rem;
+  padding-bottom: .5rem;
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--pcm-border);
+}
+
+.beranda-judul-seksi::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 64px;
+  height: 2px;
+  background: var(--pcm-primary);
+}
+
+/* Agenda */
+.beranda-agenda {
+  border-radius: var(--pcm-radius);
+  overflow: hidden;
+  box-shadow: var(--pcm-shadow);
+}
+
+.beranda-agenda-item {
+  padding: .9rem 1.1rem;
+  border-left: 4px solid var(--pcm-primary);
+  transition: background-color .2s ease;
+}
+
+.beranda-agenda-item:hover {
+  background: var(--pcm-section);
+}
+
+.beranda-agenda-nama {
+  font-weight: 600;
+}
+
+.beranda-agenda-meta {
+  color: var(--pcm-muted);
+  font-size: .85rem;
+}
+
+/* Layar HP */
+@media (max-width: 576px) {
+  .beranda-hero { min-height: 260px; }
+  .beranda-hero-isi { padding: 1.25rem; }
+  .beranda-hero-judul { font-size: 1.6rem; }
+  .beranda-hero-aksi .btn { flex: 1 1 100%; }
+}
+
+/* ============ AKHIR BERANDA ============ */
