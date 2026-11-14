@@ -248,12 +248,76 @@ RANTING = [
 
 AMAL_USAHA = [
     {
-        "nama": "Amal Usaha 1",
+        "nama": "MTs Muhammadiyah Waru",
         "bidang": "pendidikan",
-        "deskripsi": "Deskripsi Amal Usaha 1",
-        "alamat": "Alamat Amal Usaha 1",
-        "gambar": "amal_usaha_1.jpeg"
-    }
+        "deskripsi": """
+        MTs Muhammadiyah Waru Baki merupakan lembaga pendidikan Islam tingkat menengah pertama yang berkomitmen
+        menyelenggarakan pendidikan dengan mengintegrasikan ilmu pengetahuan umum dan nilai-nilai keislaman.
+        Lembaga ini berperan dalam membentuk peserta didik yang berpengetahuan, berakhlak mulia, dan memiliki landasan keagamaan yang kuat.
+        """,
+        "alamat": "CQ79+45H, Jl. Waru-Gentan, Dusun III, Waru, Kec. Baki, Kabupaten Sukoharjo, Jawa Tengah 57556",
+        "gambar": "mts_muhammadiyah_waru.png"
+    },
+    
+    {
+        "nama": "MI Muhammadiyah Waru",
+        "bidang": "pendidikan",
+        "deskripsi": """
+        MI Muhammadiyah Waru Baki merupakan lembaga pendidikan dasar Islam yang berperan dalam memberikan pendidikan
+        dan pembinaan sejak usia dini. Melalui pembelajaran yang menggabungkan pengetahuan umum dan pendidikan agama Islam,
+        lembaga ini berupaya membangun fondasi ilmu pengetahuan, karakter, serta akhlak peserta didik.
+        """,
+        "alamat": "Jl. Waru-Gentan, Dusun III, Waru, Kec. Baki, Kabupaten Sukoharjo, Jawa Tengah 57556",
+        "gambar": "mi_muhammadiyah_waru.png"
+    },
+    
+    {
+        "nama": "MI Muhammadiyah Siwal",
+        "bidang": "pendidikan",
+        "deskripsi": """
+        MI Muhammadiyah Siwal Baki merupakan salah satu lembaga pendidikan dasar Muhammadiyah di wilayah Baki
+        yang berfokus pada pengembangan pendidikan berbasis nilai-nilai Islam. Keberadaannya menjadi bagian
+        dari upaya Muhammadiyah dalam memperluas akses pendidikan serta membentuk generasi yang berilmu, mandiri, dan berkarakter Islami.
+        """,
+        "alamat": "Jalan Blotan No.2, Dusun II, Siwal, Kec. Baki, Kabupaten Sukoharjo, Jawa Tengah 57556",
+        "gambar": "mi_muhammadiyah_siwal.png"
+    },
+    
+    {
+        "nama": "MI Muhammadiyah Gondang",
+        "bidang": "pendidikan",
+        "deskripsi": """
+        MI Muhammadiyah Gondang Baki merupakan lembaga pendidikan tingkat dasar yang turut berkontribusi dalam penyelenggaraan pendidikan
+        Islam di lingkungan masyarakat. Lembaga ini berperan dalam membekali peserta didik dengan pengetahuan, keterampilan dasar,
+        serta nilai-nilai keislaman sebagai bekal untuk melanjutkan pendidikan ke jenjang berikutnya.
+        """,
+        "alamat": "Gondang No.6, Rw. VI, Bakipandeyan, Kec. Baki, Kabupaten Sukoharjo, Jawa Tengah 57556",
+        "gambar": "mi_muhammadiyah_gondang.png"
+    },
+    
+    {
+        "nama": "MI Muhammadiyah Syafaat Jetis",
+        "bidang": "pendidikan",
+        "deskripsi": """
+        MI Muhammadiyah Syafaat Jetis Baki merupakan lembaga pendidikan dasar Muhammadiyah yang berkomitmen memberikan
+        pendidikan dengan berlandaskan ajaran Islam. Lembaga ini menjadi salah satu sarana dakwah Muhammadiyah
+        melalui pendidikan, dengan tujuan membentuk peserta didik yang memiliki pengetahuan, kepribadian baik, serta pemahaman agama yang kuat.
+        """,
+        "alamat": "Daleman RT 01/04, Rw. IV, Jetis, Baki, Sukoharjo Regency, Central Java 57556",
+        "gambar": "mi_muhammadiyah_syafaat_jetis.png"
+    },
+    
+    {
+        "nama": "Satuan Pelayanan pemenuhan Gizi (SPPG) PCM Baki",
+        "bidang": "ekonomi",
+        "deskripsi": """
+        Satuan Pelayanan pemenuhan Gizi (SPPG) PCM Baki merupakan unit layanan yang bertugas dalam menyelenggarakan
+        program pemenuhan gizi bagi anggota PCM dan masyarakat sekitar. Program ini berfokus pada peningkatan kesehatan
+        dan nutrisi masyarakat, terutama anak-anak dan ibu hamil.
+        """,
+        "alamat": "Daleman RT 01/04, Rw. IV, Jetis, Baki, Sukoharjo Regency, Central Java 57556",
+        "gambar": "sppg_pcm_baki.png"
+    },
 ]
 
 BERITA = [
