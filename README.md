@@ -9,12 +9,12 @@ Setiap kelompok memilih satu **Pimpinan Cabang Muhammadiyah (PCM) yang benar-ben
 
 Anda membangun website tersebut dengan **Django**, lalu:
 
-| Bagian | Isi | Bobot |
-|---|---|---|
-| [A](#bagian-a--aplikasi-django) | Aplikasi Django dengan fitur-fitur utama website PCM dan data riil PCM pilihan Anda | 50 |
-| [B](#bagian-b--docker) | Menjalankan aplikasi dan database PostgreSQL dengan Docker | 15 |
-| [C](#bagian-c--deployment) | Deployment ke **Vercel**, **Render**, atau **Railway**, dengan database **Supabase** atau **Neon** | 20 |
-| [D](#yang-dikumpulkan) | Dokumentasi, video demo, dan **presentasi di kelas** | 15 |
+| Bagian                          | Isi                                                                                                | Bobot |
+| ------------------------------- | -------------------------------------------------------------------------------------------------- | ----- |
+| [A](#bagian-a--aplikasi-django) | Aplikasi Django dengan fitur-fitur utama website PCM dan data riil PCM pilihan Anda                | 50    |
+| [B](#bagian-b--docker)          | Menjalankan aplikasi dan database PostgreSQL dengan Docker                                         | 15    |
+| [C](#bagian-c--deployment)      | Deployment ke **Vercel**, **Render**, atau **Railway**, dengan database **Supabase** atau **Neon** | 20    |
+| [D](#yang-dikumpulkan)          | Dokumentasi, video demo, dan **presentasi di kelas**                                               | 15    |
 
 Kerjakan berurutan: A dulu sampai berjalan di laptop, lalu B, lalu C.
 
@@ -34,9 +34,9 @@ Kerjakan berurutan: A dulu sampai berjalan di laptop, lalu B, lalu C.
 4. **Minta izin** kepada pengurus PCM jika memakai foto atau data yang belum dipublikasikan, dan sebutkan nama pengurus yang memberi izin di README.
 5. **Lindungi data pribadi.** Hanya tampilkan data yang memang sudah dipublikasikan PCM atau yang diizinkan. **Jangan** menampilkan nomor HP pribadi, alamat rumah, NIK, atau data pribadi lain para pengurus tanpa izin. Untuk kontak, pakai kontak resmi sekretariat.
 6. **Jika suatu data tidak bisa didapat**, kosongkan atau tulis "belum tersedia". **Jangan mengarang** data dan menyajikannya seolah-olah riil.
-7. **Pasang keterangan di footer website**, mis. *"Website ini dibuat untuk tugas kuliah Pemrograman Web berbasis Framework, bukan website resmi PCM …"*. Ini wajib, karena website Anda akan online dengan nama organisasi yang benar-benar ada. **Pengecualian:** jika website dipakai di domain resmi PCM (lihat [bonus](#rubrik-penilaian)) dan pengurus menyetujuinya **secara tertulis**, keterangan ini boleh diganti menjadi *"Dikembangkan oleh mahasiswa … dalam tugas kuliah Pemrograman Web berbasis Framework"*. Sertakan bukti persetujuannya di README repo.
+7. **Pasang keterangan di footer website**, mis. _"Website ini dibuat untuk tugas kuliah Pemrograman Web berbasis Framework, bukan website resmi PCM …"_. Ini wajib, karena website Anda akan online dengan nama organisasi yang benar-benar ada. **Pengecualian:** jika website dipakai di domain resmi PCM (lihat [bonus](#rubrik-penilaian)) dan pengurus menyetujuinya **secara tertulis**, keterangan ini boleh diganti menjadi _"Dikembangkan oleh mahasiswa … dalam tugas kuliah Pemrograman Web berbasis Framework"_. Sertakan bukti persetujuannya di README repo.
 
-**Logo:** pakai logo Muhammadiyah dari [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Muhammadiyah.svg) **tanpa diubah**. Lisensinya CC BY-SA 4.0, jadi wajib cantumkan atribusi di footer: *"Logo Muhammadiyah: K. H. Siradj Dahlan, vektor oleh Hibensis, via Wikimedia Commons, lisensi CC BY-SA 4.0"*. Foto dari sumber lain juga wajib diberi kredit.
+**Logo:** pakai logo Muhammadiyah dari [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Muhammadiyah.svg) **tanpa diubah**. Lisensinya CC BY-SA 4.0, jadi wajib cantumkan atribusi di footer: _"Logo Muhammadiyah: K. H. Siradj Dahlan, vektor oleh Hibensis, via Wikimedia Commons, lisensi CC BY-SA 4.0"_. Foto dari sumber lain juga wajib diberi kredit.
 
 ---
 
@@ -46,34 +46,35 @@ Kerjakan berurutan: A dulu sampai berjalan di laptop, lalu B, lalu C.
 
 Buat model berikut (nama model dan field boleh dalam bahasa Indonesia, mis. `judul`, asalkan konsisten):
 
-| Model | Isi minimal |
-|---|---|
+| Model                 | Isi minimal                                                                                                                                                                                        |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Profil organisasi** | nama, nama singkat, tagline, tentang, sejarah, visi, misi (satu misi per baris), alamat sekretariat, telepon, email, jumlah anggota ber-KTAM, gambar utama (hero). Hanya boleh ada **satu** baris. |
-| **Pimpinan** | nama, jabatan, periode (mis. 2022–2027), foto, urutan tampil |
-| **Ranting** | nama ranting, ketua, alamat, telepon (opsional; hanya kontak resmi) |
-| **Amal usaha** | nama, bidang (*pilihan*: pendidikan, kesehatan, sosial, ekonomi), deskripsi, alamat, gambar |
-| **Berita** | judul, slug (unik, dibuat otomatis dari judul), ringkasan, isi, gambar sampul, tanggal terbit, status terbit (draf/terbit) |
-| **Agenda** | nama kegiatan, waktu mulai, tempat, keterangan |
-| **Dokumen** | judul, keterangan, berkas (PDF dsb.), tanggal unggah |
-| **Pesan masuk** | nama, email, subjek, pesan, waktu kirim, sudah dibaca |
-| **Tautan terkait** | nama, URL, urutan |
+| **Pimpinan**          | nama, jabatan, periode (mis. 2022–2027), foto, urutan tampil                                                                                                                                       |
+| **Ranting**           | nama ranting, ketua, alamat, telepon (opsional; hanya kontak resmi)                                                                                                                                |
+| **Amal usaha**        | nama, bidang (_pilihan_: pendidikan, kesehatan, sosial, ekonomi), deskripsi, alamat, gambar                                                                                                        |
+| **Berita**            | judul, slug (unik, dibuat otomatis dari judul), ringkasan, isi, gambar sampul, tanggal terbit, status terbit (draf/terbit)                                                                         |
+| **Agenda**            | nama kegiatan, waktu mulai, tempat, keterangan                                                                                                                                                     |
+| **Dokumen**           | judul, keterangan, berkas (PDF dsb.), tanggal unggah                                                                                                                                               |
+| **Pesan masuk**       | nama, email, subjek, pesan, waktu kirim, sudah dibaca                                                                                                                                              |
+| **Tautan terkait**    | nama, URL, urutan                                                                                                                                                                                  |
 
 ### A2. Halaman publik
 
-| URL | Isi |
-|---|---|
-| `/` | **Beranda:** hero dengan gambar utama, kartu statistik (jumlah ranting, jumlah amal usaha, anggota ber-KTAM), 3 berita terbaru, 3 agenda mendatang |
-| `/profil/` | Tentang, sejarah, visi, dan misi (misi tampil sebagai daftar bernomor) |
-| `/pimpinan/` | Kartu pimpinan dengan foto, jabatan, dan periode, diurutkan sesuai field urutan |
-| `/ranting/` | Tabel ranting |
-| `/amal-usaha/` | Amal usaha **dikelompokkan per bidang** |
-| `/berita/` | Daftar berita yang sudah terbit, **6 per halaman** dengan navigasi halaman |
-| `/berita/<slug>/` | Detail berita beserta beberapa berita lainnya. Berita draf atau bertanggal di masa depan harus **404** |
-| `/agenda/` | Agenda **akan datang** dan **sudah terlaksana**, dipisah |
-| `/unduhan/` | Daftar dokumen dengan tombol unduh |
-| `/kontak/` | Alamat sekretariat dan **formulir kontak**. Pesan tersimpan ke database, lalu muncul pesan sukses |
+| URL               | Isi                                                                                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`               | **Beranda:** hero dengan gambar utama, kartu statistik (jumlah ranting, jumlah amal usaha, anggota ber-KTAM), 3 berita terbaru, 3 agenda mendatang |
+| `/profil/`        | Tentang, sejarah, visi, dan misi (misi tampil sebagai daftar bernomor)                                                                             |
+| `/pimpinan/`      | Kartu pimpinan dengan foto, jabatan, dan periode, diurutkan sesuai field urutan                                                                    |
+| `/ranting/`       | Tabel ranting                                                                                                                                      |
+| `/amal-usaha/`    | Amal usaha **dikelompokkan per bidang**                                                                                                            |
+| `/berita/`        | Daftar berita yang sudah terbit, **6 per halaman** dengan navigasi halaman                                                                         |
+| `/berita/<slug>/` | Detail berita beserta beberapa berita lainnya. Berita draf atau bertanggal di masa depan harus **404**                                             |
+| `/agenda/`        | Agenda **akan datang** dan **sudah terlaksana**, dipisah                                                                                           |
+| `/unduhan/`       | Daftar dokumen dengan tombol unduh                                                                                                                 |
+| `/kontak/`        | Alamat sekretariat dan **formulir kontak**. Pesan tersimpan ke database, lalu muncul pesan sukses                                                  |
 
 Semua halaman memakai satu **template dasar** dengan:
+
 - header berisi logo, nama singkat, tagline, dan menu navigasi yang **responsif** (tetap rapi di layar HP);
 - footer berisi nama, alamat, dan kontak resmi PCM, bagian **"Tautan Persyarikatan"** yang mengambil data dari model Tautan terkait, keterangan tugas kuliah, serta atribusi logo dan foto.
 
@@ -104,13 +105,13 @@ Isi Tautan terkait dengan website resmi **PDM dan PWM tempat PCM Anda berada**, 
 
 Pengaturan yang berbeda antara laptop dan server **tidak boleh ditulis langsung di `settings.py`**. Bacalah dari environment variable (boleh dibantu `python-dotenv` atau `django-environ`):
 
-| Variabel | Keterangan |
-|---|---|
-| `SECRET_KEY` | wajib di produksi; jangan pernah di-commit |
-| `DEBUG` | `True` di laptop, **`False` di produksi** |
-| `ALLOWED_HOSTS` | daftar domain, dipisah koma |
-| `CSRF_TRUSTED_ORIGINS` | domain produksi **lengkap dengan `https://`** |
-| `DATABASE_URL` | kosong → SQLite; berisi URL PostgreSQL → database cloud (pakai `dj-database-url`) |
+| Variabel               | Keterangan                                                                        |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| `SECRET_KEY`           | wajib di produksi; jangan pernah di-commit                                        |
+| `DEBUG`                | `True` di laptop, **`False` di produksi**                                         |
+| `ALLOWED_HOSTS`        | daftar domain, dipisah koma                                                       |
+| `CSRF_TRUSTED_ORIGINS` | domain produksi **lengkap dengan `https://`**                                     |
+| `DATABASE_URL`         | kosong → SQLite; berisi URL PostgreSQL → database cloud (pakai `dj-database-url`) |
 
 Sertakan file `.env.example` berisi nama-nama variabel **tanpa nilai rahasia**, dan masukkan `.env` ke `.gitignore`.
 
@@ -153,18 +154,18 @@ docker compose up --build
 
 Pilih **satu platform** dan **satu database**:
 
-| Platform | Catatan penting |
-|---|---|
-| [**Vercel**](https://vercel.com/docs/frameworks/full-stack/django) | Mendukung Django tanpa konfigurasi tambahan; jika `STATIC_ROOT` diatur, `collectstatic` berjalan otomatis saat build dan file statis disajikan lewat CDN. Aplikasi berjalan sebagai *function*: filesystem tidak permanen dan ukuran request maksimal **4,5 MB**, jadi file unggahan wajib disimpan di object storage. Tidak ada langkah "release", jadi `migrate` dijalankan dari laptop dengan `DATABASE_URL` produksi. |
-| [**Render**](https://render.com/docs/deploy-django) | Web Service dengan *build command* (install, `collectstatic`, `migrate`) dan *start command* Gunicorn, atau langsung memakai `Dockerfile` dari Bagian B. Instance gratis "tidur" setelah tidak ada akses, sehingga request pertama lambat. Disk tidak permanen. |
-| [**Railway**](https://docs.railway.com/guides/django) | Bisa langsung memakai `Dockerfile` dari Bagian B. Domain publik dibuat di menu *Networking*. Cek ketentuan kredit/free trial terbaru sebelum mulai. |
+| Platform                                                           | Catatan penting                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [**Vercel**](https://vercel.com/docs/frameworks/full-stack/django) | Mendukung Django tanpa konfigurasi tambahan; jika `STATIC_ROOT` diatur, `collectstatic` berjalan otomatis saat build dan file statis disajikan lewat CDN. Aplikasi berjalan sebagai _function_: filesystem tidak permanen dan ukuran request maksimal **4,5 MB**, jadi file unggahan wajib disimpan di object storage. Tidak ada langkah "release", jadi `migrate` dijalankan dari laptop dengan `DATABASE_URL` produksi. |
+| [**Render**](https://render.com/docs/deploy-django)                | Web Service dengan _build command_ (install, `collectstatic`, `migrate`) dan _start command_ Gunicorn, atau langsung memakai `Dockerfile` dari Bagian B. Instance gratis "tidur" setelah tidak ada akses, sehingga request pertama lambat. Disk tidak permanen.                                                                                                                                                           |
+| [**Railway**](https://docs.railway.com/guides/django)              | Bisa langsung memakai `Dockerfile` dari Bagian B. Domain publik dibuat di menu _Networking_. Cek ketentuan kredit/free trial terbaru sebelum mulai.                                                                                                                                                                                                                                                                       |
 
-| Database | Catatan penting |
-|---|---|
-| [**Supabase**](https://supabase.com/docs/guides/database/connecting-to-postgres) | Ambil connection string dari tombol *Connect* di dashboard. Koneksi *direct* hanya IPv6; jika jaringan Anda atau platform tidak mendukung IPv6, pakai **Session pooler**. Untuk Vercel (serverless), pakai **Transaction pooler** (port 6543). Proyek gratis bisa dijeda jika lama tidak dipakai. |
-| [**Neon**](https://neon.com/docs/guides/django) | Pakai connection string dengan `sslmode=require`. Ada pilihan *pooled* (host berakhiran `-pooler`) dan *direct*. Neon menyarankan koneksi **direct** untuk menjalankan migrasi. |
+| Database                                                                         | Catatan penting                                                                                                                                                                                                                                                                                   |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [**Supabase**](https://supabase.com/docs/guides/database/connecting-to-postgres) | Ambil connection string dari tombol _Connect_ di dashboard. Koneksi _direct_ hanya IPv6; jika jaringan Anda atau platform tidak mendukung IPv6, pakai **Session pooler**. Untuk Vercel (serverless), pakai **Transaction pooler** (port 6543). Proyek gratis bisa dijeda jika lama tidak dipakai. |
+| [**Neon**](https://neon.com/docs/guides/django)                                  | Pakai connection string dengan `sslmode=require`. Ada pilihan _pooled_ (host berakhiran `-pooler`) dan _direct_. Neon menyarankan koneksi **direct** untuk menjalankan migrasi.                                                                                                                   |
 
-Jika memakai connection pooler mode *transaction* (Supabase port 6543 atau Neon pooled), tambahkan `"DISABLE_SERVER_SIDE_CURSORS": True` pada pengaturan database dan set `CONN_MAX_AGE` ke `0`. Baca bagian *Transaction pooling and server-side cursors* di [dokumentasi database Django](https://docs.djangoproject.com/en/stable/ref/databases/#transaction-pooling-and-server-side-cursors).
+Jika memakai connection pooler mode _transaction_ (Supabase port 6543 atau Neon pooled), tambahkan `"DISABLE_SERVER_SIDE_CURSORS": True` pada pengaturan database dan set `CONN_MAX_AGE` ke `0`. Baca bagian _Transaction pooling and server-side cursors_ di [dokumentasi database Django](https://docs.djangoproject.com/en/stable/ref/databases/#transaction-pooling-and-server-side-cursors).
 
 ### Masalah file unggahan
 
@@ -178,7 +179,7 @@ Semua platform di atas **tidak menyimpan file secara permanen**: gambar yang diu
 - [ ] Database produksi adalah PostgreSQL di Supabase/Neon, berisi data riil dari `seed_pcm`
 - [ ] Login admin berhasil dan halaman admin bergaya
 - [ ] Gambar yang diunggah lewat admin **masih ada setelah redeploy**
-- [ ] Pesan dari formulir kontak tersimpan dan terlihat di *table editor* Supabase/Neon
+- [ ] Pesan dari formulir kontak tersimpan dan terlihat di _table editor_ Supabase/Neon
 
 ---
 
@@ -195,7 +196,7 @@ Paling lambat **pekan ke-8, 17 November 2026**, melalui Google Classroom:
    - daftar environment variable yang dibutuhkan (rujuk ke `.env.example`);
    - akun admin demo untuk penilaian (boleh dikirim terpisah, jangan di-commit).
 2. **URL produksi** yang tetap menyala sampai penilaian selesai.
-3. **Video demo** 5–10 menit (YouTube *unlisted* atau Google Drive) yang memperlihatkan:
+3. **Video demo** 5–10 menit (YouTube _unlisted_ atau Google Drive) yang memperlihatkan:
    - semua halaman publik di versi produksi, termasuk tampilan di layar HP;
    - menambah berita bergambar dari admin, lalu melihatnya di beranda;
    - mengirim pesan kontak, lalu melihatnya di admin dan di dashboard database;
@@ -216,40 +217,40 @@ Setiap kelompok mempresentasikan hasilnya di kelas pada **pekan ke-8**, **5 meni
 
 ## Rubrik penilaian
 
-| Komponen | Poin | Nilai penuh jika |
-|---|---|---|
-| **A. Halaman publik & data riil** | 20 | Semua halaman di A2 ada, rapi dan responsif; isinya data riil PCM yang lengkap, bersumber, dan tanpa data pribadi yang tidak diizinkan |
-| **A. Admin** | 10 | Semua ketentuan A3 terpenuhi |
-| **A. Konsep Django** | 15 | Semua poin A4 ada di kode, dan test lulus |
-| **A. Konfigurasi** | 5 | Ketentuan A5 terpenuhi; `.env.example` lengkap; tidak ada rahasia di repo |
-| **B. Docker** | 15 | Semua cek di Bagian B lulus dari hasil clone yang bersih |
-| **C. Deployment** | 20 | Semua syarat deployment terpenuhi (media permanen bernilai 5 poin) |
-| **D. Dokumentasi & video** | 5 | README repo lengkap (termasuk sumber data dan kontribusi), video jelas dan mencakup semua poin |
-| **D. Presentasi** | 10 | Demo produksi berjalan lancar, penjelasan arsitektur tepat, semua anggota menguasai materi saat tanya jawab |
+| Komponen                          | Poin | Nilai penuh jika                                                                                                                       |
+| --------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **A. Halaman publik & data riil** | 20   | Semua halaman di A2 ada, rapi dan responsif; isinya data riil PCM yang lengkap, bersumber, dan tanpa data pribadi yang tidak diizinkan |
+| **A. Admin**                      | 10   | Semua ketentuan A3 terpenuhi                                                                                                           |
+| **A. Konsep Django**              | 15   | Semua poin A4 ada di kode, dan test lulus                                                                                              |
+| **A. Konfigurasi**                | 5    | Ketentuan A5 terpenuhi; `.env.example` lengkap; tidak ada rahasia di repo                                                              |
+| **B. Docker**                     | 15   | Semua cek di Bagian B lulus dari hasil clone yang bersih                                                                               |
+| **C. Deployment**                 | 20   | Semua syarat deployment terpenuhi (media permanen bernilai 5 poin)                                                                     |
+| **D. Dokumentasi & video**        | 5    | README repo lengkap (termasuk sumber data dan kontribusi), video jelas dan mencakup semua poin                                         |
+| **D. Presentasi**                 | 10   | Demo produksi berjalan lancar, penjelasan arsitektur tepat, semua anggota menguasai materi saat tanya jawab                            |
 
 **Bonus** (maks +10, nilai akhir maks 100):
 
-| Tugas | Poin |
-|---|---|
-| GitHub Actions yang menjalankan test setiap push | +4 |
-| Fitur pencarian berita | +3 |
-| Custom domain untuk URL produksi | +3 |
-| **Domain resmi yang diminta pengurus PCM** (mis. `pcmkartasura.id` atau semisalnya) dipakai sebagai URL produksi, dengan HTTPS | +5 |
-| Pengurus PCM menyatakan website layak dipakai (sertakan bukti, mis. surat atau pesan) | +3 |
+| Tugas                                                                                                                          | Poin |
+| ------------------------------------------------------------------------------------------------------------------------------ | ---- |
+| GitHub Actions yang menjalankan test setiap push                                                                               | +4   |
+| Fitur pencarian berita                                                                                                         | +3   |
+| Custom domain untuk URL produksi                                                                                               | +3   |
+| **Domain resmi yang diminta pengurus PCM** (mis. `pcmkartasura.id` atau semisalnya) dipakai sebagai URL produksi, dengan HTTPS | +5   |
+| Pengurus PCM menyatakan website layak dipakai (sertakan bukti, mis. surat atau pesan)                                          | +3   |
 
 Untuk bonus domain resmi: domain harus **didaftarkan atas nama PCM** (bukan atas nama mahasiswa) dan dipilih atau disetujui pengurus.
 
 **Pengurangan:**
 
-| Masalah | Poin |
-|---|---|
-| `SECRET_KEY`, password database, atau kunci storage ada di repo (termasuk di riwayat commit) | −10 |
-| Data dikarang lalu disajikan seolah-olah riil, atau data pribadi ditampilkan tanpa izin | −10 |
-| `DEBUG=True` di produksi | −5 |
-| Keterangan "tugas kuliah, bukan website resmi" (atau penggantinya yang disetujui pengurus, lihat poin 7 di [Memilih PCM](#memilih-pcm-dan-mengumpulkan-data)) atau atribusi logo/foto tidak ada | −5 |
-| Anggota tanpa commit atau kontribusi yang tercatat | nilai anggota tersebut dikurangi, sesuai pertimbangan dosen |
-| Terlambat | sesuai kebijakan mata kuliah |
-| Kode sama dengan kelompok lain | nilai 0 untuk semua kelompok yang terlibat |
+| Masalah                                                                                                                                                                                         | Poin                                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `SECRET_KEY`, password database, atau kunci storage ada di repo (termasuk di riwayat commit)                                                                                                    | −10                                                         |
+| Data dikarang lalu disajikan seolah-olah riil, atau data pribadi ditampilkan tanpa izin                                                                                                         | −10                                                         |
+| `DEBUG=True` di produksi                                                                                                                                                                        | −5                                                          |
+| Keterangan "tugas kuliah, bukan website resmi" (atau penggantinya yang disetujui pengurus, lihat poin 7 di [Memilih PCM](#memilih-pcm-dan-mengumpulkan-data)) atau atribusi logo/foto tidak ada | −5                                                          |
+| Anggota tanpa commit atau kontribusi yang tercatat                                                                                                                                              | nilai anggota tersebut dikurangi, sesuai pertimbangan dosen |
+| Terlambat                                                                                                                                                                                       | sesuai kebijakan mata kuliah                                |
+| Kode sama dengan kelompok lain                                                                                                                                                                  | nilai 0 untuk semua kelompok yang terlibat                  |
 
 ## Referensi
 
@@ -262,3 +263,24 @@ Untuk bonus domain resmi: domain harus **didaftarkan atas nama PCM** (bukan atas
 - Django dengan Neon: https://neon.com/docs/guides/django
 - WhiteNoise: https://whitenoise.readthedocs.io/
 - django-storages: https://django-storages.readthedocs.io/
+
+## Menjalankan dengan Docker
+
+```
+docker compose up --build
+# buka http://localhost:8000
+```
+
+Di terminal lain, isi data dan buat akun admin:
+
+```
+docker compose exec web uv run python manage.py seed_pcm
+docker compose exec web uv run python manage.py createsuperuser
+```
+
+Tidak perlu membuat `.env`; nilai bawaan sudah disediakan untuk pemakaian lokal.
+
+`docker compose down` hanya menghapus container.
+Data PostgreSQL (volume `pgdata`) dan gambar unggahan (volume `media`) tetap tersimpan.
+`docker compose down -v` ikut menghapus volume itu sehingga database kembali kosong. Pakai hanya untuk
+mengulang dari awal.
