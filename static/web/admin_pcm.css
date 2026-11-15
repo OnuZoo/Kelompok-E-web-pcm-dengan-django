@@ -1,4 +1,20 @@
+/* =========================================================
+   TEMA ADMIN PCM BAKI
+   Urutan file:
+     1. Variabel & tema     6. Form isian
+     2. Dasar               7. Tombol & baris simpan
+     3. Header & navigasi   8. Notifikasi
+     4. Modul & dasbor      9. Daftar data
+     5. Tindakan terbaru   10. Login
+                           11. Responsif (tablet & HP)
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. VARIABEL & TEMA
+   --------------------------------------------------------- */
 :root {
+  /* warna */
   --g1: #0a5c37;   /* hijau tua   */
   --g2: #0f7a4a;   /* hijau utama */
   --g3: #4fb477;   /* hijau muda  */
@@ -6,46 +22,104 @@
   --y2: #fbe38a;   /* kuning muda */
   --soft-g: #eef8f1;
   --soft-y: #fff8dc;
+  --danger: #e5484d;
+
+  /* bentuk */
   --radius: 16px;
   --shadow: 0 4px 18px rgba(15, 122, 74, .10);
+  --shadow-lift: 0 12px 26px rgba(15, 122, 74, .18);
   --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* gradasi */
   --grad-main: linear-gradient(90deg, var(--g1), var(--g2) 55%, var(--g3));
   --grad-warm: linear-gradient(90deg, var(--g2), var(--g3) 60%, var(--y1));
+  --grad-btn:  linear-gradient(90deg, var(--g2), var(--g3));
+
+  /* lebar maksimum kolom isian di form */
+  --lebar-isian: min(100%, 640px);
 }
 
-/* Paksa mode terang (abaikan mode gelap perangkat) */
-:root, html[data-theme="light"], html[data-theme="dark"], html[data-theme="auto"] {
+/* Paksa mode terang (abaikan mode gelap perangkat) dan
+   timpa variabel bawaan Django admin dengan warna tema */
+:root,
+html[data-theme="light"],
+html[data-theme="dark"],
+html[data-theme="auto"] {
   color-scheme: light;
-  --primary: var(--g2); --secondary: var(--g1); --accent: var(--y1);
+
+  --primary: var(--g2);
+  --secondary: var(--g1);
+  --accent: var(--y1);
   --primary-fg: #fff;
-  --body-bg: #ffffff; --body-fg: #22332a; --body-quiet-color: #5f7468; --body-loud-color: #0f1f17;
-  --header-bg: #ffffff; --header-color: #3b5a49;
-  --header-branding-color: var(--g1); --header-link-color: var(--g2);
-  --breadcrumbs-bg: var(--soft-g); --breadcrumbs-fg: #3b5a49; --breadcrumbs-link-fg: var(--g1);
-  --link-fg: var(--g2); --link-hover-color: var(--g1); --link-selected-fg: var(--g1);
-  --module-bg: #ffffff; --module-fg: #22332a;
-  --darkened-bg: #f4faf6; --selected-bg: var(--soft-y); --selected-row: var(--soft-y);
-  --border-color: #dcebe1; --hairline-color: #e8f1ec;
-  --button-bg: var(--g2); --button-hover-bg: var(--g1);
-  --default-button-bg: var(--g1); --default-button-hover-bg: #07442a;
-  --object-tools-bg: var(--g2); --object-tools-hover-bg: var(--g1);
-  --close-button-bg: #6b7f73; --close-button-hover-bg: #4d6055;
+
+  --body-bg: #ffffff;
+  --body-fg: #22332a;
+  --body-quiet-color: #5f7468;
+  --body-loud-color: #0f1f17;
+
+  --header-bg: #ffffff;
+  --header-color: #3b5a49;
+  --header-branding-color: var(--g1);
+  --header-link-color: var(--g2);
+
+  --breadcrumbs-bg: var(--soft-g);
+  --breadcrumbs-fg: #3b5a49;
+  --breadcrumbs-link-fg: var(--g1);
+
+  --link-fg: var(--g2);
+  --link-hover-color: var(--g1);
+  --link-selected-fg: var(--g1);
+
+  --module-bg: #ffffff;
+  --module-fg: #22332a;
+  --darkened-bg: #f4faf6;
+  --selected-bg: var(--soft-y);
+  --selected-row: var(--soft-y);
+  --border-color: #dcebe1;
+  --hairline-color: #e8f1ec;
+
+  --button-bg: var(--g2);
+  --button-hover-bg: var(--g1);
+  --default-button-bg: var(--g1);
+  --default-button-hover-bg: #07442a;
+  --object-tools-bg: var(--g2);
+  --object-tools-hover-bg: var(--g1);
+  --close-button-bg: #6b7f73;
+  --close-button-hover-bg: #4d6055;
 }
+
 .theme-toggle { display: none !important; }   /* sembunyikan tombol ganti tema */
 
-/* ---------- Dasar ---------- */
+@keyframes pcmUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+
+/* ---------------------------------------------------------
+   2. DASAR
+   --------------------------------------------------------- */
+html { min-height: 100%; }
 html, body { font-family: var(--font); background: #fff; color: var(--body-fg); }
 a:link, a:visited { transition: color .15s; }
 
-/* ---------- Header putih + garis gradasi ---------- */
+#content { padding: 24px 32px; }
+#content h1 { font-weight: 700; color: var(--g1); }
+
+
+/* ---------------------------------------------------------
+   3. HEADER & NAVIGASI
+   --------------------------------------------------------- */
 #header {
-  background: #fff; color: #3b5a49; position: relative;
-  padding: 14px 32px; box-shadow: 0 2px 14px rgba(15,122,74,.08);
+  position: relative; padding: 14px 32px;
+  background: #fff; color: #3b5a49;
+  box-shadow: 0 2px 14px rgba(15, 122, 74, .08);
 }
-#header::after {
+#header::after {                       /* garis gradasi di bawah header */
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
   background: linear-gradient(90deg, var(--g1), var(--g3) 55%, var(--y1));
 }
+
 #site-name a { display: inline-flex; align-items: center; gap: 12px; }
 #site-name a:link, #site-name a:visited { color: var(--g1); }
 #site-name span {
@@ -55,247 +129,317 @@ a:link, a:visited { transition: color .15s; }
 }
 .pcm-logo { height: 46px; width: auto; object-fit: contain; transition: transform .3s; }
 #site-name a:hover .pcm-logo { transform: scale(1.06); }
+
 #user-tools { font-size: 12px; color: #5f7468; }
 #user-tools a:link, #user-tools a:visited {
   color: var(--g2); border: 0; padding: 5px 12px; border-radius: 999px;
 }
 #user-tools a:hover { background: var(--soft-g); color: var(--g1); }
 
-/* ---------- Breadcrumb ---------- */
 div.breadcrumbs {
-  background: linear-gradient(90deg, var(--soft-g), var(--soft-y));
-  color: #3b5a49; border: 0; margin: 16px 32px 0; padding: 10px 20px; border-radius: var(--radius);
+  margin: 16px 32px 0; padding: 10px 20px; border: 0; border-radius: var(--radius);
+  background: linear-gradient(90deg, var(--soft-g), var(--soft-y)); color: #3b5a49;
 }
 div.breadcrumbs a { color: var(--g1); font-weight: 500; }
 
-/* ---------- Konten & judul ---------- */
-#content { padding: 24px 32px; }
-#content h1 { font-weight: 700; color: var(--g1); }
 
-/* ---------- Modul / kartu besar ---------- */
+/* ---------------------------------------------------------
+   4. MODUL & DASBOR
+   --------------------------------------------------------- */
 .module {
-  background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius);
-  box-shadow: var(--shadow); overflow: hidden; margin-bottom: 24px;
+  margin-bottom: 24px; overflow: hidden;
+  background: #fff; border: 1px solid var(--border-color);
+  border-radius: var(--radius); box-shadow: var(--shadow);
 }
 .module caption, .inline-group h2, .module h2 {
-  background: var(--grad-warm); color: #fff; font-weight: 600;
-  letter-spacing: .6px; padding: 12px 20px; text-shadow: 0 1px 2px rgba(0,0,0,.15);
+  padding: 12px 20px; background: var(--grad-warm); color: #fff;
+  font-weight: 600; letter-spacing: .6px; text-shadow: 0 1px 2px rgba(0, 0, 0, .15);
 }
-.module caption a, .module caption a:link, .module caption a:visited,
+.module caption a,
+.module caption a:link, .module caption a:visited,
 .module caption a.section:link, .module caption a.section:visited,
-.module caption a.section:hover, .module caption a.section:focus {
-  color: #fff !important;
-}
+.module caption a.section:hover, .module caption a.section:focus { color: #fff !important; }
 .module caption a.section:hover { text-decoration: underline; }
 
-/* =========================================================
-   DASBOR: model sebagai kartu (tanpa ikon)
-   ========================================================= */
-body.dashboard .module table, body.dashboard .module tbody {
+/* Dasbor: tiap model tampil sebagai kartu.
+   Diberi #content-main supaya sidebar bawaan Django tidak ikut berubah. */
+body.dashboard #content-main .module table,
+body.dashboard #content-main .module tbody {
   display: block; width: 100%; box-sizing: border-box;
 }
-body.dashboard .module caption { display: block; text-align: left; }
-body.dashboard .module tbody {
+body.dashboard #content-main .module caption { display: block; text-align: left; }
+body.dashboard #content-main .module tbody {
   display: grid; gap: 14px; padding: 16px;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
 }
-body.dashboard .module tr {
-  display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px;
-  align-content: start; min-width: 0; padding: 16px; border-radius: var(--radius);
-  border: 1.5px solid transparent;                        /* border gradasi */
-  background:
+body.dashboard #content-main .module tr {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px;
+  align-content: start; min-width: 0; padding: 16px;
+  border: 1.5px solid transparent; border-radius: var(--radius);
+  background:                                         /* border gradasi */
     linear-gradient(#fff, #fff) padding-box,
     linear-gradient(135deg, var(--g3), var(--y1)) border-box;
   animation: pcmUp .45s ease both;
   transition: transform .2s, box-shadow .2s;
 }
-body.dashboard .module tr:hover {
-  transform: translateY(-4px); box-shadow: 0 12px 26px rgba(15,122,74,.18);
+body.dashboard #content-main .module tr:hover {
+  transform: translateY(-4px); box-shadow: var(--shadow-lift);
 }
-@keyframes pcmUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-body.dashboard .module tr:nth-child(2) { animation-delay: .05s; }
-body.dashboard .module tr:nth-child(3) { animation-delay: .10s; }
-body.dashboard .module tr:nth-child(4) { animation-delay: .15s; }
-body.dashboard .module tr:nth-child(5) { animation-delay: .20s; }
-body.dashboard .module tr:nth-child(n+6) { animation-delay: .25s; }
-body.dashboard .module th { grid-column: 1 / -1; padding: 0; border: 0; background: none; }
-body.dashboard .module td { padding: 0; border: 0; min-width: 0; }
-body.dashboard .module th a { font-size: 15px; font-weight: 600; color: var(--g1); }
-body.dashboard .module td a {
-  display: block; text-align: center; font-size: 12px; font-weight: 500;
-  padding: 7px 10px; border-radius: 999px; transition: all .15s;
-}
-body.dashboard .module td a.addlink { background: linear-gradient(90deg, var(--g2), var(--g3)); color: #fff; }
-body.dashboard .module td a.addlink:hover { filter: brightness(.92); }
-body.dashboard .module td a.changelink { background: #fff; color: var(--g2); border: 1px solid var(--g3); }
-body.dashboard .module td a.changelink:hover { background: linear-gradient(90deg, var(--soft-g), var(--soft-y)); }
+body.dashboard #content-main .module tr:nth-child(2)   { animation-delay: .05s; }
+body.dashboard #content-main .module tr:nth-child(3)   { animation-delay: .10s; }
+body.dashboard #content-main .module tr:nth-child(4)   { animation-delay: .15s; }
+body.dashboard #content-main .module tr:nth-child(5)   { animation-delay: .20s; }
+body.dashboard #content-main .module tr:nth-child(n+6) { animation-delay: .25s; }
 
-/* ---------- Panel "Tindakan terbaru" ---------- */
-#content-related {
-  background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius);
-  box-shadow: var(--shadow); overflow: hidden;
+body.dashboard #content-main .module th { grid-column: 1 / -1; padding: 0; border: 0; background: none; }
+body.dashboard #content-main .module td { padding: 0; border: 0; min-width: 0; }
+body.dashboard #content-main .module th a { font-size: 15px; font-weight: 600; color: var(--g1); }
+body.dashboard #content-main .module td a {
+  display: block; padding: 7px 10px; border-radius: 999px;
+  font-size: 12px; font-weight: 500; text-align: center; transition: all .15s;
 }
-#content-related .module { box-shadow: none; border: 0; border-radius: 0; margin: 0; background: transparent; }
+body.dashboard #content-main .module td a.addlink { background: var(--grad-btn); color: #fff; }
+body.dashboard #content-main .module td a.addlink:hover { filter: brightness(.92); }
+body.dashboard #content-main .module td a.changelink {
+  background: #fff; color: var(--g2); border: 1px solid var(--g3);
+}
+body.dashboard #content-main .module td a.changelink:hover {
+  background: linear-gradient(90deg, var(--soft-g), var(--soft-y));
+}
+
+
+/* ---------------------------------------------------------
+   5. PANEL "TINDAKAN TERBARU"
+   --------------------------------------------------------- */
+#content-related {
+  overflow: hidden; background: #fff;
+  border: 1px solid var(--border-color); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+#content-related .module {
+  margin: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none;
+}
 #content-related .module h2 {
+  padding: 14px 20px; font-size: 15px; text-shadow: none;
   background: linear-gradient(90deg, #dff1c8, var(--y2)); color: #3d3200;
-  font-size: 15px; text-shadow: none; padding: 14px 20px;
 }
 #content-related h3 { color: var(--g1); }
 .actionlist li { padding: 8px 0 8px 22px; border-bottom: 1px dashed var(--hairline-color); }
 
-/* =========================================================
-   FORM INPUT DATA
-   ========================================================= */
-#content-main form fieldset.module { animation: pcmUp .4s ease both; margin-bottom: 22px; }
-.form-row { padding: 14px 20px; border-left: 4px solid transparent; transition: background .2s, border-color .2s; }
+
+/* ---------------------------------------------------------
+   6. FORM ISIAN
+   --------------------------------------------------------- */
+#content-main form fieldset.module { margin-bottom: 22px; overflow: visible; animation: pcmUp .4s ease both; }
+
+.form-row {
+  padding: 14px 20px; overflow: visible;
+  border-left: 4px solid transparent; transition: background .2s, border-color .2s;
+}
 .form-row:focus-within {
   background: linear-gradient(90deg, var(--soft-y), var(--soft-g) 70%, #fff);
   border-left-color: var(--y1);
 }
-.form-row label { font-weight: 600; font-size: 13px; color: var(--g1); }
-.form-row label.required::after { content: " *"; color: #e5484d; }
-.help, .form-row .help { color: var(--body-quiet-color); font-size: 12px; margin-top: 6px; }
-.form-row.errors { border-left-color: #e5484d; background: #fff4f4; }
+.form-row.errors { background: #fff4f4; border-left-color: var(--danger); }
 
-input[type=text], input[type=url], input[type=email], input[type=number], input[type=password],
-input[type=date], input[type=time], textarea, select {
-  width: min(100%, 640px); box-sizing: border-box; background: #fff; color: var(--body-fg);
-  border: 1px solid #cfe3d6; border-radius: 10px; padding: 8px 12px; font-family: var(--font);
+.form-row label { font-size: 13px; font-weight: 600; color: var(--g1); }
+.form-row label.required::after { content: " *"; color: var(--danger); }   /* tanda wajib diisi */
+.help, .form-row .help { margin-top: 6px; font-size: 12px; color: var(--body-quiet-color); }
+
+/* Tampilan kolom isian (berlaku untuk semua input, termasuk login & filter) */
+input[type=text], input[type=url], input[type=email], input[type=number],
+input[type=password], input[type=date], input[type=time], textarea, select {
+  box-sizing: border-box; padding: 8px 12px;
+  background: #fff; color: var(--body-fg); font-family: var(--font);
+  border: 1px solid #cfe3d6; border-radius: 10px;
 }
-.vLargeTextField, .vTextField { width: min(100%, 640px) !important; }
 input:focus, textarea:focus, select:focus {
-  border-color: var(--g2); outline: none; box-shadow: 0 0 0 3px rgba(79,180,119,.25);
+  border-color: var(--g2); outline: none; box-shadow: 0 0 0 3px rgba(79, 180, 119, .25);
 }
 textarea { min-height: 120px; resize: vertical; }
-.pcm-counter { font-size: 11px; color: var(--body-quiet-color); margin-top: 4px; }
 
+/* Lebar kolom isian: hanya di form tambah/ubah data (.aligned).
+   Kolom tanggal & jam dikecualikan supaya tidak melebar. */
+.aligned :is(input[type=text], input[type=url], input[type=email], input[type=number],
+             input[type=password], textarea, select):not(.vDateField):not(.vTimeField),
+.aligned input[type=file] {
+  width: var(--lebar-isian);
+}
+.aligned .vDateField, .aligned .vTimeField { width: auto; max-width: 100%; min-width: 0; }
+.aligned p.datetime { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0; }
+.aligned p.datetime br { display: none; }
+/* responsive.css bawaan Django membuat kolom tanggal/jam 50-75% lebar; kembalikan ke ukuran wajar */
+#content-main .aligned p.datetime input { flex: 0 1 auto; width: auto; max-width: 100%; }
+
+/* Unggah gambar */
 input[type=file] {
-  width: min(100%, 640px); box-sizing: border-box; padding: 10px; cursor: pointer;
+  box-sizing: border-box; padding: 10px; cursor: pointer;
   border: 2px dashed var(--g3); border-radius: 14px; background: var(--soft-g);
 }
 input[type=file]::file-selector-button {
-  border: 0; border-radius: 999px; padding: 7px 16px; margin-right: 12px; cursor: pointer;
-  background: linear-gradient(90deg, var(--g2), var(--g3)); color: #fff; font-family: var(--font);
+  margin-right: 12px; padding: 7px 16px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--grad-btn); color: #fff; font-family: var(--font);
 }
-.pcm-preview {
-  display: block; margin-top: 10px; max-width: 220px; max-height: 160px;
-  border-radius: 14px; border: 3px solid var(--y1); box-shadow: var(--shadow); animation: pcmUp .3s ease;
+.aligned p.file-upload { margin: 0; padding: 0; line-height: 1.6; }
+.aligned p.file-upload input[type=file] { display: block; margin-top: 6px; }
+
+.pcm-preview {                          /* dibuat oleh admin_extra.js */
+  display: block; max-width: 220px; max-height: 160px; margin-top: 10px;
+  border: 3px solid var(--y1); border-radius: 14px; box-shadow: var(--shadow);
+  animation: pcmUp .3s ease;
 }
 
-/* ---------- Tombol ---------- */
+
+/* ---------------------------------------------------------
+   7. TOMBOL & BARIS SIMPAN
+   --------------------------------------------------------- */
 .button, input[type=submit], input[type=button], a.button, .submit-row input {
-  border-radius: 999px; padding: 9px 22px; font-family: var(--font); font-weight: 500;
-  background: linear-gradient(90deg, var(--g2), var(--g3)); color: #fff; border: 0;
+  padding: 9px 22px; border: 0; border-radius: 999px;
+  background: var(--grad-btn); color: #fff; font-family: var(--font); font-weight: 500;
   transition: transform .1s, box-shadow .15s, filter .15s;
 }
 .button:hover, input[type=submit]:hover, input[type=button]:hover, a.button:hover {
   filter: brightness(.93); transform: translateY(-1px); box-shadow: var(--shadow);
 }
 .submit-row input.default { background: linear-gradient(90deg, var(--g1), var(--g2)); }
-.object-tools a {
-  border-radius: 999px; padding: 7px 18px; background: linear-gradient(90deg, var(--g2), var(--g3));
-}
+
+.object-tools a { padding: 7px 18px; border-radius: 999px; background: var(--grad-btn); }
 .object-tools a:hover { filter: brightness(.93); }
+
 .deletelink-box a, .submit-row a.deletelink {
-  border-radius: 999px; padding: 9px 18px; background: #fff; color: #d13438 !important;
-  border: 1px solid #f3b9bb; height: auto;
+  height: auto; padding: 9px 18px; border-radius: 999px;
+  background: #fff; color: #d13438 !important; border: 1px solid #f3b9bb;
 }
 .submit-row a.deletelink:hover { background: #fff4f4; }
 
-/* tombol simpan melayang */
+/* Baris tombol simpan melayang di bawah layar */
 .submit-row {
-  position: sticky; bottom: 14px; z-index: 20; margin: 24px 0 0; padding: 12px 18px;
-  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-  background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius);
-  box-shadow: 0 8px 28px rgba(15,122,74,.18); border-top: 3px solid transparent;
+  position: sticky; bottom: 14px; z-index: 20;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  margin: 24px 0 0; padding: 12px 18px;
+  border: 1px solid var(--border-color); border-top: 3px solid transparent;
+  border-radius: var(--radius); box-shadow: 0 8px 28px rgba(15, 122, 74, .18);
+  background-color: #fff;
   background-image: linear-gradient(#fff, #fff), linear-gradient(90deg, var(--g2), var(--y1));
   background-origin: border-box; background-clip: padding-box, border-box;
 }
-.pcm-hint { margin-left: auto; font-size: 11px; color: var(--body-quiet-color); }
-body.pcm-dirty .submit-row::before {
-  content: "Ada perubahan belum disimpan"; color: #b88a00; font-size: 12px; font-weight: 600;
+body.pcm-dirty .submit-row::before {    /* penanda perubahan belum disimpan */
+  content: "Ada perubahan belum disimpan";
+  color: #b88a00; font-size: 12px; font-weight: 600;
 }
 
-/* ---------- Pesan (toast) ---------- */
-ul.messagelist { position: fixed; top: 90px; right: 24px; z-index: 100; width: min(360px, 90vw); margin: 0; padding: 0; }
+
+/* ---------------------------------------------------------
+   8. NOTIFIKASI (toast)
+   --------------------------------------------------------- */
+ul.messagelist {
+  position: fixed; top: 90px; right: 24px; z-index: 100;
+  width: min(360px, 90vw); margin: 0; padding: 0;
+}
 ul.messagelist li {
-  margin: 0 0 10px; border-radius: var(--radius); box-shadow: 0 8px 24px rgba(0,0,0,.15);
+  margin: 0 0 10px; border-radius: var(--radius); box-shadow: 0 8px 24px rgba(0, 0, 0, .15);
   animation: pcmUp .35s ease; transition: opacity .5s, transform .5s;
 }
 ul.messagelist li.pcm-hide { opacity: 0; transform: translateX(30px); }
 
-/* ---------- Daftar data ---------- */
+
+/* ---------------------------------------------------------
+   9. DAFTAR DATA
+   --------------------------------------------------------- */
 #changelist table thead th { background: linear-gradient(90deg, var(--soft-g), var(--soft-y)); color: var(--g1); }
 #changelist table tbody tr:hover { background: var(--soft-y); }
-#changelist-filter { border-radius: var(--radius); overflow: hidden; background: #fff; border: 1px solid var(--border-color); }
+#changelist .results { overflow-x: auto; }                 /* tabel bisa digeser di layar sempit */
+#changelist-filter {
+  overflow: hidden; background: #fff;
+  border: 1px solid var(--border-color); border-radius: var(--radius);
+}
 #changelist-filter h2 { background: var(--grad-warm); color: #fff; }
-#searchbar { border-radius: 999px; padding: 9px 16px; width: min(100%, 320px); }
+#searchbar { width: min(100%, 320px); padding: 9px 16px; border-radius: 999px; }
 .paginator { background: var(--soft-g); border-radius: 0 0 var(--radius) var(--radius); }
 .paginator a:link, .paginator a:visited { background: var(--g2); border-radius: 8px; }
 
-/* ---------- Halaman login ---------- */
-html { min-height: 100%; }
+
+/* ---------------------------------------------------------
+   10. LOGIN
+   --------------------------------------------------------- */
 body.login {
   min-height: 100vh; min-height: 100dvh;
   display: flex; align-items: center; justify-content: center;
   background: linear-gradient(160deg, #fff 0%, var(--soft-g) 50%, var(--soft-y) 100%) fixed;
 }
 .login #container {
-  margin: 0; border: 0; border-radius: 20px; overflow: hidden; background: #fff;
-  box-shadow: 0 12px 40px rgba(15,122,74,.18);
+  width: min(92vw, 420px); min-width: 0; margin: 0; overflow: hidden;
+  background: #fff; border: 0; border-radius: 20px; box-shadow: 0 12px 40px rgba(15, 122, 74, .18);
 }
 .login #header { justify-content: center; }
-
-/* isian & tombol di halaman login dirapikan */
 .login #content { padding: 24px 28px 28px; }
-.login .form-row { padding: 10px 0; border-left: 0; background: none; }
+.login .form-row { padding: 10px 0; background: none; border-left: 0; }
 .login .form-row:focus-within { background: none; border-left: 0; }
 .login .form-row label { display: block; margin-bottom: 6px; }
 .login .form-row input { width: 100% !important; }
 .login .submit-row {
-  position: static; margin: 12px 0 0; padding: 0; border: 0; box-shadow: none;
-  background: none; display: block;
+  position: static; display: block; margin: 12px 0 0; padding: 0;
+  background: none; border: 0; box-shadow: none;
 }
 .login .submit-row input { width: 100%; padding: 11px 22px; }
-.login .password-reset-link { text-align: center; margin-top: 14px; }
+.login .password-reset-link { margin-top: 14px; text-align: center; }
 
-.login #header { justify-content: center; }
-/* =========================================================
-   RESPONSIF (tablet & HP)
-   ========================================================= */
+
+/* ---------------------------------------------------------
+   11. RESPONSIF
+   --------------------------------------------------------- */
+
+/* Tablet dan di bawahnya */
 @media (max-width: 1024px) {
   #content { padding: 20px; }
   #content-related { width: auto; margin: 24px 0 0; }
+  .dashboard #content { width: auto; }
+
+  /* sidebar bawaan Django menutupi konten: sembunyikan */
+  #nav-sidebar, #toggle-nav-sidebar { display: none !important; }
+
+  /* Label di atas isian, bukan di samping.
+     Diberi #content-main karena forms.css dan responsive.css bawaan Django
+     dimuat SETELAH file ini; tanpa ID aturan di bawah kalah. */
+  #content-main .aligned label {
+    float: none; display: block; width: auto; padding: 0 0 6px; line-height: 1.3;
+  }
+  #content-main .aligned .form-row > div:not(.checkbox-row) { display: block; min-width: 0; }
+  #content-main .aligned .checkbox-row label { display: inline; padding: 0 0 0 8px; }
+  #content-main .aligned .help,
+  #content-main .aligned div.help,
+  #content-main .aligned p.help { margin-left: 0; padding-left: 0; }
 }
 
+/* HP */
 @media (max-width: 767px) {
-  /* Header */
-  #header { padding: 12px 16px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  :root { --lebar-isian: 100%; }
+
+  /* header */
+  #header { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 16px; }
   #site-name span { font-size: 16px; }
   .pcm-logo { height: 36px; }
-  #user-tools { text-align: left; margin: 0; padding: 0; }
+  #user-tools { margin: 0; padding: 0; text-align: left; }
+  .login #header { align-items: center; }
 
-  /* Breadcrumb & konten */
+  /* breadcrumb dan konten */
   div.breadcrumbs { margin: 12px 16px 0; padding: 8px 14px; }
   #content { padding: 16px; }
 
-  /* Dasbor: 1 kolom */
-  body.dashboard .module tbody { grid-template-columns: 1fr; padding: 12px; }
+  /* dasbor: 1 kolom */
+  body.dashboard #content-main .module tbody { grid-template-columns: 1fr; padding: 12px; }
 
-  /* Form */
-  .form-row { padding: 12px 14px; }
-  input[type=text], input[type=url], input[type=email], input[type=number],
-  input[type=password], input[type=date], input[type=time], input[type=file],
-  textarea, select, .vLargeTextField, .vTextField { width: 100% !important; }
+  /* form: Django memberi lebar "100vw - 30px" pada kolom isian, jadi meluber
+     dari kotak form. Paksa mengikuti lebar kotaknya. */
+  #content-main .form-row { padding: 12px 14px; }
+  #content-main .aligned .form-row,
+  #content-main .aligned .form-row > div {
+    width: 100%; max-width: 100%; box-sizing: border-box;
+  }
 
-  /* Tombol simpan: tumpuk penuh */
-  .submit-row { bottom: 8px; padding: 10px 12px; }
-  .submit-row input, .submit-row a.deletelink { flex: 1 1 100%; text-align: center; margin: 0; }
-  .pcm-hint { display: none; }
+  /* tombol simpan: tidak melayang (supaya tidak menutupi isian), tumpuk penuh */
+  .submit-row { position: static; padding: 10px 12px; }
+  .submit-row input, .submit-row a.deletelink { flex: 1 1 100%; margin: 0; text-align: center; }
 
-  /* Notifikasi pindah ke bawah, selebar layar */
-  ul.messagelist { top: auto; bottom: 16px; left: 12px; right: 12px; width: auto; }
-
-  /* Tabel daftar data bisa digeser ke samping */
-  #changelist .results { overflow-x: auto; }
+  /* notifikasi selebar layar, di atas */
+  ul.messagelist { top: 12px; right: 12px; left: 12px; bottom: auto; width: auto; }
 }
