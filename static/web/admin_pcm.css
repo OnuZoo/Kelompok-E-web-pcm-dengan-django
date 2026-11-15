@@ -229,9 +229,68 @@ ul.messagelist li.pcm-hide { opacity: 0; transform: translateX(30px); }
 .paginator a:link, .paginator a:visited { background: var(--g2); border-radius: 8px; }
 
 /* ---------- Halaman login ---------- */
-body.login { background: linear-gradient(160deg, #fff, var(--soft-g) 55%, var(--soft-y)); }
+html { min-height: 100%; }
+body.login {
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #fff 0%, var(--soft-g) 50%, var(--soft-y) 100%) fixed;
+}
 .login #container {
-  border: 0; border-radius: 20px; overflow: hidden; background: #fff;
+  margin: 0; border: 0; border-radius: 20px; overflow: hidden; background: #fff;
   box-shadow: 0 12px 40px rgba(15,122,74,.18);
 }
 .login #header { justify-content: center; }
+
+/* isian & tombol di halaman login dirapikan */
+.login #content { padding: 24px 28px 28px; }
+.login .form-row { padding: 10px 0; border-left: 0; background: none; }
+.login .form-row:focus-within { background: none; border-left: 0; }
+.login .form-row label { display: block; margin-bottom: 6px; }
+.login .form-row input { width: 100% !important; }
+.login .submit-row {
+  position: static; margin: 12px 0 0; padding: 0; border: 0; box-shadow: none;
+  background: none; display: block;
+}
+.login .submit-row input { width: 100%; padding: 11px 22px; }
+.login .password-reset-link { text-align: center; margin-top: 14px; }
+
+.login #header { justify-content: center; }
+/* =========================================================
+   RESPONSIF (tablet & HP)
+   ========================================================= */
+@media (max-width: 1024px) {
+  #content { padding: 20px; }
+  #content-related { width: auto; margin: 24px 0 0; }
+}
+
+@media (max-width: 767px) {
+  /* Header */
+  #header { padding: 12px 16px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  #site-name span { font-size: 16px; }
+  .pcm-logo { height: 36px; }
+  #user-tools { text-align: left; margin: 0; padding: 0; }
+
+  /* Breadcrumb & konten */
+  div.breadcrumbs { margin: 12px 16px 0; padding: 8px 14px; }
+  #content { padding: 16px; }
+
+  /* Dasbor: 1 kolom */
+  body.dashboard .module tbody { grid-template-columns: 1fr; padding: 12px; }
+
+  /* Form */
+  .form-row { padding: 12px 14px; }
+  input[type=text], input[type=url], input[type=email], input[type=number],
+  input[type=password], input[type=date], input[type=time], input[type=file],
+  textarea, select, .vLargeTextField, .vTextField { width: 100% !important; }
+
+  /* Tombol simpan: tumpuk penuh */
+  .submit-row { bottom: 8px; padding: 10px 12px; }
+  .submit-row input, .submit-row a.deletelink { flex: 1 1 100%; text-align: center; margin: 0; }
+  .pcm-hint { display: none; }
+
+  /* Notifikasi pindah ke bawah, selebar layar */
+  ul.messagelist { top: auto; bottom: 16px; left: 12px; right: 12px; width: auto; }
+
+  /* Tabel daftar data bisa digeser ke samping */
+  #changelist .results { overflow-x: auto; }
+}
