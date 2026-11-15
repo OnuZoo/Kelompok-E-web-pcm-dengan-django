@@ -1630,7 +1630,44 @@ button[type="submit"] {
     transform: none;
   }
 }
+/* ---------- Navbar PUTIH (logo asli terlihat jelas) ----------
+   Blok ini hanya MENAMBAH. Letakkan di paling bawah bagian HEADER
+   (tepat di atas "AKHIR HEADER") supaya menimpa aturan di atasnya. */
 
+/* Latar putih + garis hijau sebagai batas navbar.
+   !important wajib karena .bg-success di atas juga memakai !important */
+.navbar.bg-success {
+  background-color: var(--bs-white) !important;
+  border-bottom: 3px solid var(--pcm-primary);
+  box-shadow: var(--pcm-shadow);
+}
+
+/* Teks menu: putih tidak terbaca di latar putih, jadi dibuat hijau */
+.header-menu {
+  --bs-navbar-color: var(--pcm-secondary);
+  --bs-navbar-hover-color: var(--pcm-primary);
+  --bs-navbar-active-color: var(--pcm-primary);
+}
+
+.navbar .header-link:hover,
+.navbar .header-link:focus-visible,
+.header-dropdown-wrap:hover > .header-toggle {
+  color: var(--pcm-primary);
+}
+
+/* Nama merek dan tagline */
+.header-merek-nama {
+  color: var(--pcm-secondary);
+}
+.header-merek-tagline {
+  color: var(--pcm-muted);
+}
+
+/* Tombol menu di HP: ikon putih bawaan tidak terlihat di latar putih */
+.navbar .navbar-toggler {
+  --bs-navbar-toggler-border-color: var(--pcm-primary);
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23004d35' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
 /* ============ AKHIR HEADER ============ */
 
 /* ============================================
