@@ -43,7 +43,7 @@ Tugas kelompok mata kuliah **Pemrograman Web berbasis Framework (TIF1336)**.
 | Foto tiap pimpinan | Pengurus PCM Baki | 12 November 2026 |
 | Foto kegiatan | Pengurus PCM Baki | 12 November 2026 |
 | Riwayat berdiri (sejarah) | Muchammad Riduwan | 12 November 2026 |
-| Profil dan tagline | Ibnu Hambali, S.Pd., M.Si | Ibnu Hambali, S.Pd., M.Si |
+| Profil dan tagline | Ibnu Hambali, S.Pd., M.Si | 12 November 2026 |
 | Jumlah anggota ber-KTAM |Ibnu Hambali, S.Pd., M.Si |  12 November 2026 |
 | Berita | Muchammad Riduwan, Ibnu Hambali, S.Pd., M.Si | 12 November 2026 |
 | Kontak sekretariat (alamat, telepon, email) | Ibnu Hambali, S.Pd., M.Si | 9 November 2026 |
@@ -68,10 +68,10 @@ Izin penggunaan data dan foto diberikan oleh:
 
 | Nama | NIM | Yang dikerjakan |
 | ---- | --- | --------------- |
-| Reyhan Surya Putra | L200240013 | Menginisialisasi proyek Django, membuat konfigurasi environment, model dan migrasi database, mendaftarkan model pada Django Admin, membuat kerangka URL dan views, mengembangkan halaman home dan kontak, mengintegrasikan form kontak, serta mengembangkan CSS dan template dasar.|
-| Akmal Zaidan Zidna Azizi | L200240019 | Mengembangkan halaman pimpinan, amal usaha, dan ranting; mengelola data konten organisasi melalui seed_pcm.py; menambahkan foto pimpinan dan data amal usaha; serta memperbaiki tampilan halaman dan animasi. Membuat video demo|
-| Pramudita Nabiha Hamdi | L200240027 | Mengembangkan halaman agenda, mengatur URL routing dan views agenda, memperbaiki navigasi agenda, mengembangkan halaman ranting, melakukan kustomisasi tampilan Django Admin menggunakan CSS dan JavaScript, serta menangani proses deployment aplikasi. Observasi kepada narasumber |
-| Muhammad Irsyad Al Farizi | L200240034 | Membuat struktur template dasar dan halaman home, mengembangkan halaman profil dan unduhan, mengelola data awal melalui seed_pcm.py, memperbaiki navbar dan konsistensi tampilan, memisahkan komponen template berita, serta menambahkan pengujian Django. Pembuatan PPT materi presentasi|
+| Reyhan Surya Putra | L200240013 | Menginisialisasi proyek Django, membuat konfigurasi environment, model dan migrasi database, mendaftarkan model pada Django Admin, membuat kerangka URL dan views, mengembangkan kontak, mengintegrasikan form kontak, CSS dan template dasar.|
+| Akmal Zaidan Zidna Azizi | L200240019 | Mengembangkan halaman pimpinan, mengembangkan halaman ranting, amal usaha, dan ranting; mengelola data konten organisasi melalui seed_pcm.py; menambahkan foto pimpinan dan data amal usaha; serta memperbaiki tampilan halaman dan animasi. Membuat video demo|
+| Pramudita Nabiha Hamdi | L200240027 | Mengembangkan halaman agenda, mengatur URL routing dan views agenda, memperbaiki navigasi agenda, melakukan kustomisasi tampilan Django Admin menggunakan CSS dan JavaScript, serta menangani proses deployment aplikasi. Observasi kepada narasumber |
+| Muhammad Irsyad Al Farizi | L200240034 | Membuat struktur template dasar dan halaman home, mengembangkan halaman profil dan unduhan,  halaman home,  mengelola data awal melalui seed_pcm.py, memperbaiki navbar dan konsistensi tampilan, memisahkan komponen template berita, serta menambahkan pengujian Django. Pembuatan PPT materi presentasi|
 | Danang Estu Sambodo | L200240051 | Mengembangkan fitur berita dan detail berita, mengatur URL routing dan views berita, mengelola data berita dan media, memperbaiki header dan footer, serta menyiapkan konfigurasi Docker dan deployment Vercel dan Supabase. |
 
 
@@ -87,9 +87,8 @@ Izin penggunaan data dan foto diberikan oleh:
 - JavaScript animasi (`static/web/animasi.js`)
 - JavaScript animasi untuk admin (`static/web/admin_extra.js`)
 - SQLite untuk pengembangan di laptop, PostgreSQL untuk Docker dan Supabase untuk produksi
-- Gunicorn dan WhiteNoise (file statis)
 - Docker dan Docker Compose
-- Pillow (unggah gambar), dj-database-url, python-dotenv, psycopg
+
 
 ---
 
@@ -185,7 +184,7 @@ Contoh lengkap ada di [`.env.example`](.env.example). File `.env` tidak boleh di
 | `ALLOWED_HOSTS` | Daftar domain, dipisah koma. |
 | `CSRF_TRUSTED_ORIGINS` | Domain produksi lengkap dengan `https://`. |
 | `DATABASE_URL` | Kosong berarti SQLite. Berisi URL PostgreSQL berarti database cloud. |
-| Variabel object storage | BELUM ADA |
+
 
 ---
 
@@ -199,7 +198,7 @@ Contoh lengkap ada di [`.env.example`](.env.example). File `.env` tidak boleh di
 | Object storage untuk gambar | Supabase |
 
 ### Alasan memilih platform dan database
-karena sudah memiliki pengalaman terhadap platform tersebut 
+Karena sudah memiliki pengalaman terhadap platform tersebut 
 
 ## 10. Akun Admin Demo
 
