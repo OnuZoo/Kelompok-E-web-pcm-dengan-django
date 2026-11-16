@@ -105,7 +105,8 @@ h1, h2, h3, h4 { font-family: "Poppins", "Inter", sans-serif; }
   #user-tools { margin: 0 0 0 auto !important; text-align: right; }
   .pcm-logo { height: 38px; }
   .pcm-brand-name { font-size: 1rem; }
-  .pcm-brand-tagline { display: none; }
+  .pcm-brand-tagline { font-size: .7rem; }
+  .pcm-brand-text { min-width: 0; }
 }
 
 /* ---------- Sidebar daftar model (bawaan Django) ---------- */
