@@ -3,11 +3,17 @@
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
+{# Font sama dengan beranda #}
 {% block extrastyle %}
 {{ block.super }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{# CSS dimuat SETELAH responsive.css bawaan Django agar tidak tertimpa #}
+{% block responsive %}
+{{ block.super }}
 <link rel="stylesheet" href="{% static 'web/admin_pcm.css' %}">
 {% endblock %}
 
@@ -16,12 +22,15 @@
 <script src="{% static 'web/admin_extra.js' %}" defer></script>
 {% endblock %}
 
+{# ====== LOGO + NAMA: logo ada di static/img/logo.png ====== #}
 {% block branding %}
 <h1 id="site-name">
   <a href="{% url 'admin:index' %}">
-    {# LOGO: taruh file di static/img/logo.png #}
     <img src="{% static 'img/logo-muhammadiyah.webp' %}" alt="Logo PCM Baki" class="pcm-logo" onerror="this.style.display='none'">
-    <span>{{ site_header|default:_('Django administration') }}</span>
+    <span class="pcm-brand-text">
+      <span class="pcm-brand-name">{{ site_header|default:_('Django administration') }}</span>
+      <span class="pcm-brand-tagline">Bersama Satukan Bangsa</span>
+    </span>
   </a>
 </h1>
 {% endblock %}
